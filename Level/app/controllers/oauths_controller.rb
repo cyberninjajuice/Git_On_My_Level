@@ -14,12 +14,13 @@ class OauthsController < ApplicationController
       flash[:success]= "Logged in using #{provider.titleize}!"
       redirect_to root_path
     else
+      
       if logged_in?
         link_account(provider)
         redirect_to root_path
       else
         flash[:alert] = "You are required to login through GitHub"
-        redirect_to login_path
+        redirect_to root_path
       end
     end
   end
