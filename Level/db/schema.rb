@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603145400) do
+ActiveRecord::Schema.define(version: 20150603173614) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -22,5 +22,13 @@ ActiveRecord::Schema.define(version: 20150603145400) do
   end
 
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
 end
