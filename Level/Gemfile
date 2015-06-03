@@ -18,9 +18,9 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'sorcery'
 gem 'sdoc', group: :doc
 gem 'httparty'
-gem 'youtube_it'
 
 group :development, :test do
   gem 'pry'
