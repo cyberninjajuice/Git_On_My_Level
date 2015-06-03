@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  authenticates_with_sorcery! do |config|
-    config.authentications_class = Authentication
-  end
-
-  has_many :authentications, :dependent => :destroy
-  accepts_nested_attributes_for :authentications
   # GET /users
   # GET /users.json
   def index

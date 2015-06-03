@@ -323,6 +323,7 @@ DEPENDENCIES
   mini_backtrace
   mini_magick
   minitest-reporters
+  oauth2
   pg
   pry
   puma

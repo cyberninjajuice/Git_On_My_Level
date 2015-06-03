@@ -18,6 +18,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'oauth2'
 gem 'sorcery'
 gem 'sdoc', group: :doc
 gem 'httparty'
