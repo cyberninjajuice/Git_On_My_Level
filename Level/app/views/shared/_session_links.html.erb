@@ -1,0 +1,16 @@
+<div class="GitHub">
+  <% if logged_in? %>
+    Logged in as: <%= current_user.email %> |
+
+    <% if current_user.has_linked_github? %>
+      <%= link_to "Delete your Account", delete_oauth_path("GitHub"), method: :delete, class: "link_button Deletion" %>
+    <% else %>
+      <%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "link_button" %>
+    <% end %> | 
+    <%= link_to "Logout", logout_path %>
+
+  <% else %>
+    <%= link_to "Login with GitHub", auth_at_provider_path(provider: :github) %>
+  <% end %>
+</div>
+
