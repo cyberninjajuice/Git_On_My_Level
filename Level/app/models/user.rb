@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :skills
+	has_many :languages, through: :skills
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
