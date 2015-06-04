@@ -28,9 +28,9 @@ class OauthsController < ApplicationController
     authentication = current_user.authentications.find_by_provider(provider)
     if authentication.present?
       authentication.destroy
-      flash[:notice] = "You have successfully unlinked #{provider.titleize} account."
+      flash[:notice] = "#{provider.titleize} account removed."
     else
-      flash[:alert] = "You don't have a linked #{provider.titleize} account"
+      flash[:alert] = "Your #{provider.titleize} account is not linked."
     end
     redirect_to root_path
   end
@@ -38,7 +38,7 @@ class OauthsController < ApplicationController
   private
   def link_account(provider)
     if @user = add_provider_to_user(provider)
-      flash[:success] = "You have successfully linked your account!"
+      flash[:success] = "Great work! Your GitHub is linked and you are now ready to Levl UP!"
     else
       flash[:alert] = "There was a problem linking your GitHub account." 
     end
