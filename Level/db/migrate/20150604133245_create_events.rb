@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.text :name
       t.integer :user_id
-      t.integer :earned_exp
+      t.text :uncut_exp
       t.integer :language_id
       t.integer :source_id
 

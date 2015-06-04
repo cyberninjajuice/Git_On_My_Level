@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback" # for use with Github
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
-  delete "oauth/:provider" => "oauths#destroy", :as => :delete_oauth
+  get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
+  delete "oauth/:provider" => "oauths#destroy", as: :delete_oauth
   root "static_pages#home"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

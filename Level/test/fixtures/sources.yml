@@ -2,14 +2,10 @@
 
 one:
   name: MyText
-  user_id: 1
-  uncut_exp: MyText
-  language_id: 1
-  source_id: 1
+  exp_multiplier: 9.99
+  logo: MyText
 
 two:
   name: MyText
-  user_id: 1
-  uncut_exp: MyText
-  language_id: 1
-  source_id: 1
+  exp_multiplier: 9.99
+  logo: MyText
