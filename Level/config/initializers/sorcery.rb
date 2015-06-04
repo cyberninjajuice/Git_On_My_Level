@@ -1,4 +1,5 @@
   file= File.read("secrets.json")
+  data= JSON.parse(file)
 
 # The first thing you need to configure is which modules you need in your app.
 # The default is nothing which will include only core features (password encryption, login/logout).
@@ -124,7 +125,6 @@ Rails.application.config.sorcery.configure do |config|
   # config.facebook.access_permissions = ["email", "publish_actions"]
   # config.facebook.display = "page"
   # config.facebook.api_version = "v2.2"
-  data= JSON.parse(file)
 
   CLIENTID = data["client-id"]
   CLIENTSECRET= data["client-secret"]
