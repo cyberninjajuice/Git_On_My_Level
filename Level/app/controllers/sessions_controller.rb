@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-def new
-    @user = User.new
+
+  def new
   end
 
   def create
@@ -15,7 +15,7 @@ def new
 
   def destroy
     logout
-    flash[:notice] = "Logout Successful!"
+    flash[:notice] = "Logout Successful! DESTROYED LOGOUT! SESSION"
     redirect_to root_path
   end
 end
