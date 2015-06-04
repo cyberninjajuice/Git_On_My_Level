@@ -9,16 +9,20 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider]
     if @user = login_from(provider)
-      flash[:success]= "Logged in using #{provider.titleize}!"
+      flash[:success] = "Logged in using #{provider.titleize}!"
+      binding.pry
       authorization_code = auth_params[:code]
       puts current_user
       puts authorization_code
       redirect_to root_path
     else
-      if logged_in?
-        link_account(provider)
+      begin
+        @user = create_from(provider)
+        reset_session
+        auto_login(@user)
+        flash[:success]= "Logged in using #{provider.titleize}!"
         redirect_to root_path
-      else
+      rescue
         flash[:alert] = "You must login through GitHub to access this feature!"
         redirect_to login_path
       end
