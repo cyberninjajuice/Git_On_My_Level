@@ -73,6 +73,6 @@ class UsersController < ApplicationController
     end
 
     def authenticate
-      redirect_to root_url unless correct_user?
+      redirect_to users_path unless correct_user?
     end
 end

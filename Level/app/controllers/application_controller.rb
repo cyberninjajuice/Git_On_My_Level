@@ -24,7 +24,10 @@ class ApplicationController < ActionController::Base
 
 
   def correct_user?
-    if(User.find(params[:id])==current_user)
+    if params[:id].to_i==current_user.id
+      return true
+    else
+      binding.pry
     end
   end
 
