@@ -7,14 +7,9 @@ API_URL = "https://www.rescuetime.com/anapi/data?key=#{apiKey}&perspective=rank&
 	
     def home
     response = HTTParty.get(API_URL)
-    binding.pry
-    # TODO more error checking (500 error, etc)
+    # more error checking (500 error, etc)
     json = JSON.parse(response.body)
     json['url']
 
   end
 end
-
-	  
-
-

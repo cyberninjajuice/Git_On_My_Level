@@ -10,6 +10,9 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
     if @user = login_from(provider)
       flash[:success]= "Logged in using #{provider.titleize}!"
+      authorization_code = auth_params[:code]
+      puts current_user
+      puts authorization_code
       redirect_to root_path
     else
       if logged_in?
