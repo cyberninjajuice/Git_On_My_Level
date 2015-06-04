@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603203811) do
+ActiveRecord::Schema.define(version: 20150604133245) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20150603203811) do
   end
 
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
+
+  create_table "events", force: :cascade do |t|
+    t.text     "name"
+    t.integer  "user_id"
+    t.text     "uncut_exp"
+    t.integer  "language_id"
+    t.integer  "source_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "languages", force: :cascade do |t|
     t.text     "name"
@@ -37,6 +47,14 @@ ActiveRecord::Schema.define(version: 20150603203811) do
     t.text     "experience"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.text     "name"
+    t.decimal  "exp_multiplier"
+    t.text     "logo"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
