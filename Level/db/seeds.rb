@@ -5,9 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+  file= File.read("rescueSecret.json")
+  data= JSON.parse(file)
+  apiKey=data["secret"]
 
 	Event.create(name: "vmware", user_id: "1", uncut_exp: "7200", language_id: "1", source_id: "1")
 	Language.create(name: "Ruby", color: "Red", badge: "badge.jpg")
 	Source.create(name: "Rescue Time")
-	User.create(email: "msny@gmail.com")
+	User.create(email: "msny@gmail.com", rescue_digest: apiKey)
 

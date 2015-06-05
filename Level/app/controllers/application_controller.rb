@@ -24,10 +24,8 @@ class ApplicationController < ActionController::Base
 
 
   def correct_user?
-    if params[:id].to_i==current_user.id
+    if (logged_in? && params[:id].to_i==current_user.id)
       return true
-    else
-      binding.pry
     end
   end
 
