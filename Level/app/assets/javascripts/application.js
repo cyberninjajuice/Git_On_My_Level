@@ -15,5 +15,9 @@
 // Requiring underscore, Backbone, all of our models, collections, and views
 //= require underscore-min
 //= require backbone-min
-//= require models/users
+//= require routers/router
+//= require models/model
+//= require collections/collection
+//= require views/view
+
 //= require_tree .

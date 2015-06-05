@@ -10,13 +10,19 @@
 <% end %>
 <%= link_to 'Back', users_path %>
 
+<div class="content-area">
+</div>
 
 <!-- individual User -->
-<script type = "text/template" id = "user-template">
+<script type="text/template" id="user-template">
   <%= link_to '{{user.username}}', '#', class: 'username' %>
   <div class="main">
-	<li></li>
+	<ul></ul>
   </div>
+</script>
+
+<script type="text/template" id="skill-template">
+{{skill.id}}
 </script>
 
 <script>

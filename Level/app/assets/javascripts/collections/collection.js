@@ -10,5 +10,14 @@ var UserCollection = Backbone.Collection.extend({
   url: '/users'
 });
 
+var EventCollection = Backbone.Collection.extend({
+	model: Event
+});
+
+var SkillCollection = Backbone.Collection.extend({
+	model: Skill
+});
 // initialize a collection of Users
 var userCollection = new UserCollection();
+var eventCollection = new EventCollection();
+var skillCollection = new SkillCollection();
