@@ -11,6 +11,7 @@
 
 	Event.create(name: "vmware", user_id: "1", uncut_exp: "7200", language_id: "1", source_id: "1")
 	Language.create(name: "Ruby", color: "Red", badge: "badge.jpg")
+  Language.create(name: "General Software Development", color: "Grey", badge: "badger.jpg")
 	Source.create(name: "Rescue Time")
 	User.create(email: "msny@gmail.com", rescue_digest: apiKey)
 
