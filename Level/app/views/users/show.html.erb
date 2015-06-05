@@ -10,9 +10,13 @@
 <% end %>
 <%= link_to 'Back', users_path %>
 
+
 <!-- individual User -->
 <script type = "text/template" id = "user-template">
   <%= link_to '{{user.username}}', '#', class: 'username' %>
+  <div class="main">
+	<li></li>
+  </div>
 </script>
 
 <script>
