@@ -5,10 +5,10 @@ class Event < ActiveRecord::Base
 
   def github_hitter
     user = HTTParty.get "https://api.github.com/user", 
-        :headers => { 
-                        "Authorization" => "token #{token}",
-                        "User-Agent" => "Git_On_My_Level"    
-                    }
+    :headers => { 
+      "Authorization" => "token #{token}",
+      "User-Agent" => "Git_On_My_Level"    
+    }
     puts "Hi, my username is #{user["login"]}"
   end
 end

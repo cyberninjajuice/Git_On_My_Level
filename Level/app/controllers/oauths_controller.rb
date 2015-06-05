@@ -10,7 +10,8 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
     if @user = login_from(provider)
       flash[:success] = "Logged in using #{provider.titleize}!"
-      binding.pry
+      cur= @user.logins.to_i
+      @user.update!(logins: (cur+1))
       authorization_code = auth_params[:code]
       puts current_user
       puts authorization_code
@@ -20,6 +21,8 @@ class OauthsController < ApplicationController
         @user = create_from(provider)
         reset_session
         auto_login(@user)
+        cur= @user.logins.to_i
+        @user.update!(logins: (cur+1))
         flash[:success]= "Logged in using #{provider.titleize}!"
         redirect_to @user
       rescue

@@ -59,10 +59,12 @@ ActiveRecord::Schema.define(version: 20150604133245) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
-    t.string   "github_digest"
-    t.string   "rescue_digest"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "github_key"
+    t.string   "rescue_key"
+    t.integer  "logins"
+    t.date     "last_rescued"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

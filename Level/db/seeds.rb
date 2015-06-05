@@ -8,7 +8,7 @@
   file= File.read("rescueSecret.json")
   data= JSON.parse(file)
   apiKey=data["secret"]
-  user = User.create(email: "msny@gmail.com", rescue_digest: apiKey)
+  user = User.create(email: "msny@gmail.com", rescue_key: apiKey)
 	
   user.events.create(name: "vmware", user_id: "1", uncut_exp: "7200", language_id: "1", source_id: "1")
 	Source.create(name: "Rescue Time", exp_multiplier: 0.5, logo: "rescuetime.jpg")
