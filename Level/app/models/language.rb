@@ -1,3 +1,4 @@
 class Language < ActiveRecord::Base
-	belongs_to :skill
+	has_many :skills
+  has_many :events
 end
