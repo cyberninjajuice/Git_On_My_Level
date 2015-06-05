@@ -4,4 +4,4 @@ var User = Backbone.Model.extend({
 	}
 })
 
-		alert("Backbone Works")
+		console.log("Backbone Works")
