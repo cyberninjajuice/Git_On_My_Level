@@ -8,8 +8,8 @@ class EventsController < ApplicationController
     api_url = "https://www.rescuetime.com/anapi/data?key=#{user.rescue_digest}&perspective=rank&restrict_kind=overview&restrict_thing=software%20development&restrict_begin=2015-05-01&format=json"
     
     response = HTTParty.get(api_url)
-    rescuePusher(response, user)
-    render json: response
+    event=rescuePusher(response, user)
+    render json: user.events
   end
   private
 
@@ -17,11 +17,12 @@ class EventsController < ApplicationController
       response = res["rows"]
       response.each do |act|
         #Get time in Minutes as uncut_EXP
-        exp= math.round(act[1]/60)
+        exp= act[1]/60
         site= act[3]
-        lang_id= Language.find_by(name: act[4]).id
-        if (!lang_id.nil?)
-          use.events.create(name: site, uncut_exp: exp, language_id: lang_id, source_id: 1)
+        lang= Language.where("name LIKE '#{act[4]}'")
+        if (!lang.nil?&&lang.length>0)
+          binding.pry
+          use.events.create(name: site, uncut_exp: exp, language_id: lang.id, source_id: 1)
         end
       end
   end
