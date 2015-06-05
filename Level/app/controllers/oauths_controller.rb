@@ -14,14 +14,14 @@ class OauthsController < ApplicationController
       authorization_code = auth_params[:code]
       puts current_user
       puts authorization_code
-      redirect_to root_path
+      redirect_to @user
     else
       begin
         @user = create_from(provider)
         reset_session
         auto_login(@user)
         flash[:success]= "Logged in using #{provider.titleize}!"
-        redirect_to root_path
+        redirect_to @user
       rescue
         flash[:alert] = "You must login through GitHub to access this feature!"
         redirect_to login_path

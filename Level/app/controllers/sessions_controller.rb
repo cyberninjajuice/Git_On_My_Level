@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     if @user = login(params[:email], params[:password])
       flash[:notice] = "Login through GitHub Successful!"
-      redirect_to root_path
+      redirect_to @user
     else
       flash[:alert] = "There was an error with your GitHub login :("
       render :new
