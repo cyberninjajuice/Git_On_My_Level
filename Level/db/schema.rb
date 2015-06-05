@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150604133245) do
     t.string   "github_key"
     t.string   "rescue_key"
     t.integer  "logins"
-    t.date     "last_rescued"
+    t.datetime "last_rescued"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

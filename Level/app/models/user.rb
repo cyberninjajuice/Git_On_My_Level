@@ -27,7 +27,23 @@ class User < ActiveRecord::Base
     self.logins = 0 if self.logins.nil?
   end
 
-  def rescuePusher(res, use)
+  def initial_api
+    rescueing=Time.now.to_s.split(" ")[0]
+    if (self.last_rescued.nil?)
+      formatted_date = "2015-04-01"
+    else
+      formatted_date = self.last_rescued.strftime('%Y-%m-%d')
+    end    
+    api_url = "https://www.rescuetime.com/anapi/data?key=#{self.rescue_key}&perspective=rank&restrict_kind=overview&restrict_thing=software%20development&restrict_begin=#{formatted_date}&restrict_end=#{rescueing}&format=json"
+    if (rescueing != formatted_date)
+    response = HTTParty.get(api_url)
+    self.rescue_pusher(response)
+    self.update(last_rescued: rescueing)
+    end
+  end   
+
+
+  def rescue_pusher(res)
     respo = res["rows"]
     if(!respo.nil?&&respo.any?)
       respo.each do |act|
@@ -38,7 +54,7 @@ class User < ActiveRecord::Base
 
 
         if (!lang.nil?&&lang.any?)
-          use.events.create(
+          self.events.create(
             name: site,
             uncut_exp: exp,
             language_id: lang[0].id,
