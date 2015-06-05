@@ -24,12 +24,6 @@ gem 'github_api'
 gem 'sdoc', group: :doc
 gem 'httparty'
 
-# Backbone
-gem 'backbone-rails'
-  
-# Underscore
-gem 'underscore-rails'
-
 group :development, :test do
   gem 'pry'
   gem 'sqlite3'    

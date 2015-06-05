@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
-//= require backbone-rails
-//= require underscore
-
+// Requiring underscore, Backbone, all of our models, collections, and views
+//= require underscore-min
+//= require backbone-min
+//= require models/users
 //= require_tree .
