@@ -4,7 +4,6 @@ class EventsController < ApplicationController
     # json = JSON.parse(response.body)
     # json['url']
     user = User.find(params[:user_id])
-    binding.pry
     api_url = "https://www.rescuetime.com/anapi/data?key=#{user.rescue_digest}&perspective=rank&restrict_kind=overview&restrict_thing=software%20development&restrict_begin=2015-05-01&format=json"
     
     response = HTTParty.get(api_url)
@@ -14,16 +13,21 @@ class EventsController < ApplicationController
   private
 
   def rescuePusher(res, use)
-      response = res["rows"]
-      response.each do |act|
-        #Get time in Minutes as uncut_EXP
-        exp= act[1]/60
-        site= act[3]
-        lang= Language.where("name LIKE '#{act[4]}'")
-        if (!lang.nil?&&lang.length>0)
-          binding.pry
-          use.events.create(name: site, uncut_exp: exp, language_id: lang.id, source_id: 1)
+      respo = res["rows"]
+      if(!respo.nil?&&respo.any?)
+        respo.each do |act|
+          #Get time in Minutes as uncut_EXP
+          exp= act[1]/60
+          site= act[3]
+          lang= Language.where("name LIKE '#{act[4]}'")
+
+
+          if (!lang.nil?&&lang.any?)
+            use.events.create(name: site, uncut_exp: exp, language_id: lang[0].id, source_id: 1)
+          end
+
         end
+
       end
   end
 end
