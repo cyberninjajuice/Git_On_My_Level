@@ -9,6 +9,7 @@ class EventsController < ApplicationController
        user_id: eve.user_id,
        name: eve.name,
        uncut_exp: eve.uncut_exp,
+       tot_exp: eve.tot_exp,
        language: eve.language,
        source: eve.source,
        added_at: (eve.created_at).strftime("added on %m/%d/%Y")}

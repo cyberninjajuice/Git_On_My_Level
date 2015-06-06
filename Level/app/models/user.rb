@@ -60,26 +60,53 @@ class User < ActiveRecord::Base
       end
     end
   end
-  def skill_calc
-    #get a list of the user's skills
-    skills = []
-    self.skills.each do |skill|
-      skills << skill.language_id
-    end
-    #add the list of all languages associated with this user
-    skills << self.all_language_events
-    skills.uniq
-  end
 
-  def all_language_events
-    langs = []
-    self.events.each do |eve|
-      langs << eve.language
+  #add 
+
+  #Ensure we are not missing skills
+  def skill_adding
+    langs = self.language_ids
+    #are there supposed to be skills?
+    if (langs.any?)
+      #are there?
+      if (!self.skills.any?)
+      #add the missing skills
+      langs.each do |lan|
+        self.skills.create(
+        language_id: lan, 
+        experience: self.final_total(lan))
+      end
+      elsif (self.skills.length< langs)
+      end
+
+
+      end
     end
     langs.uniq
-    binding.pry
   end
   
+  #get all the languages associated with a language
+  def language_ids
+    langs = []
+    if (self.languages.any?)
+      self.languages.each do |lan|
+        langs << lan.id
+      end
+    langs.uniq
+    end
+  end
 
+  def final_total(lang)
+    total_exp=0
+    if(self.events.any?)
+
+      self.events.each do |eve|
+        if(eve.language_id==lang_id)
+          total_exp += eve.tot_exp
+        end
+      end
+    end
+    total_exp
+  end
 
 end

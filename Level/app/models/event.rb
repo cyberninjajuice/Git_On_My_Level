@@ -11,4 +11,8 @@ class Event < ActiveRecord::Base
     }
     puts "Hi, my username is #{user["login"]}"
   end
+
+  def tot_exp
+    self.uncut_exp*self.source.exp_multiplier
+  end
 end
