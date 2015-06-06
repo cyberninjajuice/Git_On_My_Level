@@ -10,11 +10,15 @@
 <% end %>
 <%= link_to 'Back', users_path %>
 
-<div class="content-area">
+
+<div id="content-area">
+
 </div>
 
 <!-- individual User -->
 <script type="text/template" id="user-template">
+
+  <p>Hello Event</p>
   <%= link_to '{{user.username}}', '#', class: 'username' %>
   <div class="main">
 	<ul></ul>
@@ -22,6 +26,7 @@
 </script>
 
 <script type="text/template" id="skill-template">
+
 {{skill.id}}
 </script>
 
@@ -30,4 +35,24 @@ _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
 var signedInUserId = <%= session[:user_id] %>; // sets the current user id so Backbone Views have access to it
+<p>Hello</p>
+{{skill.id}}
+{{skill}}
+</script>
+
+<script type="text/template" id="event-template">
+<p>Hello Event</p>
+{{event.id}}
+{{JSON.stringify(event)}}
+</script>
+
+<script type="text/javascript">
+_.templateSettings = {
+  interpolate: /\{\{(.+?)\}\}/g
+};
+<% if @user && current_user %>
+var signedInUserId = <%= session[:user_id] %>; 
+console.log(signedInUserId)
+<%end%>
+// sets the current user id so Backbone Views have access to it
 </script>

@@ -1,29 +1,38 @@
+
+var currentView;
+console.log("routing");
 var Router = Backbone.Router.extend({
-   routes: {
+  routes: {
+      "": "skillShower",
       'users': 'index',
       'users/:id': 'skillShower'
   },
 
 //var rescueData = new RescueData();
-
+  
+  loggedIn: function(){
+    console.log("welcome")
+  },
 
 	index: function() {
+    console.log("hi")
       var users = new UsersCollection();
       window.usersView = new UsersCollectionView({
         el: $(".main"),
         collection: users
       });
     },
-    skillShower: function(id) {
-    	var skills= new SkillsCollection();
-    	window.skillsView = new SkillsView({
-    		collection: skill
-    	})
+
+    skillShower: function(uid) {
+      console.log("hi skillshower")
+      skills.fetch({
+        success: function(){
+          currentView = new SkillsView({
+            collection: skills
+          }).render(1);
+        }
+      });
     }
-
 });
-
-$(function(){
-	window.router = new Router(),
-	Backbone.history.start()
-})
+var routing= new Router();
+Backbone.history.start()

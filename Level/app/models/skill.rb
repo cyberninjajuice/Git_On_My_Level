@@ -6,7 +6,7 @@ class Skill < ActiveRecord::Base
   before_save :default_exp
 
   def previous_exp
-    prev= self.experience
+    prev = self.experience if self.experience_changed?
   end
 
   def default_exp

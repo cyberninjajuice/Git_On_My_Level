@@ -1,10 +1,10 @@
 // var UsersView;
-
-$(document).ready(function(){
-
+console.log("view");
 	SkillView = Backbone.View.extend({
 		tagName: 'li',
-		template: _.template($('#skill-template').html()),
+		initialize: function(){
+      this.template=_.template($('#skill-template').html())
+    },
 		render: function(){
 			console.log(this.template)
 			this.$el.html(this.template({skill: this.model.toJSON()}));
@@ -15,22 +15,29 @@ $(document).ready(function(){
 	SkillsView = Backbone.View.extend({
 		tagName: 'ul',
 		id: 'skills',
-		template: _.template($('#skill-template').html()),
 		initialize: function() {
-			skills.fetch({
-        	success: function() {
-          	new SkillsView({collection: tweets});
-        	}
-		}
-		render: function() {
+      console.log("initiated")
+      this.listenTo(this.model, "sync, add, remove, destroy", this.render);
+      this.template = _.template($('#skill-template').html());
+      this.fetchingSkills();
+      this.render();
+		},
+    fetchingSkills: function(){
+      users.fetch({
+        success: function(model, response){
+          console.log(model) 
+        }
+      })
+    },
+		render: function(uid) {
       var el = this.$el;
       // remove whatever is in the content-area and the element itself
-      $('#content-area').html('');
-      el.html('');
-
+      //$('div#content-area').html('');
+      console.log(el)
+      el.append("<p>hello</p>")
       // add a header
-      el.append('<h1>Skills for ' + currentUser + '</h1>');
-
+      el.append('<h1>Skills for ' + uid + '</h1>');
+      console.log(this.collection)
       // render a SkillView for each skill
       this.collection.each(function(skill) {
         el.append(new SkillView({model: skill}).render().el);
@@ -41,7 +48,9 @@ $(document).ready(function(){
       return this;
     }
  
-	})
+
+	});
+
 
 	// // View for single user
 	// UsersView = Backbone.View.extend({
@@ -65,5 +74,5 @@ $(document).ready(function(){
 	// 		this.$el.html(this.template({user: this.model.toJSON()}));
 	// 		return this;
 	// 	}
+
 	// });
-});

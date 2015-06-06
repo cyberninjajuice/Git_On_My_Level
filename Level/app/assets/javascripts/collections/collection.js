@@ -1,23 +1,19 @@
-// Basic Backbone Collection for Users
+// Basic Backbone Collection
+console.log("collections");
+  var UserCollection = Backbone.Collection.extend({
+    model: User,
+    url: '/users'
+  });
+  var EventCollection = Backbone.Collection.extend({
+  	model: Event,
+    url: '/users/1/events'
+  });
 
-// Ajax prefileter
-$.ajaxPrefilter( function( options, originalOptions, jqxhr ) {
-	options.url = "http://localhost:3000" + options.url;
-});
-
-var UserCollection = Backbone.Collection.extend({
-  model: User,
-  url: '/users'
-});
-
-var EventCollection = Backbone.Collection.extend({
-	model: Event
-});
-
-var SkillCollection = Backbone.Collection.extend({
-	model: Skill
-});
+  var SkillCollection = Backbone.Collection.extend({
+  	model: Skill,
+    url: '/users/1/skills'
+  });
 // initialize a collection of Users
-var userCollection = new UserCollection();
-var eventCollection = new EventCollection();
-var skillCollection = new SkillCollection();
+var users = new UserCollection();
+var events = new EventCollection();
+var skills = new SkillCollection();

@@ -1,23 +1,20 @@
 var User = Backbone.Model.extend({
 	url: '/users',
  initialize: function() {
-      //Events
-      this.events = new EventCollection();
-      this.events.url = '/users/' + this.id + '/events';
-      //Skills
-      this.skills= new SkillCollection();
-      this.skills.url = "/users/"+this.id + "/skills";
+  console.log("user hi")
 	}
-})
+});
 
 var Event = Backbone.Model.extend({
 	initialize: function(){
+    console.log("event hi");
 	}
-})
+});
 
 var Skill = Backbone.Model.extend({
 	initialize: function(){
-	}
-})
+	 console.log("skill hi")
+  }
+});
 
-console.log("Backbone Works")
+console.log("Models: Backbone Works")
