@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
   end
   
   has_many :skills
-	has_many :languages, through: :skills
+	has_many :languages, through: :events
   has_many :events
+
 
   accepts_nested_attributes_for :authentications
 
@@ -40,7 +41,6 @@ class User < ActiveRecord::Base
     end
   end   
 
-
   def rescue_pusher(res)
     respo = res["rows"]
     if(!respo.nil?&&respo.any?)
@@ -60,5 +60,26 @@ class User < ActiveRecord::Base
       end
     end
   end
+  def skill_calc
+    #get a list of the user's skills
+    skills = []
+    self.skills.each do |skill|
+      skills << skill.language_id
+    end
+    #add the list of all languages associated with this user
+    skills << self.all_language_events
+    skills.uniq
+  end
+
+  def all_language_events
+    langs = []
+    self.events.each do |eve|
+      langs << eve.language
+    end
+    langs.uniq
+    binding.pry
+  end
+  
+
 
 end

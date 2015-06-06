@@ -4,7 +4,9 @@ class EventsController < ApplicationController
     user.initial_api
     fulleve = []
     user.events.each do |eve|
-    fulleve << {id: eve.id,
+    fulleve << {
+       id: eve.id,
+       user_id: eve.user_id,
        name: eve.name,
        uncut_exp: eve.uncut_exp,
        language: eve.language,
