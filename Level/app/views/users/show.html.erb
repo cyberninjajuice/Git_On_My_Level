@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<% if current_user == @user %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+<%= link_to 'Back', users_path %>
+
+<div id="content-area">
+</div>
+
+<!-- individual User -->
+<script type="text/template" id="user-template">
+  <p>Hello Event</p>
+  <%= link_to '{{user.username}}', '#', class: 'username' %>
+  <div class="main">
+	<ul></ul>
+  </div>
+</script>
+
+<script type="text/template" id="skill-template">
+<p>Hello</p>
+{{skill.id}}
+{{skill}}
+</script>
+
+<script type="text/template" id="event-template">
+<p>Hello Event</p>
+{{event.id}}
+{{JSON.stringify(event)}}
+</script>
+
+<script type="text/javascript">
+_.templateSettings = {
+  interpolate: /\{\{(.+?)\}\}/g
+};
+<% if @user && current_user %>
+var signedInUserId = <%= session[:user_id] %>; 
+console.log(signedInUserId)
+<%end%>
+// sets the current user id so Backbone Views have access to it
+</script>
