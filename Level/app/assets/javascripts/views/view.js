@@ -20,7 +20,6 @@ console.log("view");
       this.listenTo(this.model, "sync, add, remove, destroy", this.render);
       this.template = _.template($('#skill-template').html());
       this.fetchingSkills();
-      this.render();
 		},
     fetchingSkills: function(){
       users.fetch({

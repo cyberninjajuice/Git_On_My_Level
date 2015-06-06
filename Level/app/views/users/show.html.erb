@@ -27,7 +27,10 @@
 
 <script type="text/template" id="skill-template">
 
-{{skill.id}}
+<span class="experience">Experience: {{skill.exp}}</span>
+<span class="date">Added: {{skill.added_at}}</span>
+<span class="language" style="color: {{skill.language.color}}">{{skill.language.name}}</span>
+
 </script>
 
 <script>
