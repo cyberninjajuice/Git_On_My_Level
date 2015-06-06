@@ -69,33 +69,47 @@ class User < ActiveRecord::Base
       experience: self.final_total(lan))
     end
   end
-
+  #update all the duplicates
+  def update_replicates(set_of_lang_ids)
+    set_of_lang_ids.each do |lan|
+      Skill.find_by(language_id: lan).update(
+        experience: self.final_total(lan))
+    end
+  end
   #Ensure we are not missing skills
   def skill_adding
     langs = self.language_ids
     #are there supposed to be skills?
     if (langs.any?)
       #are there?
-      binding.pry
       if (!self.skills.any?)
         #add all languages if none.
-        binding.pry
         add_missing(langs)
-      #find the missing ones
-      elsif (self.skills.length< langs.length)
-        #sort them!
-        binding.pry
-        add_these = []
-        update_these = self.skills
-        
-        update_these.delete_if {|missing| add_these << missing if missing.language_id.includes?(langs)}
       else
-        binding.pry
+        #sort replicates vs missing ones
+        add_these = langs-self.skill_lids
+        update_these = (langs & self.skill_lids)
+        if(add_these.any?)
+          add_missing(add_these)
+        end
+        if(update_these.any?)
+          update_replicates(update_these)
+        end
+
       end
     end
-    langs.uniq
   end
   
+  def skill_lids
+    skills = []
+    if (self.skills.any?)
+      self.skills.each do |skill|
+        skills << skill.language_id.to_i
+      end
+      skills.uniq
+    end
+  end
+
   #get all the languages associated with a language
   def language_ids
     langs = []
