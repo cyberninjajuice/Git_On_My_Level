@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
   end
 
   def tot_exp
-    self.uncut_exp*self.source.exp_multiplier
+    binding.pry
+    (self.uncut_exp.to_i*self.source.exp_multiplier).to_i
   end
 end

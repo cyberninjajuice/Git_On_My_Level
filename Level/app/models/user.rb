@@ -61,7 +61,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  #add 
+  #add missing only
+  def add_missing(set_of_lang_ids)
+    set_of_lang_ids.each do |lan|
+      self.skills.create(
+      language_id: lan, 
+      experience: self.final_total(lan))
+    end
+  end
 
   #Ensure we are not missing skills
   def skill_adding
@@ -69,17 +76,21 @@ class User < ActiveRecord::Base
     #are there supposed to be skills?
     if (langs.any?)
       #are there?
+      binding.pry
       if (!self.skills.any?)
-      #add the missing skills
-      langs.each do |lan|
-        self.skills.create(
-        language_id: lan, 
-        experience: self.final_total(lan))
-      end
-      elsif (self.skills.length< langs)
-      end
-
-
+        #add all languages if none.
+        binding.pry
+        add_missing(langs)
+      #find the missing ones
+      elsif (self.skills.length< langs.length)
+        #sort them!
+        binding.pry
+        add_these = []
+        update_these = self.skills
+        
+        update_these.delete_if {|missing| add_these << missing if missing.language_id.includes?(langs)}
+      else
+        binding.pry
       end
     end
     langs.uniq
@@ -96,7 +107,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def final_total(lang)
+  def final_total(lang_id)
     total_exp=0
     if(self.events.any?)
 
