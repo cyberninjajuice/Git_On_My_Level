@@ -5,11 +5,9 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
   
-
   has_many :skills
 	has_many :languages, through: :skills
   has_many :events
-
 
   accepts_nested_attributes_for :authentications
 
@@ -51,7 +49,6 @@ class User < ActiveRecord::Base
         exp= act[1]/60
         site= act[3]
         lang= Language.where("name LIKE '#{act[4]}'")
-
 
         if (!lang.nil?&&lang.any?)
           self.events.create(
