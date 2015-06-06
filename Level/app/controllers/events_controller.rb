@@ -2,9 +2,9 @@ class EventsController < ApplicationController
   def index
     user = User.find(params[:user_id])
     user.initial_api
-    fulleve = []
+    full_eve = []
     user.events.each do |eve|
-    fulleve << {
+    full_eve << {
        id: eve.id,
        user_id: eve.user_id,
        name: eve.name,
@@ -14,7 +14,7 @@ class EventsController < ApplicationController
        source: eve.source,
        added_at: (eve.created_at).strftime("%m/%d/%Y")}
     end
-    render json: fulleve
+    render json: full_eve
   end
 
 end
