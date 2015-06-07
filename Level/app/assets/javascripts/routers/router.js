@@ -1,6 +1,7 @@
-
+var constantView;
 var currentView;
 console.log("routing");
+$(document).ready(function(){
 var GitRouter = Backbone.Router.extend({
   routes: {
       '': 'Initial',
@@ -21,6 +22,10 @@ var GitRouter = Backbone.Router.extend({
     console.log("hi "+user_id)
     // skills.fetch({
     //   success: function(){
+    constantView = new UserView({
+      model: user,
+      id: user_id
+    }), 
     currentView = new SkillsView({
         collection: skills,
         id: user_id
@@ -28,4 +33,4 @@ var GitRouter = Backbone.Router.extend({
     }
 });
 var routing = new GitRouter();
-Backbone.history.start();
+Backbone.history.start();})

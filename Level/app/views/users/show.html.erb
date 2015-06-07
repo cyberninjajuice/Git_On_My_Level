@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Email:
   <%= @user.email %></strong>
@@ -10,6 +9,9 @@
 <% end %>
 <%= link_to 'Back', users_path %>
 
+<div id="user-area">
+
+</div>
 
 <div id="content-area">
 
@@ -19,7 +21,10 @@
 <script type="text/template" id="user-template">
 
   <p>Hello Event</p>
-  <%= link_to '{{user.username}}', '#', class: 'username' %>
+  {{user.email}}
+  <form action="/users/{{user.id}}" method="POST">
+    
+  </form>
   <div class="main">
 	<ul></ul>
   </div>

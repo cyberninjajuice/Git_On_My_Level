@@ -1,10 +1,10 @@
 var User = Backbone.Model.extend({
-	url: '/users',
+	url: '/users/'+userParam+".json",
  initialize: function() {
   console.log("user hi")
 	}
 });
-
+user = new User();
 var Event = Backbone.Model.extend({
 	initialize: function(){
     console.log("event hi");

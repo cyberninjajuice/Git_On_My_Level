@@ -1,9 +1,45 @@
 // var UsersView;
 console.log("view");
-	SkillView = Backbone.View.extend({
+  //Single View for a User Only one that Backbone should deal with.
+	UserView = Backbone.View.extend({
+    tagName: 'div',
+    initialize: function(){
+      this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingSkills);
+      this.fetchingUser()
+    },  
+    
+    fetchingUser: function() {
+      console.log("Fetching user");
+      thisView= this;
+
+      console.log(this)
+      console.log(user);
+      user.fetch({
+        success: function(model, response){
+          console.log(model)
+          thisView.render(thisView.id)
+        }, 
+        error: function(){
+          console.log(people)
+        }
+      })
+    },
+    
+    render: function(uid){
+      this.template= _.template($('#user-template').html())
+      this.$el.empty();
+      console.log("showing");
+      this.$el.html(this.template({skill:this.model.toJSON()}))
+      $('#user-area').html(el);
+      return this;
+
+    }
+  });
+
+  SkillView = Backbone.View.extend({
 		tagName: 'li',
 		initialize: function(){
-      this.template=_.template($('#skill-template').html())
+      this.template= _.template($('#skill-template').html())
     },
 		render: function(){
 			//console.log(this.template)
@@ -49,7 +85,6 @@ console.log("view");
       $('#content-area').html(el);
       return this;
     }
- 
 
 	});
 
