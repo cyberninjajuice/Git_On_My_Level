@@ -29,7 +29,7 @@ console.log("view");
       { success: function(model, response) { 
         thisView.fetchingUser();
         $("div.edit_form").hide();
-        $("button.editing_user").show(); 
+        $("button.editing_user").show();
       }, error: function(errors){
         console.log(errors);
       }
@@ -51,8 +51,8 @@ console.log("view");
         success: function(model, response){
           //console.log(model)
           this.model= model;
-          thisView.render(thisView.id, model)
 
+          thisView.render(thisView.id, model);
         }, 
         error: function(){
           console.log("people error")
@@ -71,6 +71,7 @@ console.log("view");
       
       el.html(temp({user: this.model.toJSON()}) )
       $('#user-area').html(el);
+      this.delegateEvents();
       return this;
 
     }
