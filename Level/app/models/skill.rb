@@ -38,3 +38,4 @@ class Skill < ActiveRecord::Base
   def level
   self.get_level.current
   end
+end
