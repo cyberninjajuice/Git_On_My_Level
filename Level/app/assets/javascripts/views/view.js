@@ -14,17 +14,20 @@ console.log("view");
 
 	SkillsView = Backbone.View.extend({
 		tagName: 'ul',
-		id: 'skills',
 		initialize: function() {
       console.log("initiated")
-      this.listenTo(this.model, "sync, add, remove, destroy", this.render);
+      console.log("passed this "+this.id)
+      this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingSkills);
       this.template = _.template($('#skill-template').html());
       this.fetchingSkills();
 		},
     fetchingSkills: function(){
+      //console.log(this)
+      thisView=this;
       users.fetch({
         success: function(model, response){
-          console.log(model) 
+          console.log(model)
+          thisView.render(thisView.id)
         }
       })
     },
@@ -32,11 +35,11 @@ console.log("view");
       var el = this.$el;
       // remove whatever is in the content-area and the element itself
       //$('div#content-area').html('');
-      console.log(el)
-      el.append("<p>hello</p>")
+      //console.log(el)
+      el.empty();
       // add a header
       el.append('<h1>Skills for ' + uid + '</h1>');
-      console.log(this.collection)
+      //console.log(this.collection)
       // render a SkillView for each skill
       this.collection.each(function(skill) {
         el.append(new SkillView({model: skill}).render().el);

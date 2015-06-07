@@ -6,8 +6,16 @@
   
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
+  <meta name=viewport content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+<% if @user && current_user %>
+<script>
+var signedInUserId = <%= session[:user_id] %>; 
+console.log(signedInUserId)
+</script>
+<%end%>
 <%= render '/shared/session_links' %>
 <% flash.each do |message_type, message| %>
 <div class="alert alert-<%= message_type %>"><%= message %>

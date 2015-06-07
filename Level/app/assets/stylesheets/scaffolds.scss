@@ -2,14 +2,15 @@ body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 18px;
+  list-style: none;
 }
 
 pre {
@@ -19,7 +20,7 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #fff;
   &:visited {
     color: #666;
   }
@@ -63,7 +64,7 @@ div {
     color: #fff;
   }
   ul li {
-    font-size: 12px;
+    font-size: 16px;
     list-style: square;
   }
 }

@@ -26,36 +26,17 @@
 </script>
 
 <script type="text/template" id="skill-template">
-
+<div>
 <span class="experience">Experience: {{skill.exp}}</span>
 <span class="date">Added: {{skill.added_at}}</span>
-<span class="language" style="color: {{skill.language.color}}">{{skill.language.name}}</span>
+<span class="language" style="background: {{skill.language.color}}">{{skill.language.name}}</span>
+</div>
 
-</script>
-
-<script>
-_.templateSettings = {
-  interpolate: /\{\{(.+?)\}\}/g
-};
-var signedInUserId = <%= session[:user_id] %>; // sets the current user id so Backbone Views have access to it
-<p>Hello</p>
-{{skill.id}}
-{{skill}}
-</script>
-
-<script type="text/template" id="event-template">
-<p>Hello Event</p>
-{{event.id}}
-{{JSON.stringify(event)}}
 </script>
 
 <script type="text/javascript">
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
-<% if @user && current_user %>
-var signedInUserId = <%= session[:user_id] %>; 
-console.log(signedInUserId)
-<%end%>
 // sets the current user id so Backbone Views have access to it
 </script>

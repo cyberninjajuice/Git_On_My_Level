@@ -6,12 +6,12 @@ console.log("collections");
   });
   var EventCollection = Backbone.Collection.extend({
   	model: Event,
-    url: '/users/1/events'
+    url: '/users/1/events.json'
   });
 
   var SkillCollection = Backbone.Collection.extend({
   	model: Skill,
-    url: '/users/1/skills'
+    url: '/users/1/skills.json'
   });
 // initialize a collection of Users
 var users = new UserCollection();

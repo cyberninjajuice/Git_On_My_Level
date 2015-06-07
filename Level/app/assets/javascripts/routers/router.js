@@ -1,17 +1,18 @@
 
 var currentView;
 console.log("routing");
-var Router = Backbone.Router.extend({
+var GitRouter = Backbone.Router.extend({
   routes: {
-      "": "skillShower",
+      "": "Initial",
       'users': 'index',
-      'users/:id': 'skillShower'
+      'users/:user_id': 'skillShower'
   },
 
 //var rescueData = new RescueData();
   
-  loggedIn: function(){
+  Initial: function(){
     console.log("welcome")
+    this.navigate('users/'+signedInUserId, true);
   },
 
 	index: function() {
@@ -23,16 +24,17 @@ var Router = Backbone.Router.extend({
       });
     },
 
-    skillShower: function(uid) {
-      console.log("hi skillshower")
+    skillShower: function(user_id) {
+      console.log("hi "+user_id)
       skills.fetch({
         success: function(){
           currentView = new SkillsView({
-            collection: skills
-          }).render(1);
+            collection: skills,
+            id: user_id
+          })
         }
       });
     }
 });
-var routing= new Router();
-Backbone.history.start()
+var routing = new GitRouter();
+Backbone.history.start();

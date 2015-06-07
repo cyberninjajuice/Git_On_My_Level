@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 // Requiring underscore, Backbone, all of our models, collections, and views
 //= require underscore-min
 //= require backbone-min
