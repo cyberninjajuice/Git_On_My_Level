@@ -6,8 +6,17 @@ console.log("view");
     initialize: function(){
       this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingSkills);
       this.fetchingUser()
-    },  
+    },
+    events: {"click button.editing_user": "editForm"},
     
+    editForm: function() {
+      $("div.edit_form").show();
+    },
+
+    updateForm: function(){
+
+    },
+
     fetchingUser: function() {
       console.log("Fetching user");
       var thisView= this;

@@ -13,8 +13,8 @@
     <% else %>
       <%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "link_button" %>
     <% end %> | 
-    <%= link_to "Logout", logout_path, class: "link_button logout" %>
-
+    <%= link_to "Logout", logout_path, class: "link_button logout" %> | 
+    <%= link_to "All Users", users_path, class: "link_button users_path" %>
   <% else %>
     <%= link_to "Login with GitHub", auth_at_provider_path(provider: :github) %>
   <% end %>
