@@ -21,22 +21,36 @@ console.log("view");
       var email = $("#email")
       var rescueKey = $("#rescue-key")
       var thisView = this;
-      console.log(email.val())
       console.log(this.model)
-
-      this.model.save(
-      {email: email.val(), rescue_key: rescueKey.val()},
-      { success: function(model, response) { 
-        thisView.fetchingUser();
-        $("div.edit_form").hide();
-        $("button.editing_user").show();
-      }, error: function(errors){
-        console.log(errors);
+      if(rescueKey.val().length===40){
+        this.model.save(
+        {email: email.val(), rescue_key: rescueKey.val()},
+        { success: function(model, response) { 
+          thisView.fetchingUser();
+          $("div.edit_form").hide();
+          $("button.editing_user").show();
+        }, error: function(errors){
+          console.log(errors);
+        }
+        },
+        { patch: true }
+        
+        )
+      else{
+        this.model.save(
+        {email: email.val()},
+        { success: function(model, response) { 
+          thisView.fetchingUser();
+          $("div.edit_form").hide();
+          $("button.editing_user").show();
+        }, error: function(errors){
+          console.log(errors);
+        }
+        },
+        { patch: true }
+        
+        )
       }
-      },
-      { patch: true }
-      
-      )
     },
 
     fetchingUser: function() {

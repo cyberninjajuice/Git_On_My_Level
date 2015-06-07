@@ -73,5 +73,5 @@
 <span class="date">Added: {{- skill.added_at }}</span>
 <span class="language" style="background: {{= skill.language.color }}"> {{- skill.language.name }} </span>
 </div>
-
 </script>
+<%= debug(params) if Rails.env.development? %>

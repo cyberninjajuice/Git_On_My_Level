@@ -33,8 +33,12 @@ class User < ActiveRecord::Base
     else
       formatted_date = self.last_rescued.strftime('%Y-%m-%d')
     end    
+
     api_url = "https://www.rescuetime.com/anapi/data?key=#{self.rescue_key}&perspective=rank&restrict_kind=overview&restrict_thing=software%20development&restrict_begin=#{formatted_date}&restrict_end=#{rescueing}&format=json"
-    if (rescueing != formatted_date)
+    
+    
+
+    if (rescueing != formatted_date || !self.events.any? )
     response = HTTParty.get(api_url)
     self.rescue_pusher(response)
     self.update(last_rescued: rescueing)
@@ -51,7 +55,7 @@ class User < ActiveRecord::Base
         lang= Language.where("name LIKE '#{act[4]}'")
 
         if (!lang.nil? && lang.any?)
-          self.events.create(
+          self.events.create!(
             name: site,
             uncut_exp: exp,
             language_id: lang[0].id,
@@ -64,7 +68,7 @@ class User < ActiveRecord::Base
   #add missing only
   def add_missing(set_of_lang_ids)
     set_of_lang_ids.each do |lan|
-      self.skills.create(
+      self.skills.create!(
       language_id: lan, 
       experience: self.final_total(lan))
     end
@@ -72,7 +76,7 @@ class User < ActiveRecord::Base
   #update all the duplicates
   def update_replicates(set_of_lang_ids)
     set_of_lang_ids.each do |lan|
-      Skill.find_by(language_id: lan).update(
+      self.skills.find_by(language_id: lan).update(
         experience: self.final_total(lan))
     end
   end

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       top_skill = @user.skills.order(experience: :desc).first
       @level_info = top_skill.get_level
     else
-      @level_info = ""
+      @level_info = {}
     end
   end
 
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow me to permit
     def user_params
-      params.require(:user).permit(:email)
+      params.require(:user).permit(:email, :rescue_key)
     end
 
     def authenticate

@@ -1,7 +1,7 @@
 class Skill < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :language
-  validates :language_id, presence: true, uniqueness: true
+  validates :language_id, presence: true
   before_update :previous_exp
   before_save :default_exp
   after_save :get_level
