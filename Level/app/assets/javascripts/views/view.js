@@ -14,6 +14,9 @@ console.log("view");
 
       console.log(thisView)
       console.log(user);
+      var specifyTemp = $('#userTemp').html();
+      console.log(specifyTemp)
+      this.template = _.template(specifyTemp)
       user.fetch({
         success: function(model, response){
           console.log(model)
@@ -26,12 +29,14 @@ console.log("view");
     },
     
     render: function(uid, umodel){
-      console.log("showing"+umodel);
-      this.template= _.template($('#user-template').html())
-      el= this.$el;
+      console.log("showing" + umodel);
+      var temp = this.template;
+      console.log(temp)
+      
+      var el = this.$el;
       el.empty();
-            
-      el.html(this.template({user: umodel.toJSON()}))
+      
+      //el.html(temp({user: umodel.toJSON()}) )
       $('#user-area').html(el);
       return this;
 
@@ -41,10 +46,11 @@ console.log("view");
   SkillView = Backbone.View.extend({
 		tagName: 'li',
 		initialize: function(){
-      this.template= _.template($('#skill-template').html())
+      this.template = _.template($('#skill-template').html())
     },
 		render: function(){
-			//console.log(this.template)
+			var temp= this.template
+      console.log(temp)
 			this.$el.html(this.template({skill: this.model.toJSON()}));
 			return this;	
 		}
