@@ -19,7 +19,6 @@
 
 <!-- individual User -->
 <script type="text/template" id="user-template">
-  {{= user.id}}
   {{= user.email}}
   You have been a member with us since: {{= user.created_at }} (last login: {{= user.updated_at }})
   <span class="user_info">Your total Number of logins: {{= user.logins }}</span>
@@ -30,13 +29,24 @@
   <p> {{= user.rescue_key }} </p>
   {{ } }}
   </div>
-
-  <form action="/users/{{user.id}}" method="POST">
-
+  <form class="pure-form pure-form-aligned" id="user-account">
+    <fieldset>
+    <div class="pure-control-group">
+    <label for="email"> Email
+    <input type="text" id="email" value="{{= user.email }}">
+    </label>
+    </div>
+    <div class="pure-control-group">
+    <label for="You Rescue Time API key">
+    <input type="text" id="rescue-key">
+    </label>
+    </div>
+    <div class="pure-controls">
+    <button type="submit" class="pure-button"> Update!
+    </button>
+    </div>
+    </fieldset>
   </form>
-  <div class="main">
-	<ul></ul>
-  </div>
 </script>
 
 <script type="text/template" id="skill-template">
