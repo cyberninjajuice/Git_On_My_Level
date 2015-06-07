@@ -16,6 +16,7 @@
 // Requiring underscore, Backbone, all of our models, collections, and views
 //= require underscore-min
 //= require backbone-min
+//= require app.js
 //= require models/model
 //= require collections/collection
 //= require views/view

@@ -15,7 +15,6 @@ console.log("view");
       console.log(thisView)
       console.log(user);
       var specifyTemp = $('#userTemp').html();
-      console.log(specifyTemp)
       this.template = _.template(specifyTemp)
       user.fetch({
         success: function(model, response){
@@ -36,7 +35,7 @@ console.log("view");
       var el = this.$el;
       el.empty();
       
-      //el.html(temp({user: umodel.toJSON()}) )
+      el.html(temp({user: umodel.toJSON()}) )
       $('#user-area').html(el);
       return this;
 
@@ -66,13 +65,17 @@ console.log("view");
 		},
     fetchingSkills: function(){
       //console.log(this)
-      thisView=this;
+      thisView = this;
       skills.fetch({
         success: function(model, response){
           console.log(model)
           this.template = _.template($('#skill-template').html());
           thisView.render(thisView.id)
-        }
+        },
+        error: function(errors){
+          console.log(errors)
+        } 
+
       })
     },
 		render: function() {
