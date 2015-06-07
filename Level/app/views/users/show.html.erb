@@ -1,10 +1,4 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Email:
-  <%= @user.email %></strong>
-</p>
-
-
 <% if current_user == @user %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>
@@ -20,13 +14,25 @@
 
 <!-- individual User -->
 <script type="text/template" id="userTemp">
+  <div class="container">
   <div class="user_main">
-  <small>{{= user.email }}</small>
+  <small class="user_info">{{= user.email }} | Total Number of logins: {{= user.logins }} </small>
   <p>You have been a member with us since: {{= DateHelper.time_ago_in_words_with_parsing(user.created_at) }} last login: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}</p>
-  <span class="user_info">Your total Number of logins: {{= user.logins }}</span>
   </div>
   <div class="rescue_info">
-    <p class="error_explanation"> You haven't set up your RescueTime API Key yet. You'll need that to track your experience points and level up into a High-Wizard of the Keyboard! <a href="http://rescuetime.com">Rescue Time</a> </p>
+  {{ if(!user.level) { }}
+    <p class="error_explanation"> You haven't set up your RescueTime API Key yet. You'll need that to track your experience points and level up into a High-Wizard of the Keyboard! <a href="https://www.rescuetime.com/anapi/manage">Rescue Time</a> </p>
+  {{ } else { }}
+    <div class="top_level">
+    Level {{= user.level}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
+      <div class="experience">
+        <span class="main_experience">
+        You have: {{= user.exp_left}} left before {{= user.next_level}}
+        </span>
+      </div>
+    </div>
+  {{ } }}
+  </div>
   </div>
   <% if current_user == @user %>
   <button class="pure-button">

@@ -80,8 +80,8 @@ console.log("view");
     },
 		render: function() {
       var el = this.$el;
-      // remove whatever is in the content-area and the element itself
-      //$('div#content-area').html('');
+      //clear the content-area.
+      //$('div#content-area').empty();
       //console.log(el)
       el.empty();
       // add a header

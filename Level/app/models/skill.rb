@@ -33,10 +33,10 @@ class Skill < ActiveRecord::Base
   end
 
   def exp_needed
-    self.get_level.exp_needed
+    self.get_level.next_requires
   end
 
   def level
-  self.get_level.current
+  self.get_level.level
   end
 end

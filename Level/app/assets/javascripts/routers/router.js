@@ -30,8 +30,8 @@ var GitRouter = Backbone.Router.extend({
     currentView = new SkillsView({
         collection: skills,
         id: user_id
-         })
-    }
+    })
+  }
 });
 var routing = new GitRouter();
 
