@@ -1,6 +1,5 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
-<% if current_user == @user %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>
 <div id="user-area">
 </div>
@@ -12,7 +11,14 @@
 <script type="text/template" id="userTemp">
   <div class="container">
   <div class="user_main">
-  <small class="user_info">{{= user.email }} | Total Number of logins: {{= user.logins }} </small>
+  <small class="user_info">
+  {{ if(user.email) { }}
+    {{= user.email }} 
+  {{ } else { }}
+    <a class="editing_user"> add email </a>
+   {{ } }}
+
+  | login count: {{= user.logins }} </small>
   <p>You have been a member with us since: {{= DateHelper.time_ago_in_words_with_parsing(user.created_at) }} last login: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}</p>
   </div>
   <div class="rescue_info">
@@ -52,7 +58,7 @@
     </label>
     </div>
     <div class="pure-controls">
-    <button type="submit" class="pure-button"> Update!
+    <button class="pure-button update_user"> Update!
     </button>
     </div>
     </fieldset>

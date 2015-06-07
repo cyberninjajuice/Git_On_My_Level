@@ -4,47 +4,72 @@ console.log("view");
 	UserView = Backbone.View.extend({
     tagName: 'div',
     initialize: function(){
-      this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingSkills);
+      this.listenTo(this.model, "sync, add, remove, destroy, update", this.fetchingSkills);
       this.fetchingUser()
     },
-    events: {"click button.editing_user": "editForm"},
+    events: {
+      "click .editing_user": "editForm",
+      "click button.update_user": "updateIt"
+    },
     
     editForm: function() {
       $("div.edit_form").show();
+      $("button.editing_user").hide();
     },
 
-    updateForm: function(){
+    updateIt: function(){
+      var email = $("#email")
+      var rescueKey = $("#rescue-key")
+      var thisView = this;
+      console.log(email.val())
+      console.log(this.model)
 
+      this.model.save(
+      {email: email.val(), rescue_key: rescueKey.val()},
+      { success: function(model, response) { 
+        thisView.fetchingUser();
+        $("div.edit_form").hide();
+        $("button.editing_user").show(); 
+      }, error: function(errors){
+        console.log(errors);
+      }
+      },
+      { patch: true }
+      
+      )
     },
 
     fetchingUser: function() {
       console.log("Fetching user");
       var thisView= this;
 
-      console.log(thisView)
-      console.log(user);
+      //console.log(thisView)
+      //console.log(user);
       var specifyTemp = $('#userTemp').html();
       this.template = _.template(specifyTemp)
       user.fetch({
         success: function(model, response){
-          console.log(model)
+          //console.log(model)
+          this.model= model;
           thisView.render(thisView.id, model)
+
         }, 
         error: function(){
           console.log("people error")
         }
       });
+      return this;
     },
     
-    render: function(uid, umodel){
-      console.log("showing" + umodel);
+    render: function(uid){
+      console.log("showing" + this.model);
       var temp = this.template;
       console.log(temp)
       
       var el = this.$el;
       el.empty();
       
-      el.html(temp({user: umodel.toJSON()}) )
+      el.html(temp({user: this.model.toJSON()}) )
       $('#user-area').html(el);
       return this;
 
