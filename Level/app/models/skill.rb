@@ -4,6 +4,7 @@ class Skill < ActiveRecord::Base
   validates :language_id, presence: true, uniqueness: true
   before_update :previous_exp
   before_save :default_exp
+  after_save :get_level
   after_update :get_level
 
   def previous_exp
@@ -17,14 +18,14 @@ class Skill < ActiveRecord::Base
   def get_level
     level = 0
     multiplier = 2000
-    exp = self.experience.dup
+    exp = self.experience.dup.to_i
     exp_needed = 2000
     while (exp - exp_needed > 0)
       #follows geometric Function to calculate current Level
       exp_needed = (multiplier*2**level)
       level += 1
     end
-    {name: self.language.name, current: level, next_level: level+1, exp_needed: exp_needed}
+    {name: self.language.name, level: level, next_level: level+1, next_requires: exp_needed, exp_left: exp_needed-exp, exp: exp}
   end
 
   def next_level

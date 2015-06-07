@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user_param = params[:id]
+    
     if @user.skills.any?
       top_skill = @user.skills.order(experience: :desc).first
       @level_info = top_skill.get_level
