@@ -10,28 +10,28 @@ console.log("view");
     
     fetchingUser: function() {
       console.log("Fetching user");
-      thisView= this;
+      var thisView= this;
 
-      //console.log(this)
+      console.log(thisView)
       console.log(user);
       user.fetch({
         success: function(model, response){
           console.log(model)
-          thisView.render(thisView.id)
+          thisView.render(thisView.id, model)
         }, 
         error: function(){
-          console.log(people)
+          console.log("people error")
         }
-      })
+      });
     },
     
-    render: function(uid){
-      console.log("showing"+this);
+    render: function(uid, umodel){
+      console.log("showing"+umodel);
       this.template= _.template($('#user-template').html())
       el= this.$el;
       el.empty();
-      
-      el.html(this.template({user: this.model.toJSON()}))
+            
+      el.html(this.template({user: umodel.toJSON()}))
       $('#user-area').html(el);
       return this;
 

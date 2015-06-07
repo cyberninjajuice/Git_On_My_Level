@@ -22,6 +22,7 @@ var GitRouter = Backbone.Router.extend({
     console.log("hi "+user_id)
     // skills.fetch({
     //   success: function(){
+      console.log(user)
     constantView = new UserView({
       model: user,
       id: user_id
@@ -33,4 +34,6 @@ var GitRouter = Backbone.Router.extend({
     }
 });
 var routing = new GitRouter();
-Backbone.history.start();})
+
+Backbone.history.start();
+});
