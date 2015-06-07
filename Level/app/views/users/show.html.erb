@@ -19,11 +19,20 @@
 
 <!-- individual User -->
 <script type="text/template" id="user-template">
+  {{= user.id}}
+  {{= user.email}}
+  You have been a member with us since: {{= user.created_at }} (last login: {{= user.updated_at }})
+  <span class="user_info">Your total Number of logins: {{= user.logins }}</span>
+  <div class="rescue_info">
+  {{ if (!user.rescue_key){ }}
+    <p class="error_explanation"> You haven't set up your RescueTime API Key yet. You'll need that to track your experience points and level up into a High-Wizard of the Keyboard! <a href="http://rescuetime.com">Rescue Time</a> </p>
+  {{ } else { }}
+  <p> {{= user.rescue_key }} </p>
+  {{ } }}
+  </div>
 
-  <p>Hello Event</p>
-  {{user.email}}
   <form action="/users/{{user.id}}" method="POST">
-    
+
   </form>
   <div class="main">
 	<ul></ul>
@@ -34,14 +43,16 @@
 <div>
 <span class="experience">Experience: {{skill.exp}}</span>
 <span class="date">Added: {{skill.added_at}}</span>
-<span class="language" style="background: {{skill.language.color}}">{{skill.language.name}}</span>
+<span class="language" style="background: {{skill.language.color}}"> {{skill.language.name}} </span>
 </div>
 
 </script>
 
 <script type="text/javascript">
 _.templateSettings = {
-  interpolate: /\{\{(.+?)\}\}/g
-};
+     evaluate    : /\{\{([\s\S]+?)\}\}/g,
+     interpolate : /\{\{=([\s\S]+?)\}\}/g,
+     escape      : /\{\{-([\s\S]+?)\}\}/g
+  };
 // sets the current user id so Backbone Views have access to it
 </script>
