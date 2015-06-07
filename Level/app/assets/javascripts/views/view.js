@@ -12,7 +12,7 @@ console.log("view");
       console.log("Fetching user");
       thisView= this;
 
-      console.log(this)
+      //console.log(this)
       console.log(user);
       user.fetch({
         success: function(model, response){
@@ -26,10 +26,12 @@ console.log("view");
     },
     
     render: function(uid){
+      console.log("showing"+this);
       this.template= _.template($('#user-template').html())
-      this.$el.empty();
-      console.log("showing");
-      this.$el.html(this.template({skill:this.model.toJSON()}))
+      el= this.$el;
+      el.empty();
+      
+      el.html(this.template({user: this.model.toJSON()}))
       $('#user-area').html(el);
       return this;
 

@@ -7,21 +7,22 @@ class SkillsController < ApplicationController
     user.skill_adding
     full_skill = []
     if user.skills.any?
-    user.skills.each do |skill|
-      full_skill << {
-        id: skill.id,
-        user_id: skill.user_id,
-        old_exp: skill.previous_exp,
-        exp: skill.experience,
-        language: skill.language,
-        updated_at: (skill.updated_at).strftime("%m/%d/%Y"),
-        added_at: (skill.created_at).strftime("%m/%d/%Y")
-      }
+      user.skills.each do |skill|
+        full_skill << {
+          id: skill.id,
+          user_id: skill.user_id,
+          old_exp: skill.previous_exp,
+          exp: skill.experience,
+          language: skill.language,
+          updated_at: (skill.updated_at).strftime("%m/%d/%Y"),
+          added_at: (skill.created_at).strftime("%m/%d/%Y")
+        }
+    
+      end
+      render json: full_skill
+    else
+      render json: []
     end
-    render json: full_skill
-  else
-    render json: []
-  end
   end
 
 

@@ -43,14 +43,14 @@ class User < ActiveRecord::Base
 
   def rescue_pusher(res)
     respo = res["rows"]
-    if(!respo.nil?&&respo.any?)
+    if(!respo.nil? && respo.any?)
       respo.each do |act|
         #Get time in Minutes as uncut_EXP
         exp= act[1]/60
         site= act[3]
         lang= Language.where("name LIKE '#{act[4]}'")
 
-        if (!lang.nil?&&lang.any?)
+        if (!lang.nil? && lang.any?)
           self.events.create(
             name: site,
             uncut_exp: exp,
@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   def skill_adding
     langs = self.language_ids
     #are there supposed to be skills?
-    if (langs.any?)
+    if (!langs.nil? && langs.any?)
       #are there?
       if (!self.skills.any?)
         #add all languages if none.
