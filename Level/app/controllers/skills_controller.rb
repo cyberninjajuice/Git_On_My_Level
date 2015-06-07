@@ -2,9 +2,11 @@ class SkillsController < ApplicationController
 
   def index
     user = User.find(params[:user_id])
+
     user.initial_api
     user.skill_adding
     full_skill = []
+    if user.skills.any?
     user.skills.each do |skill|
       full_skill << {
         id: skill.id,
@@ -17,6 +19,9 @@ class SkillsController < ApplicationController
       }
     end
     render json: full_skill
+  else
+    render json: []
+  end
   end
 
 

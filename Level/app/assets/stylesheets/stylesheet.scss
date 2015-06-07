@@ -93,6 +93,7 @@ $main-trans: cubic-bezier(.87,.22,.87,.21);
   vertical-align : baseline;
   background     : transparent;
   font-size      : 16px;
+  line-height    : 18px;
   list-style     : none;
   font-family    : $s-font;
   color          : $d-green-cyan;
@@ -150,6 +151,7 @@ body {
   li {
     display: flex;
     flex-wrap: wrap;
+    line-height: 1.1em;
   }
 
   img {

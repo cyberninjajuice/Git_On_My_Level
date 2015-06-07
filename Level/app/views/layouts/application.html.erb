@@ -10,9 +10,14 @@
 </head>
 <body>
 
+<script>
+var userParam = <%= @userParam %>;
+console.log(userParam);
+</script>
+
 <% if @user && current_user %>
 <script>
-var signedInUserId = <%= session[:user_id] %>; 
+var signedInUserId = <%= session[:user_id] %>
 console.log(signedInUserId)
 </script>
 <%end%>

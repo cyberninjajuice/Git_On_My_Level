@@ -2,16 +2,21 @@
 console.log("collections");
   var UserCollection = Backbone.Collection.extend({
     model: User,
-    url: '/users'
+    urlRoot: '/user'
   });
   var EventCollection = Backbone.Collection.extend({
   	model: Event,
-    url: '/users/1/events.json'
+    initialize: function(models, args){
+      this.url = function() { return args.user_url() + '/events'; };
+    }
   });
 
   var SkillCollection = Backbone.Collection.extend({
   	model: Skill,
-    url: '/users/1/skills.json'
+    url: '/users/'+userParam+'/skills'
+    // initialize: function(models, args){
+    //   this.url = function() { return args.user_url() + '/skills.json'; };
+    // }
   });
 // initialize a collection of Users
 var users = new UserCollection();
