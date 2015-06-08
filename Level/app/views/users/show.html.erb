@@ -29,7 +29,7 @@
     Level {{= user.next_level-1}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
       <div class="experience">
         <span class="main_experience">
-        You have: {{= user.exp_left}} left before {{= user.next_level}}
+        You must gain: {{= user.exp_left}} experience left before {{= user.next_level}}
         </span>
       </div>
     </div>
@@ -69,9 +69,17 @@
 
 <script type="text/template" id="skill-template">
 <div class="each_skill">
-<span class="experience">Experience: {{- skill.exp }}</span>
-<span class="date">Added: {{- skill.added_at }}</span>
-<span class="language" style="background: {{= skill.language.color }}"> {{- skill.language.name }} </span>
+  <span class="experience">Experience: {{- skill.exp }}</span>
+  <span class="date">Added: {{- skill.added_at }}</span>
+  <span class="language" style="background: {{- skill.language.color }}"> {{- skill.language.name }} </span>
+</div>
+</script>
+
+<script type="text/template" id="experience-template">
+<div class="each_experience">
+  <span class="experience">Experience: {{- event.exp }}</span>
+  <span class="date"> Added: {{- event.added_at }}</span>
+  <span class="language" style="background: {{- skill.language.color }}"> {{- skill.language.name }} </span>
 </div>
 </script>
 <%= debug(params) if Rails.env.development? %>
