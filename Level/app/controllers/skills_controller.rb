@@ -15,7 +15,8 @@ class SkillsController < ApplicationController
           exp: skill.experience,
           language: skill.language,
           updated_at: (skill.updated_at).strftime("%m/%d/%Y"),
-          added_at: (skill.created_at).strftime("%m/%d/%Y")
+          added_at: (skill.created_at).strftime("%m/%d/%Y"),
+          level_info: skill.get_level
         }
     
       end
