@@ -81,7 +81,7 @@
 <div id="chart">
 </div>  
 </div>
-<script type="text/template">
+<script type="text/template" id="D3-template">
 var data = [
   ["Javascript",2312],
   ["Ruby",674], 
@@ -97,6 +97,14 @@ var data = [
   <span class="experience">Experience: {{- skill.exp }}</span>
   <span class="date">Added: {{- skill.added_at }}</span>
   <span class="language" style="background: {{- skill.language.color }}"> {{- skill.language.name }} </span>
+  <span id="user_data">[
+  ["Javascript", 2312],
+  ["Ruby", 674], 
+  ["Go", 994], 
+  ["Ios", 3433], 
+  ["Python", 127],
+  ["HTML/CSS", 2261]
+  ];</span>
 </div>
 </script>
 

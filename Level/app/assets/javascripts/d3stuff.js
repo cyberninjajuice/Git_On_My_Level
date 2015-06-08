@@ -1,14 +1,16 @@
 $(document).ready(function(){
-var data = [
-  ["Javascript", 2312],
-  ["Ruby", 674], 
-  ["Go", 994], 
-  ["Ios", 3433], 
-  ["Python", 127],
-  ["HTML/CSS", 2261]
-];
+// var data = [
+//   ["Javascript", 2312],
+//   ["Ruby", 674], 
+//   ["Go", 994], 
+//   ["Ios", 3433], 
+//   ["Python", 127],
+//   ["HTML/CSS", 2261]
+// ];
+//console.log(data);
+if( document.getElementById("user-data")){
+var data = document.getElementById("user-data").innerText();
 console.log(data);
-if( document.getElementById("chart")){
 var chart = document.getElementById("chart"),
     axisMargin = 20,
     margin = 20,

@@ -22,7 +22,7 @@ console.log("view");
       var rescueKey = $("#rescue-key")
       var thisView = this;
       console.log(this.model)
-      if(rescueKey.val().length===40){
+      if(rescueKey.val().length === 40){
         this.model.save(
         {email: email.val(), rescue_key: rescueKey.val()},
         { success: function(model, response) { 

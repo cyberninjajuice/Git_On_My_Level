@@ -39,9 +39,10 @@ class User < ActiveRecord::Base
     
 
     if (rescueing != formatted_date || !self.events.any? )
-    response = HTTParty.get(api_url)
-    self.rescue_pusher(response)
-    self.update(last_rescued: rescueing)
+    
+      response = HTTParty.get(api_url)
+      self.rescue_pusher(response)
+      self.update(last_rescued: rescueing)
     end
   end   
 
