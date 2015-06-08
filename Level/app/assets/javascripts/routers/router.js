@@ -27,13 +27,13 @@ var GitRouter = Backbone.Router.extend({
     constantView = new UserView({
       model: user,
       id: user_id
-    }), 
+    }) 
     currentView = new SkillsView({
         collection: skills,
         id: user_id
-    }),
+    })
     eventView = new EventsView({
-      collection: events,
+      collection: userEvents,
       id: user_id
     })
   }

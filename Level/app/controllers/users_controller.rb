@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    begin
       @user_param = params[:id]
       @user.initial_api
       @user.skill_adding
@@ -19,11 +18,6 @@ class UsersController < ApplicationController
         @level_info = top_skill.get_level
       else
         @level_info = {}
-      end
-    rescue
-      rescue 
-      flash[:alert]= "Here are your unupdated stats, upon connection to the internet this will update!"
-      render @user
       end
   end
 

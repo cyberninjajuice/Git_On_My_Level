@@ -109,7 +109,7 @@ console.log("view");
     fetchingEvents: function(){
       //console.log(this)
       thisView = this;
-      events.fetch({
+      userEvents.fetch({
         success: function(model, response){
           //console.log(model)
           this.template = _.template($('#event-template').html());
@@ -125,8 +125,9 @@ console.log("view");
       var el = this.$el;
       //clear the content-area.
       //$('div#content-area').empty();
+      console.log("rendering events")
       el.empty();
-
+      el.append("<h1>Events</h1>");
       //console.log(this.collection)
       // render a EventView for each event
       this.collection.each(function(event) {
@@ -161,12 +162,14 @@ console.log("view");
     },
     fetchingSkills: function(){
       //console.log(this)
-      thisView = this;
+      var thisView = this;
       skills.fetch({
         success: function(model, response){
           console.log(model)
           this.template = _.template($('#skill-template').html());
-          thisView.render(thisView.id)
+          console.log(this.template)
+          console.log(thisView.render());
+          thisView.render();
         },
         error: function(errors){
           console.log(errors)
@@ -174,14 +177,14 @@ console.log("view");
 
       })
     },
+
     render: function() {
+      console.log("rendering!")
       var el = this.$el;
       //clear the content-area.
       //$('div#content-area').empty();
       el.empty();
-
-      //console.log(this.collection)
-      // render a SkillView for each skill
+      el.append("<h1>Skills</h1>");
       this.collection.each(function(skill) {
         el.append(new SkillView({model: skill}).render().el);
       });
@@ -192,27 +195,3 @@ console.log("view");
     }
 
   });
-	// // View for single user
-	// UsersView = Backbone.View.extend({
-	// 	tagName: 'ul',
-	// 	template: _.template($('#user-template').html()),
-	// // Future click event for particular user skill
-	// 	// events: {'click .skill': 'rescueData'},
-	// // Gets resuce time information
-	// 	userShow: function() {
-
-	// 		var rescue = this.model.user;
-	// 		rescue.fetch({
-	// 			success: function(){
-	// 				new UserView({collection: skill})
-	// 			}
-	// 		});
-	// 	},
-
-		// render the UserView
-	// 	render: function() {
-	// 		this.$el.html(this.template({user: this.model.toJSON()}));
-	// 		return this;
-	// 	}
-
-	// });
