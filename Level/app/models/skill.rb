@@ -25,7 +25,7 @@ class Skill < ActiveRecord::Base
       exp_needed = (multiplier*2**level)
       level += 1
     end
-    {name: self.language.name, level: level, next_level: level+1, next_requires: exp_needed, exp_left: exp_needed-exp, exp: exp}
+    {name: self.language.name, level: level, next_level: level+1, next_requires: exp_needed, exp_left: exp_needed-exp, exp: exp, level_percent: (exp/exp_needed*100) }
   end
 
   def next_level
