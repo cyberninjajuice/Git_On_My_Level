@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604133245) do
+ActiveRecord::Schema.define(version: 20150608215409) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 20150604133245) do
     t.text     "badge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.text     "quest"
+    t.text     "employer"
+    t.text     "email"
+    t.integer  "bounty"
+    t.text     "link"
+    t.integer  "quantity"
+    t.text     "password_digest"
+    t.boolean  "non_profit"
+    t.integer  "language_id"
+    t.integer  "source_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "skills", force: :cascade do |t|

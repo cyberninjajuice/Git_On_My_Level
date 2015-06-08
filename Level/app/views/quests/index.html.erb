@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Quests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Bounty</th>
+      <th>Link</th>
+      <th>Quantity</th>
+      <th>Language</th>
+      <th>Source</th>
+      <th>Admin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quests.each do |quest| %>
+      <tr>
+        <td><%= quest.name %></td>
+        <td><%= quest.bounty %></td>
+        <td><%= quest.link %></td>
+        <td><%= quest.quantity %></td>
+        <td><%= quest.language_id %></td>
+        <td><%= quest.source_id %></td>
+        <td><%= quest.admin_id %></td>
+        <td><%= link_to 'Show', quest %></td>
+        <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
+        <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quest', new_quest_path %>

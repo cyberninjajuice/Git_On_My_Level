@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :quests
+  resources :admins
   resources :users do
     resources :events
   end
