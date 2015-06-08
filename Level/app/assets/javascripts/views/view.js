@@ -55,7 +55,6 @@ console.log("view");
       var thisView= this;
 
       //console.log(thisView)
-      //console.log(user);
       var specifyTemp = $('#userTemp').html();
       this.template = _.template(specifyTemp)
       user.fetch({
@@ -88,27 +87,82 @@ console.log("view");
     }
   });
 
-  SkillView = Backbone.View.extend({
+  EventView = Backbone.View.extend({
 		tagName: 'li',
 		initialize: function(){
-      this.template = _.template($('#skill-template').html())
+      this.template = _.template($('#event-template').html())
     },
 		render: function(){
-			var temp= this.template
-      console.log(temp)
-			this.$el.html(this.template({skill: this.model.toJSON()}));
+      //console.log(temp)
+			this.$el.html(this.template({event: this.model.toJSON()}));
 			return this;	
 		}
 	});
 
-	SkillsView = Backbone.View.extend({
+	EventsView = Backbone.View.extend({
 		tagName: 'ul',
 		initialize: function() {
       console.log("initiated")
       // console.log("passed this "+this.id)
+      this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingEvents);
+      this.fetchingEvents();
+		},
+
+    fetchingEvents: function(){
+      //console.log(this)
+      thisView = this;
+      events.fetch({
+        success: function(model, response){
+          console.log(model)
+          this.template = _.template($('#event-template').html());
+          thisView.render(thisView.id)
+        },
+        error: function(errors){
+          console.log(errors)
+        } 
+
+      })
+    },
+		render: function() {
+      var el = this.$el;
+      //clear the content-area.
+      //$('div#content-area').empty();
+      el.empty();
+
+      //console.log(this.collection)
+      // render a EventView for each event
+      this.collection.each(function(event) {
+        el.append(new EventView({model: event}).render().el);
+      });
+
+      // add the view to the content-area
+      $('#events-area').html(el);
+      return this;
+    }
+
+	});
+
+  SkillView = Backbone.View.extend({
+    tagName: 'li',
+    initialize: function(){
+      this.template = _.template($('#skill-template').html())
+    },
+    render: function(){
+      var temp= this.template
+      console.log(temp)
+      this.$el.html(this.template({skill: this.model.toJSON()}));
+      return this;  
+    }
+  });
+
+  SkillsView = Backbone.View.extend({
+    tagName: 'ul',
+    initialize: function() {
+      console.log("initiated")
+      // console.log("passed this "+this.id)
       this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingSkills);
       this.fetchingSkills();
-		},
+    },
     fetchingSkills: function(){
       //console.log(this)
       thisView = this;
@@ -124,14 +178,12 @@ console.log("view");
 
       })
     },
-		render: function() {
+    render: function() {
       var el = this.$el;
       //clear the content-area.
       //$('div#content-area').empty();
-      //console.log(el)
       el.empty();
-      // add a header
-      //el.append('<h1>Skills for ' + uid + '</h1>');
+
       //console.log(this.collection)
       // render a SkillView for each skill
       this.collection.each(function(skill) {
@@ -143,9 +195,7 @@ console.log("view");
       return this;
     }
 
-	});
-
-
+  });
 	// // View for single user
 	// UsersView = Backbone.View.extend({
 	// 	tagName: 'ul',

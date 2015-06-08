@@ -12,6 +12,10 @@
 <div id="content-area">
 </div>
 
+<div id="events-area">
+  
+</div>
+
 <!-- individual User -->
 <script type="text/template" id="userTemp">
   <div class="container">
@@ -96,11 +100,11 @@ var data = [
 </div>
 </script>
 
-<script type="text/template" id="experience-template">
+<script type="text/template" id="event-template">
 <div class="each_experience">
   <span class="experience">Experience: {{- event.exp }}</span>
   <span class="date"> Added: {{- event.added_at }}</span>
-  <span class="language" style="background: {{- skill.language.color }}"> {{- skill.language.name }} </span>
+  <span class="language" style="background: {{- event.language.color }}"> {{- event.language.name }} </span>
 </div>
 </script>
 <%= debug(params) if Rails.env.development? %>

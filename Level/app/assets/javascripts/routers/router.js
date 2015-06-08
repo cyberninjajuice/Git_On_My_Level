@@ -1,5 +1,6 @@
 var constantView;
 var currentView;
+var eventView;
 console.log("routing");
 $(document).ready(function(){
 var GitRouter = Backbone.Router.extend({
@@ -30,6 +31,10 @@ var GitRouter = Backbone.Router.extend({
     currentView = new SkillsView({
         collection: skills,
         id: user_id
+    }),
+    eventView = new EventsView({
+      collection: events,
+      id: user_id
     })
   }
 });
