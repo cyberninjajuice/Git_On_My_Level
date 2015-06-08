@@ -12,6 +12,13 @@
 <div id="content-area">
 </div>
 
+
+<div class="widget">
+<h1>My Skills</h1>
+<div id="chart">
+</div>  
+</div>
+
 <div id="events-area">
   
 </div>
@@ -75,20 +82,15 @@
   </div>
   <% end %>
 </script>
-
-<div class="widget">
-<h1>My Skills</h1>
-<div id="chart">
-</div>  
-</div>
-
 <script type="text/template" id="skill-template">
 <div class="each_skill">
   <span class="experience">Experience: {{- skill.exp }}</span>
   <span class="date">Added: {{- skill.added_at }}</span>
   <span class="language" style="background: {{- skill.language.color }}"> {{- skill.language.name }} </span>
 </div>
-
+<span id="user-chart" style="display:none">
+["{{- skill.language.name }}",{{= skill.exp}}, "{{- skill.language.name }}",{{= skill.exp}}, "{{- skill.language.name }}",{{= skill.exp}}, "{{- skill.language.name }}",{{= skill.exp}}]
+</span>
 </script>
 
 
