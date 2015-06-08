@@ -13,7 +13,7 @@
   user.events.create(name: "vmware", user_id: "1", uncut_exp: "7200", language_id: "1", source_id: "1")
 	Source.create(name: "Rescue Time", exp_multiplier: 0.5, logo: "rescuetime.jpg")
   Language.create(name: "Ruby", color: "red", badge: "devicon-ruby-plain colored")
-  Language.create(name: "General Software Development", color: "grey", badge: "general.jpg")
+  Language.create(name: "General Software Development", color: "grey", badge: "mdi-hardware-desktop-mac")
   Language.create(name: "JavaScript", color: "brown", badge: "devicon-javascript-plain colored")
   Language.create(name: "Java", color: "mocha", badge: "devicon-java-plain-wordmark colored")
   Language.create(name: "Python", color: "green", badge: "devicon-python-plain-wordmark colored")
