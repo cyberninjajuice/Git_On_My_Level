@@ -37,4 +37,5 @@ _.templateSettings = {
     return 'over ' + Math.floor(distance_in_minutes / 525960) + ' years';
   }
 };
-// sets the current user id so Backbone Views have access to it
+
+

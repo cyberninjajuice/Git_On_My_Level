@@ -14,59 +14,55 @@ html {
 }
 
 body {
-      font-family: "Exo 2", sans-serif;
-      background: #DDD;
-      color: #333;
-    }
+  font-family: "Exo 2", sans-serif;
+  background: #DDD;
+  color: #333;
+}
 
-    h1 {
-      margin: 0;
-      padding: 0.1rem 0.4rem;
-      font-size: 1rem;
-      font-weight: 500;
-      text-align: right;
-    }
+h1 {
+  margin: 0;
+  padding: 0.1rem 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: right;
+}
 
-    .widget {
-      display: inline-block;
-      border: 1px solid #AAA;
-      background: white;
-    }
+.widget {
+  display: inline-block;
+  border: 1px solid #AAA;
+  background: white;
+}
 
-    #chart {
-      height: 400px;
-      width: 500px;
-    }
+#chart {
+  height: 400px;
+  width: 500px;
+}
 
-    svg {
-      shape-rendering: crispEdges;
-    }
+svg {
+  shape-rendering: crispEdges;
+}
 
-    .bar {
-      fill: #A18FDB;
-    }
+.bar {
+  fill: #A18FDB;
+}
 
-    .value {
-      font-size: 16px;
-      font-weight: 300;
-      fill: #333;
-    }
+.value {
+  font-size: 16px;
+  font-weight: 300;
+  fill: #333;
+}
 
-    .label {
-      font-size: 18px;
-      fill: #333;
-    }
+.label {
+  font-size: 18px;
+  fill: #333;
+}
 
-    .axis {
-      path {
-        fill: none;
-        //stroke: #333;
-      }
-      
-      //fill: #333;
-      font-size: 12px;
-    }
-
+.axis {
+  font-size: 12px;
+  path {
+    fill: none;
+  }
+}
 section {
   overflow: auto;
 }
@@ -75,12 +71,13 @@ textarea {
 }
 .center{
   text-align: center;
+  
   h1 {
     margin-bottom: 60px;
   }
 }
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
+  line-height: 1em;
   margin-bottom: 30px;
   text-align: center;
 }

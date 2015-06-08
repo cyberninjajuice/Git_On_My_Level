@@ -21,4 +21,5 @@
 //= require collections/collection
 //= require views/view
 //= require routers/router
+//= require d3stuff.js
 //= require_tree .
