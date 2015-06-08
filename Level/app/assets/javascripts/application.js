@@ -20,6 +20,5 @@
 //= require models/model
 //= require collections/collection
 //= require views/view
-//= require routers/router
-//= require d3stuff.js
+//= require smoothscroll.js
 //= require_tree .

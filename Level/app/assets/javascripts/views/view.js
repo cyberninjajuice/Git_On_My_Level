@@ -1,6 +1,8 @@
 // var UsersView;
+
 console.log("view");
   //Single View for a User Only one that Backbone should deal with.
+
 	UserView = Backbone.View.extend({
     tagName: 'div',
     initialize: function(){
@@ -196,82 +198,29 @@ console.log("view");
 
       // add the view to the content-area
       $('#content-area').html(el);
-      var data = $("#user-chart").first().text();
-      console.log(data);
-      data = JSON.parse(data)
-      console.log(data.length);
-      data.map(function(i){
-        console.log(i);
-      })
-      console.log(d3)
-      var chart = document.getElementById("chart");
-      console.log(chart)
-      var axisMargin = 20, margin = 20, valueMargin = 4, width = chart.offsetWidth, height = chart.offsetHeight, barHeight = (height-axisMargin-margin*2)* 0.4/data.length, barPadding = (height-axisMargin-margin*2)* 0.6/data.length, data, bar, svg, scale, xAxis, labelWidth = 0;
-
-      var max = d3.max(data.map(function(i){ 
-        return i[1];
-      }));
-      
-      svg = d3.select(chart)
-        .append("svg")
-        .attr("width", width)
-        .attr("height", 400);
-
-
-      bar = svg.selectAll("g")
-        .data(data)
-        .enter()
-        .append("g");
-
-      bar.attr("class", "bar")
-        .attr("cx",0)
-        .attr("transform", function(d, i) { 
-           return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
-        });
-
-      bar.append("text")
-        .attr("class", "label")
-        .attr("y", barHeight / 2)
-        .attr("dy", ".35em") //vertical align middle
-        .text(function(d){
-          return d[0];
-        }).each(function() {
-          labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
-        });
-
-      scale = d3.scale.linear()
-        .domain([0, max])
-        .range([0, width - margin*2 - labelWidth]);
-
-      bar.append("rect")
-        .attr("transform", "translate("+labelWidth+", 0)")
-        .attr("height", barHeight)
-        .attr("width", function(d){
-          console.log("face");
-          
-          return scale(d[1]);
-        });
-
-      bar.append("text")
-        .attr("class", "value")
-        .attr("y", barHeight / 2)
-        .attr("dx", -valueMargin + labelWidth) //margin right
-        .attr("dy", ".35em") //vertical align middle
-        .attr("text-anchor", "end")
-        .text(function(d){
-          return d[1];
-        })
-        .attr("x", function(d){
-          var width = this.getBBox().width;
-          return Math.max(width + valueMargin, scale(d[1]));
-       });
-
-      svg.insert("g",":first-child")
-       .attr("class", "axis")
-       .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
-       .call(xAxis);
-
-      return this;
+      //console.log(d3)
     }
 
   });
+
+ skillShow= function() {
+    console.log("hi ")
+    // skills.fetch({
+    //   success: function(){
+      console.log(user)
+    constantView = new UserView({
+      model: user,
+      // id: user_id
+    }) 
+    currentView = new SkillsView({
+        collection: skills,
+        // id: user_id
+    })
+    eventView = new EventsView({
+      collection: userEvents,
+      // id: user_id
+    })
+  }
+$(document).ready(function(){
+  skillShow();
+})
