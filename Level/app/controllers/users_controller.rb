@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       @user.initial_api
       @user.skill_adding
       if @user.skills.any?
-        top_skill = @user.skills.order(experience: :desc).first
+        top_skill = @user.skills.order(experience: :asc).first
         @level_info = top_skill.get_level
       else
         @level_info = {}

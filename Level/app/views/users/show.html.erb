@@ -80,6 +80,10 @@
   <span class="experience">Experience: {{- skill.exp }}</span>
   <span class="date">Added: {{- skill.added_at }}</span>
   <span class="language" style="background: {{- skill.language.color }}"> {{- skill.language.name }} </span>
+  <div class="bar-holder" style="width:90%; background:white"> {{- skill.level_info.next_requires }}
+    <div class="exp_bar" style="position:fixed; background: {{- skill.language.color }}; width: {{-skill.level_info.exp }}/{{- skill.level_info.next_requires }}%;"> {{- skill.level_info.name }}
+    </div>
+  </div>
 </div>
 </script>
 
