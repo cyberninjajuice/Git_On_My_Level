@@ -55,8 +55,30 @@
 		<div class="container">
 			<div class="row centered">
 				<div class="col-lg-12">
-					<h1>Welcome To <b>Pratt</b></h1>
-					<h3>Show your product with this handsome theme.</h3>
+					<h1>Git on My Level</h1>
+					<h3>Your programming career gamified!</h3>
+					<h3><div class="GitHub">
+  <% if logged_in? %>
+    <span class="email">
+    <% if current_user.email %>
+    <%= current_user.email %>
+    <% else %>
+    <%= link_to "Add your email!", edit_user_path(current_user) %>
+    <% end %>
+    </span> | <small class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</small>
+    <div class="buttons">
+    <% if current_user.has_linked_github? %>
+      <%= link_to "Delete your Account", delete_oauth_path("GitHub"), class: "link_button delete", method: :delete %>
+    <% else %>
+      <%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "link_button" %>
+    <% end %> | 
+    <%= link_to "Logout", logout_path, class: "link_button logout" %> | 
+    <%= link_to "All Users", users_path, class: "link_button users_path" %>
+  <% else %>
+    <%= link_to "Login with GitHub", auth_at_provider_path(provider: :github) %>
+  <% end %>
+    </div>
+</div></h3>
 					<br>
 				</div>
 
@@ -237,7 +259,7 @@
 
 			<div class="col-lg-6">
 				<img class="img-circle" src="assets/paul.jpg" width="140" alt="">
-				<h4>Paul Fielek</h4>
+				<h4>Raz Golden</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
