@@ -50,10 +50,6 @@ $yellow: rgba(245, 201, 71, 1.0);
 $p-font: 'Raleway', Futura, Verdana, arial, sans-serif;
 /*SECONDARY FONT*/
 $s-font: 'Dosis', Futura, Verdana, arial, sans-serif;
-/* TERTIARY FONT */
-$t-font: 'Lato', 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
-/* POSSIBLE TITLE FONT */
-$title-font: 'Arvo', Futura, 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
 /*===========================*/
 
 /* SIZES */
@@ -90,17 +86,6 @@ $main-trans: cubic-bezier(.87,.22,.87,.21);
 
 
 * {
-  margin         : $tiny-pad auto;
-  padding        : $tiny-pad;
-  border         : 0;
-  outline        : 0;
-  vertical-align : baseline;
-  background     : transparent;
-  font-size      : 16px;
-  line-height    : 18px;
-  list-style     : none;
-  font-family    : $s-font;
-  color          : $d-green-cyan;
   -webkit-box-sizing : border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing    : border-box; /* Firefox, other Gecko */
   box-sizing         : border-box; /* Opera/IE 8+ */
