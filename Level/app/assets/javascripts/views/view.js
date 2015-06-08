@@ -51,10 +51,10 @@ console.log("view");
     },
 
     fetchingUser: function() {
-      console.log("Fetching user");
+      //console.log("Fetching user");
       var thisView= this;
-
       //console.log(thisView)
+
       var specifyTemp = $('#userTemp').html();
       this.template = _.template(specifyTemp)
       user.fetch({
@@ -93,7 +93,6 @@ console.log("view");
       this.template = _.template($('#event-template').html())
     },
 		render: function(){
-      //console.log(temp)
 			this.$el.html(this.template({event: this.model.toJSON()}));
 			return this;	
 		}
@@ -102,8 +101,7 @@ console.log("view");
 	EventsView = Backbone.View.extend({
 		tagName: 'ul',
 		initialize: function() {
-      console.log("initiated")
-      // console.log("passed this "+this.id)
+      console.log("passed this "+this.id)
       this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingEvents);
       this.fetchingEvents();
 		},
@@ -113,7 +111,7 @@ console.log("view");
       thisView = this;
       events.fetch({
         success: function(model, response){
-          console.log(model)
+          //console.log(model)
           this.template = _.template($('#event-template').html());
           thisView.render(thisView.id)
         },
@@ -148,8 +146,6 @@ console.log("view");
       this.template = _.template($('#skill-template').html())
     },
     render: function(){
-      var temp= this.template
-      console.log(temp)
       this.$el.html(this.template({skill: this.model.toJSON()}));
       return this;  
     }
