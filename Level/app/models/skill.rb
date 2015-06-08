@@ -3,9 +3,9 @@ class Skill < ActiveRecord::Base
 	belongs_to :language
   validates :language_id, presence: true
   before_update :previous_exp
-  before_save :default_exp
-  after_save :get_level
   after_update :get_level
+  before_save :default_exp
+  before_save :get_level
 
   def previous_exp
     prev = self.experience if self.experience_changed?

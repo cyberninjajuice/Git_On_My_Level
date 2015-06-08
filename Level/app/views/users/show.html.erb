@@ -22,11 +22,11 @@
   <p>You have been a member with us since: {{= DateHelper.time_ago_in_words_with_parsing(user.created_at) }} last login: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}</p>
   </div>
   <div class="rescue_info">
-  {{ if(!user.level) { }}
+  {{ if(!user.next_level) { }}
     <p class="error_explanation"> You haven't set up your RescueTime API Key yet. You'll need that to track your experience points and level up into a High-Wizard of the Keyboard! <a href="https://www.rescuetime.com/anapi/manage">Rescue Time</a> </p>
   {{ } else { }}
     <div class="top_level">
-    Level {{= user.level}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
+    Level {{= user.next_level-1}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
       <div class="experience">
         <span class="main_experience">
         You have: {{= user.exp_left}} left before {{= user.next_level}}

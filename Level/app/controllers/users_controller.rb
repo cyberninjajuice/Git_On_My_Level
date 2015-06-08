@@ -13,9 +13,7 @@ class UsersController < ApplicationController
     @user_param = params[:id]
     @user.initial_api
     @user.skill_adding
-    binding.pry
     if @user.skills.any?
-      binding.pry
       top_skill = @user.skills.order(experience: :desc).first
       @level_info = top_skill.get_level
     else
