@@ -29,14 +29,11 @@ console.log("view");
           thisView.fetchingUser();
           $("div.edit_form").hide();
           $("button.editing_user").show();
-        }, error: function(errors){
-          console.log(errors);
-        }
+        }, error: function(errors){ console.log(errors);}
         },
         { patch: true }
-        
         )
-      else{
+      } else {
         this.model.save(
         {email: email.val()},
         { success: function(model, response) { 
