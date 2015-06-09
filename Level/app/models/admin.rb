@@ -1,7 +1,7 @@
 class Admin < ActiveRecord::Base
   has_secure_password
   has_many :quests
-  has_many :ongoing_quests through: :quests, foreign_key: "user_id", dependent: :destroy
+  has_many :ongoing_quests through: :quests
   VALIDEMAIL = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
   before_save {self.email = email.downcase}
   validates :email,
