@@ -1,287 +1,177 @@
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Pratt - Free Bootstrap 3 Theme">
-	<meta name="author" content="Alvarez.is - BlackTie.co">
-	<link rel="shortcut icon" href="assets/ico/favicon.png">
 
-	<title>Git on my Level</title>
-
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-	<!-- Bootstrap core js -->
-	<link type="text/javascript" rel="javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js">
-	<!-- Custom styles for this template -->
-
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-</head>
-
-<body data-spy="scroll" data-offset="0" data-target="#navigation">
-
-	<!-- Fixed navbar -->
-	<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+<div id="index-banner" class="parallax-container">
+	<div class="section no-pad-bot">
 		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"><b>Pratt</b></a>
+			<br><br>
+			<h3>
+				<div class="GitHub">
+					<% if logged_in? %>
+					<span class="email">
+						<% if current_user.email %>
+						<%= current_user.email %>
+						<% else %>
+						<%= link_to "Add your email!", edit_user_path(current_user) %>
+						<% end %>
+					</span> | <small class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</small>
+					<div class="buttons">
+						<% if current_user.has_linked_github? %>
+						<%= link_to "Delete your Account", delete_oauth_path("GitHub"), class: "link_button delete", method: :delete %>
+						<% else %>
+						<%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "link_button" %>
+						<% end %> | 
+						<%= link_to "Logout", logout_path, class: "link_button logout" %> | 
+						<%= link_to "All Users", users_path, class: "link_button users_path" %>
+						<% else %>
+						<%= link_to "Login with GitHub", auth_at_provider_path(provider: :github) %>
+						<% end %>
+					</div>
+				</div></h3>
+				<div class="row center">
+					<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+				</div>
+				<div class="row center">
+					<a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+				</div>
+				<br><br>
 			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#home" class="smothscroll">Home</a></li>
-					<li><a href="#desc" class="smothscroll">Description</a></li>
-					<li><a href="#showcase" class="smothScroll">Showcase</a></li>
-					<li><a href="#team" class="smothScroll">Team</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
+		</div>
+		<div class="parallax"><img src="<%= asset_path('background1.jpg') %>" alt="Unsplashed background img 2"></div>
+	</div>
+	<div class="container">
+		<div class="section">
+
+			<!--   Icon Section   -->
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+						<h5 class="center">Speeds up development</h5>
+
+						<p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center brown-text"><i class="mdi-social-group"></i></h2>
+						<h5 class="center">User Experience Focused</h5>
+
+						<p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center brown-text"><i class="mdi-action-settings"></i></h2>
+						<h5 class="center">Easy to work with</h5>
+
+						<p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 
 
-	<section id="home" name="home"></section>
-	<div id="headerwrap">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-12">
-					<h1>Git on My Level</h1>
-					<h3>Your programming career gamified!</h3>
-					<h3><div class="GitHub">
-  <% if logged_in? %>
-    <span class="email">
-    <% if current_user.email %>
-    <%= current_user.email %>
-    <% else %>
-    <%= link_to "Add your email!", edit_user_path(current_user) %>
-    <% end %>
-    </span> | <small class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</small>
-    <div class="buttons">
-    <% if current_user.has_linked_github? %>
-      <%= link_to "Delete your Account", delete_oauth_path("GitHub"), class: "link_button delete", method: :delete %>
-    <% else %>
-      <%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "link_button" %>
-    <% end %> | 
-    <%= link_to "Logout", logout_path, class: "link_button logout" %> | 
-    <%= link_to "All Users", users_path, class: "link_button users_path" %>
-  <% else %>
-    <%= link_to "Login with GitHub", auth_at_provider_path(provider: :github) %>
-  <% end %>
-    </div>
-</div></h3>
-					<br>
-				</div>
-
-				<div class="col-lg-2">
-					<h5>Amazing Results</h5>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<img class="hidden-xs hidden-sm hidden-md" src="assets/img/arrow1.png">
-				</div>
-				<div class="col-lg-8">
-					<img class="img-responsive" src="assets/img/app-bg.png" alt="">
-				</div>
-				<div class="col-lg-2">
-					<br>
-					<img class="hidden-xs hidden-sm hidden-md" src="assets/img/arrow2.png">
-					<h5>Awesome Design</h5>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+	<div class="parallax-container valign-wrapper">
+		<div class="section no-pad-bot">
+			<div class="container">
+				<div class="row center">
+					<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
 				</div>
 			</div>
-		</div> <!--/ .container -->
-	</div><!--/ #headerwrap -->
-
-
-	<section id="desc" name="desc"></section>
-	<!-- INTRO WRAP -->
-	<div id="intro">
-		<div class="container">
-			<div class="row centered">
-				<h1>Designed To Excel</h1>
-				<br>
-				<br>
-				<div class="col-lg-4">
-					<img src="assets/img/intro01.png" alt="">
-					<h3>Community</h3>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-				</div>
-				<div class="col-lg-4">
-					<img src="assets/img/intro02.png" alt="">
-					<h3>Schedule</h3>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-				</div>
-				<div class="col-lg-4">
-					<img src="assets/img/intro03.png" alt="">
-					<h3>Monitoring</h3>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-				</div>
-			</div>
-			<br>
-			<hr>
-		</div> <!--/ .container -->
-	</div><!--/ #introwrap -->
-	
-	<!-- FEATURES WRAP -->
-	<div id="features">
-		<div class="container">
-			<div class="row">
-				<h1 class="centered">What's New?</h1>
-				<br>
-				<br>
-				<div class="col-lg-6 centered">
-					<img class="centered" src="assets/img/mobile.png" alt="">
-				</div>
-				
-				<div class="col-lg-6">
-					<h3>Some Features</h3>
-					<br>
-					<!-- ACCORDION -->
-					<div class="accordion ac" id="accordion2">
-						<div class="accordion-group">
-							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-									First Class Design
-								</a>
-							</div><!-- /accordion-heading -->
-							<div id="collapseOne" class="accordion-body collapse in">
-								<div class="accordion-inner">
-									<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-								</div><!-- /accordion-inner -->
-							</div><!-- /collapse -->
-						</div><!-- /accordion-group -->
-						<br>
-
-						<div class="accordion-group">
-							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-									Retina Ready Theme
-								</a>
-							</div>
-							<div id="collapseTwo" class="accordion-body collapse">
-								<div class="accordion-inner">
-									<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-								</div><!-- /accordion-inner -->
-							</div><!-- /collapse -->
-						</div><!-- /accordion-group -->
-						<br>
-
-						<div class="accordion-group">
-							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-									Awesome Support
-								</a>
-							</div>
-							<div id="collapseThree" class="accordion-body collapse">
-								<div class="accordion-inner">
-									<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-								</div><!-- /accordion-inner -->
-							</div><!-- /collapse -->
-						</div><!-- /accordion-group -->
-						<br>
-
-						<div class="accordion-group">
-							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-									Responsive Design
-								</a>
-							</div>
-							<div id="collapseFour" class="accordion-body collapse">
-								<div class="accordion-inner">
-									<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-								</div><!-- /accordion-inner -->
-							</div><!-- /collapse -->
-						</div><!-- /accordion-group -->
-						<br>			
-					</div><!-- Accordion -->
-				</div>
-			</div>
-		</div><!--/ .container -->
-	</div><!--/ #features -->
-	
-	
-	<section id="showcase" name="showcase"></section>
-	<div id="showcase">
-		<div class="container">
-			<div class="row">
-				<h1 class="centered">Some Screenshots</h1>
-				<br>
-				<div class="col-lg-8 col-lg-offset-2">
-					<div id="carousel-example-generic" class="carousel slide">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-						</ol>
-
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner">
-							<div class="item active">
-								<img src="assets/img/item-01.png" alt="">
-							</div>
-							<div class="item">
-								<img src="assets/img/item-02.png" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>	
-		</div><!-- /container -->
-	</div>	
-
-
-	<section id="team" name="team"></section>
-	<div class="container">
-		<div class="row mt centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<h1>Built with <i class="fa fa-heart"></i> from your friends</h1>
-				<h3>Our Awesome Team</h3>
-			</div>
-		</div><!-- /row -->
-		<div class="row mt centered">
-			<div class="col-lg-6">
-				<img class="img-circle" src="/assets/meirFunny.jpg" width="140" alt="">
-				<h4>Meir Snyder</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
-			</div><!--/col-lg-4 -->
-
-			<div class="col-lg-6">
-				<img class="img-circle" src="assets/paul.jpg" width="140" alt="">
-				<h4>Raz Golden</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
-			</div><!--/col-lg-4 -->
-		</div><!-- /row -->
-	</div><!-- /container -->
-</div>
-
-<div id="c">
-	<div class="container">
-		<p>Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a></p>
-		
+		</div>
+		<div class="parallax"><img src="<%= asset_path('background3.jpg') %>" alt="Unsplashed background img 2"></div>
 	</div>
-</div>
+
+	<div class="container">
+		<div class="section">
+
+			<div class="row">
+				<div class="col s12 center">
+					<h3><i class="mdi-content-send brown-text"></i></h3>
+					<h4>Contact Us</h4>
+					<p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="parallax-container valign-wrapper">
+		<div class="section no-pad-bot">
+			<div class="container">
+				<div class="row center">
+					<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+				</div>
+			</div>
+		</div>
+		<div class="parallax"><img src="<%= asset_path('background2.jpg') %>" alt="Unsplashed background img 3"></div>
+	</div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-    <script>
-    	$('.carousel').carousel({
-    		interval: 3500
-    	})
-    </script>
-</body>
+	<footer class="page-footer teal">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Company Bio</h5>
+					<p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+				</div>
+				<div class="col l3 s12">
+					<h5 class="white-text">Settings</h5>
+					<ul>
+						<li><a class="white-text" href="#!">Link 1</a></li>
+						<li><a class="white-text" href="#!">Link 2</a></li>
+						<li><a class="white-text" href="#!">Link 3</a></li>
+						<li><a class="white-text" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+				<div class="col l3 s12">
+					<h5 class="white-text">Connect</h5>
+					<ul>
+						<li><a class="white-text" href="#!">Link 1</a></li>
+						<li><a class="white-text" href="#!">Link 2</a></li>
+						<li><a class="white-text" href="#!">Link 3</a></li>
+						<li><a class="white-text" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<section id="team" name="team"></section>
+		<div class="container">
+			<div class="row mt centered">
+				<div class="col-lg-6 col-lg-offset-3">
+					<h1>Built with <i class="fa fa-heart"></i> from your friends</h1>
+					<h3>Our Awesome Team</h3>
+				</div>
+			</div><!-- /row -->
+			<div class="row mt centered">
+				<div class="col-lg-6">
+					<img class="img-circle" src="<%= asset_path('meir.jpg') %>" width="140" alt="">
+					<h4>Meir Snyder</h4>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+					<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+				</div><!--/col-lg-4 -->
+
+				<div class="col-lg-6">
+					<img class="img-circle" src="<%= asset_path('raz.jpg') %>" width="140" alt="">
+					<h4>Raz Goldin</h4>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+					<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+				</div><!--/col-lg-4 -->
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div>
+
+
+	<div class="footer-copyright">
+		<div class="container">
+			Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+		</div>
+	</div>
+</footer>
