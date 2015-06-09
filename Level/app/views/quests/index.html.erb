@@ -2,38 +2,47 @@
 
 <h1>Listing Quests</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Bounty</th>
-      <th>Link</th>
-      <th>Quantity</th>
-      <th>Language</th>
-      <th>Source</th>
-      <th>Admin</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<% if @quests? %>
     <% @quests.each do |quest| %>
-      <tr>
-        <td><%= quest.name %></td>
-        <td><%= quest.bounty %></td>
-        <td><%= quest.link %></td>
-        <td><%= quest.quantity %></td>
-        <td><%= quest.language_id %></td>
-        <td><%= quest.source_id %></td>
-        <td><%= quest.admin_id %></td>
-        <td><%= link_to 'Show', quest %></td>
-        <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
-        <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="container">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
+            <div class="each_quest">
+            <ul>
+              <li><%= quest.name %></li>
+              <li><%= quest.bounty %></li>
+              <li><%= quest.link %></li>
+              <li><%= quest.quantity %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-action">
+              <%= quest.language.name %>
+              <!-- <img src=""> -->
+              <%= quest.source.logo %>
+              <%= quest.admin.email %>
+          </div>
+          <div class="card-reveal" style="opacity: 0.5;">
+          <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i></span>
+
+          <span class="experience"><h4 style="position: absolute; bottom: 0; left: 33%;">
+              <%= link_to 'Show', quest %>
+              <%= link_to 'Edit', edit_quest_path(quest) %>
+              <%= link_to 'Destroy', quest, class: "waves-effect waves-light btn", method: :delete, data: { confirm: 'Are you sure?' } %></h4></span>
+            </ul>
+        </div>
     <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+</div>
+  
+<% else %>
 
+<div>
+<h3> No Quests yet but you can change that!</h3>
+</div>
+<% end %>
 <br>
-
 <%= link_to 'New Quest', new_quest_path %>
