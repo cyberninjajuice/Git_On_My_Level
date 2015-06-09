@@ -1,12 +1,14 @@
 <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo"><img width="45" style="margin-left: 1em;"
- alt="" src="<%= asset_path('mylevlLOGO.png') %>" >MyLevl</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html"><i class="mdi-action-search"></i></a></li>
-        <li><a href="components.html"><i class="mdi-action-view-module"></i></a></li>
-        <li><%= link_to "Logout", logout_path, class: "link_button logout" %></li>
-        <li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li>
-      </ul>
-    </div>
-</nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo"><img width="45" style="margin-left: 1em;"
+			alt="" src="<%= asset_path('mylevlLOGO.png') %>" >MyLevl</a>
+			<ul class="right hide-on-med-and-down">
+				<% if current_user && current_user.has_linked_github? %>
+				<li><%= link_to "Logout", logout_path, class: "link_button logout" %></li>
+				<% else %>
+				<li><%= link_to "Login with GitHub", auth_at_provider_path(provider: :github) %></li>
+				<% end %>
+				<li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li>
+			</ul>
+		</div>
+	</nav>
