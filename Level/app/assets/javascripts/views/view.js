@@ -129,7 +129,7 @@ console.log("view");
       //$('div#content-area').empty();
       console.log("rendering events")
       el.empty();
-      el.append("<h1>Events</h1>");
+      el.append("<h3>Events</h3>");
       //console.log(this.collection)
       // render a EventView for each event
       this.collection.each(function(event) {
