@@ -109,7 +109,7 @@
             <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
             <div class="each_skill">
               <h3>
-                <span class="language" > <i class="{{- skill.language.badge }}"></i>:{{- skill.language.level }} {{- skill.language.name }}</span>
+                <span class="language" > <i class="{{- skill.language.badge }}"></i>: {{- skill.language.name }} Lv{{- skill.level_info.level }}</span>
               </h3>
             </div>
           </div>
@@ -120,7 +120,7 @@
          </div>
          <div class="card-reveal" style="opacity: 0.5;">
           <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i></span>
-
+        <span class="next_level"><h4 style="position: absolute; bottom: 0; left: 70%;">Next level: {{- skill.level_info.exp_left }}</h4></span>
          <span class="experience"><h4 style="position: absolute; bottom: 0; left: 33%;">Experience: {{- skill.exp }}</h4></span>
          <span class="date"><h4>Added: {{- skill.added_at }}</h4></span>
          </div>
