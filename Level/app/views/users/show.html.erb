@@ -17,7 +17,7 @@
         <div class="container">
           <div class="user_main">
       <small class="user_info">
-        {{ if(user.email) { }}
+        {{ if(!user.email.isNull ) { }}
         {{= user.email }} 
         {{ } else { }}
         <a class="editing_user"> add email </a>
