@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   has_many :skills
 	has_many :languages, through: :events
   has_many :events
-
+  has_many :ongoing_quests
+  has_many :quests, through: :ongoing_quests
+  has_many :admins, through: :quests
 
   accepts_nested_attributes_for :authentications
 

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ongoing Quests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quest</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ongoing_quests.each do |ongoing_quest| %>
+      <tr>
+        <td><%= ongoing_quest.quest_id %></td>
+        <td><%= ongoing_quest.user_id %></td>
+        <td><%= link_to 'Show', ongoing_quest %></td>
+        <td><%= link_to 'Edit', edit_ongoing_quest_path(ongoing_quest) %></td>
+        <td><%= link_to 'Destroy', ongoing_quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ongoing quest', new_ongoing_quest_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ongoing_quests
   resources :quests
   resources :admins
   resources :users do

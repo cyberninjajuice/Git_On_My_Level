@@ -22,17 +22,17 @@
 
 <p>
   <strong>Language:</strong>
-  <%= @quest.language_id %>
+  <%= @quest.language.name %>
 </p>
 
 <p>
   <strong>Source:</strong>
-  <%= @quest.source_id %>
+  <%= @quest.source.name %>
 </p>
 
 <p>
   <strong>Admin:</strong>
-  <%= @quest.admin_id %>
+  <%= @quest.admin.email %>
 </p>
 
 <%= link_to 'Edit', edit_quest_path(@quest) %> |
