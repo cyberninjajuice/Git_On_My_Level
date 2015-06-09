@@ -12,6 +12,7 @@
 	
   user.events.create(name: "vmware", user_id: "1", uncut_exp: "7200", language_id: "1", source_id: "1")
 	Source.create(name: "Rescue Time", exp_multiplier: 0.5, logo: "rescuetime.jpg")
+  Source.create(name: "Mylevl Quests", exp_multiplier: 1, logo: "MyLevl.jpg")
   Language.create(name: "Ruby", color: "red", badge: "devicon-ruby-plain colored")
   Language.create(name: "General Software Development", color: "grey", badge: "mdi-hardware-desktop-mac")
   Language.create(name: "JavaScript", color: "brown", badge: "devicon-javascript-plain colored")
@@ -29,3 +30,5 @@
   Language.create(name: "Perl", color: "silver", badge: "perl.jpg")
   Language.create(name: "CoffeeScript", color: "coffee", badge: "devicon-coffeescript-original-wordmark colored")
   Language.create(name: "HTML", color: "white", badge: "devicon-html5-plain-wordmark colored")
+  Admin.create(email: "barbara@gmail.com", password: "password", non_profit: true, tax_id: "284595-2234")
+  Quest.create(name: "Build a new Website for my non-profit!", admin_id: 1, language_id: 2, source_id: 2, bounty: 3000, link: "http://codecademy.com", quantity: 30)

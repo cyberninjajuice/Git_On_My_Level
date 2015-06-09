@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  password_digest: MyString
+  tax_id: MyString
+  non_profit: false
+
+two:
+  email: MyString
+  password_digest: MyString
+  tax_id: MyString
+  non_profit: false

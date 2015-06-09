@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604133245) do
+ActiveRecord::Schema.define(version: 20150608225007) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "tax_id"
+    t.boolean  "non_profit"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -39,6 +48,18 @@ ActiveRecord::Schema.define(version: 20150604133245) do
     t.text     "badge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "bounty"
+    t.string   "link"
+    t.integer  "quantity"
+    t.integer  "language_id"
+    t.integer  "source_id"
+    t.integer  "admin_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "skills", force: :cascade do |t|

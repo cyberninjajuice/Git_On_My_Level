@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<% if @admins.any? %>
+<h1>All Admins</h1>
+
+    <% @admins.each do |admin| %>
+      <ul>
+        <li><%= admin.email %></li>
+        <li><%= admin.tax_id %></li>
+        <li><%= admin.non_profit %></li>
+        <li><%= link_to 'Show', admin %></li>
+        <li><%= link_to 'Edit', edit_admin_path(admin) %></li>
+        <li><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+    <% end %>
+    <% else %>
+    <div class="error">
+    <h3> There are no admins Create a new one Please! </h3>
+    </div>
+    <%end %>
+<%= link_to 'New Admin', new_admin_path %>
