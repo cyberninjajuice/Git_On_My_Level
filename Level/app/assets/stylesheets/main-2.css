@@ -219,5 +219,10 @@ progress, progress[role] {
 @keyframes bar-fill {
   0% { width: 0; }
 }
+  .parallax {
 
+  img {
+    display: block;
+  }  
+  }
 
