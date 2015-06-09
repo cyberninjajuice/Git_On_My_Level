@@ -8,7 +8,7 @@
 				<% else %>
 				<li><%= link_to "Login with GitHub", auth_at_provider_path(provider: :github) %></li>
 				<% end %>
-				<li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li>
+				<li><%= link_to "Quests: <i class="mdi-navigation-more-vert"></i>", quests_path %></li>
 			</ul>
 		</div>
 </nav>
