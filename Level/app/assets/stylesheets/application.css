@@ -12,6 +12,11 @@
  
  *= require_tree .
  
- *= style
+ 
+
+ *= require materialize
+ *= require_custom
+ *= require_style
+ *= require_main-2
  *= require_self
  */

@@ -22,3 +22,4 @@
 //= require views/view
 //= require smoothscroll.js
 //= require_tree .
+//= require materialize
