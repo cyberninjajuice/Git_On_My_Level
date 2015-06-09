@@ -125,6 +125,48 @@ class User < ActiveRecord::Base
     langs.uniq
     end
   end
+  def grand_total_exp
+    grand_total=0
+    if (self.skills.any?)
+      self.skills.each{
+        |skill| grand_total += skill.experience.to_i
+      }
+    end
+    grand_total
+  end
+
+  def get_grand_level
+    level = 0
+    multiplier = 2000
+    exp = self.grand_total_exp.to_i
+    exp_needed = 2000
+    while (exp - exp_needed > 0)
+      #follows geometric Function to calculate current Level
+      exp_needed = (multiplier*2**level)
+      level += 1
+    end
+    
+    {level: level, next_level: level+1, next_requires: exp_needed, exp_left: exp_needed-exp, exp: exp, level_percent: (exp/exp_needed*100), guild: self.get_guild_rank(level) }
+  end
+
+  def get_guild_rank(lvl)
+    if(lvl<5)
+      rank= "Beginner"
+    elsif(lvl<10)
+      rank= "Novice"
+    elsif(lvl<15)
+      rank= "Apprentice"
+    elsif(lvl<20)
+      rank= "Journeymen"
+    elsif(lvl<25)
+      rank= "Master"
+    elsif(lvl<30)
+      rank= "Grand-Master"
+    else
+      rank= "Arcane Grand-Master of the Keyboard"
+    end
+    rank
+  end
 
   def final_total(lang_id)
     total_exp=0

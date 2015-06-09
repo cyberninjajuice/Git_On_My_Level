@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @user.skill_adding
       if @user.skills.any?
         top_skill = @user.skills.order(experience: :asc).first
-        @level_info = top_skill.get_level
+        @level_info = @user.get_grand_level
       else
         @level_info = {}
       end
