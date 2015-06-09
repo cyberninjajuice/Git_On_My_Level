@@ -17,6 +17,10 @@ p {
   min-height: 380px;
   line-height: 0;
   height: auto;
+  max-height: 500px;
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
   color: rgba(255,255,255,.9);
 
  .section {
