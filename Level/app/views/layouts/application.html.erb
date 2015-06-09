@@ -10,11 +10,12 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
+<% if @user_param %>
 <script>
 var userParam = <%= @user_param %>;
 console.log("This is userParam: "+userParam);
 </script>
-
+<%end %>
 <% if @user && current_user %>
 <script>
 var signedInUserId = <%= session[:user_id] %>

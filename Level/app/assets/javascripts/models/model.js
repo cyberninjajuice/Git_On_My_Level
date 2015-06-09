@@ -1,3 +1,4 @@
+if(typeof userParam != undefined){
 var User = Backbone.Model.extend({
 	url: '/users/'+userParam+".json",
  initialize: function() {
@@ -18,3 +19,4 @@ var Skill = Backbone.Model.extend({
 });
 
 console.log("Models: Backbone Works")
+}
