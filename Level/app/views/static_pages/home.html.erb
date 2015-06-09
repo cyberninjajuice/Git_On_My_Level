@@ -32,15 +32,16 @@ div.parallax img {
 					</div>
 				</div></h3>
 				<div class="row center">
-					<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+					<h3 style="color: white;" class="header col s12 light">Many devices and one you</h3>
+					<h5 style="color: white;" class="header col s12 light">Track you're diverese skill set and grow you're level in all you're favorite programming languages<h5>
 				</div>
 				<div class="row center">
-					<a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+					<a class="btn-large waves-effect waves-light teal lighten-1" href="/oauth/github">Login with GitHub</a>
 				</div>
 				<br><br>
 			</div>
 		</div>
-		<div class="parallax"><img src="<%= asset_path('background1.jpg') %>" alt="Unsplashed background img 2"></div>
+		<div class="parallax"><img src="<%= asset_path('Main.jpg') %>" alt="Unsplashed background img 2"></div>
 	</div>
 	<div class="container">
 		<div class="section">
@@ -104,14 +105,30 @@ div.parallax img {
 		</div>
 	</div>
 
-	<div class="parallax-container valign-wrapper">
-		<div class="section no-pad-bot">
-			<div class="container">
-				<div class="row center">
-					<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+	<section id="team" name="team"></section>
+		<div class="container">
+			<div class="row mt centered">
+				<div class="col-lg-6 col-lg-offset-3">
+					<h1>Built with <i class="fa fa-heart"></i> from your friends</h1>
+					<h3>Our Awesome Team</h3>
 				</div>
-			</div>
-		<div class="parallax"><img src="<%= asset_path('background2.jpg') %>" alt="Unsplashed background img 3"></div>
+			</div><!-- /row -->
+			<div class="row mt centered">
+				<div class="col-lg-6">
+					<img class="img-circle" src="<%= asset_path('meir.jpg') %>" width="140" alt="">
+					<h4>Meir Snyder</h4>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+					<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+				</div><!--/col-lg-4 -->
+
+				<div class="col-lg-6">
+					<img class="img-circle" src="<%= asset_path('raz.jpg') %>" width="140" alt="">
+					<h4>Raz Goldin</h4>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+					<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+				</div><!--/col-lg-4 -->
+			</div><!-- /row -->
+		</div><!-- /container -->
 	</div>
 
 
@@ -146,31 +163,7 @@ div.parallax img {
 		</div>
 
 
-		<section id="team" name="team"></section>
-		<div class="container">
-			<div class="row mt centered">
-				<div class="col-lg-6 col-lg-offset-3">
-					<h1>Built with <i class="fa fa-heart"></i> from your friends</h1>
-					<h3>Our Awesome Team</h3>
-				</div>
-			</div><!-- /row -->
-			<div class="row mt centered">
-				<div class="col-lg-6">
-					<img class="img-circle" src="<%= asset_path('meir.jpg') %>" width="140" alt="">
-					<h4>Meir Snyder</h4>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-					<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
-				</div><!--/col-lg-4 -->
-
-				<div class="col-lg-6">
-					<img class="img-circle" src="<%= asset_path('raz.jpg') %>" width="140" alt="">
-					<h4>Raz Goldin</h4>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-					<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
-				</div><!--/col-lg-4 -->
-			</div><!-- /row -->
-		</div><!-- /container -->
-	</div>
+		
 
 
 	<div class="footer-copyright">
