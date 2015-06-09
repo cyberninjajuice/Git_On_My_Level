@@ -17,6 +17,10 @@ p {
   min-height: 380px;
   line-height: 0;
   height: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   max-height: 500px;
   max-width: 100%;
   min-width: 100%;
@@ -34,6 +38,7 @@ p {
     max-width: 100%;
     min-width: 100%;
     width: 100%; 
+    display: overflow;
   }
 }
 @media only screen and (max-width : 992px) {
