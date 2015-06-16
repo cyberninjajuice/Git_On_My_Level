@@ -25,7 +25,8 @@ gem 'github_api'
 gem 'sdoc', group: :doc
 gem 'httparty'
 gem 'foreman'
-gem 'capistriano'
+gem 'capistrano'
+gem 'capistrano-rails'
 
 group :development, :test do
   gem 'pry'
