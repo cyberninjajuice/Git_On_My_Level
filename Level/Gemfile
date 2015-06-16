@@ -8,6 +8,7 @@ gem 'faker'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+
 gem 'CFPropertyList'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
@@ -23,6 +24,8 @@ gem 'sorcery'
 gem 'github_api'
 gem 'sdoc', group: :doc
 gem 'httparty'
+gem 'foreman'
+gem 'capistriano'
 
 group :development, :test do
   gem 'pry'

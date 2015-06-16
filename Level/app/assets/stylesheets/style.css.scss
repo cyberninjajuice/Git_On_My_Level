@@ -34,11 +34,11 @@ p {
     min-height: 380px;
     line-height: 0;
     height: auto;
-    max-height: 500px;
+    max-height: 550px;
     max-width: 100%;
     min-width: 100%;
     width: 100%; 
-    display: overflow;
+    display: cover
   }
 }
 @media only screen and (max-width : 992px) {
