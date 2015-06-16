@@ -13,3 +13,7 @@ Integrated with the RescueTime API and Github API
 *See what skills they spend the most time on
 *Have badges for each skill
 *Show off their profile
+*Accept Quests from Employers for experience points in that level.
+
+##Admin can
+*post quests and have users complete tasks for them
