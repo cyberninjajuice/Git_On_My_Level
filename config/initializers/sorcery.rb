@@ -1,4 +1,4 @@
-  file= File.read("secrets.json")
+file= File.read("secrets.json")
   data= JSON.parse(file) 
 
 Rails.application.config.sorcery.submodules = [:external]
@@ -13,7 +13,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.github.key = CLIENTID
   config.github.secret = CLIENTSECRET
-  config.github.callback_url = "http://localhost:3000/oauth/callback?provider=github"
+  config.github.callback_url = "http://mylevl.com/oauth/callback?provider=github"
   config.github.user_info_mapping = {:email => "email"}
 
 
