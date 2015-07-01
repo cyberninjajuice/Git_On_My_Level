@@ -135,7 +135,7 @@ console.log("view");
       this.collection.each(function(event) {
         el.append(new levl.EventView({model: event}).render().el);
       });
-
+      $('#events-area').show();
       // add the view to the content-area
       $('#events-area').html(el);
       return this;
