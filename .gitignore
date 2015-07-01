@@ -52,4 +52,4 @@ bower.json
 # Ignore pow environment settings
 .powenv
 secrets.json
-rescueSecret.json
+rescueSecrets.json
