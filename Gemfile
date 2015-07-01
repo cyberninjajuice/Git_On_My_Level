@@ -27,13 +27,16 @@ gem 'sorcery'
 gem 'CFPropertyList'
 
 gem 'will_paginate'
+gem 'rails_12factor'
+gem 'puma'
+gem 'sqlite3'    
 
 gem 'sdoc', group: :doc
 
 
 group :development, :test do
   gem 'pry'
-  gem 'sqlite3'    
+
   gem 'web-console'
   gem 'spring'    
 end
@@ -45,6 +48,4 @@ end
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
-  gem 'puma'
 end
