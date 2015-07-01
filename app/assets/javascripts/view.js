@@ -58,7 +58,7 @@ console.log("view");
 
       var specifyTemp = $('#userTemp').html();
       this.template = _.template(specifyTemp)
-      user.fetch({
+      levl.user.fetch({
         success: function(model, response){
           //console.log(model)
           this.model= model;
@@ -110,7 +110,7 @@ console.log("view");
     fetchingEvents: function(){
       //console.log(this)
       thisView = this;
-      userEvents.fetch({
+      levl.userEvents.fetch({
         success: function(model, response){
           //console.log(model)
           this.template = _.template($('#event-template').html());
@@ -164,7 +164,7 @@ console.log("view");
     fetchingSkills: function(){
       //console.log(this)
       var thisView = this;
-      skills.fetch({
+      levl.skills.fetch({
         success: function(model, response){
           console.log(model)
           this.template = _.template($('#skill-template').html());
@@ -192,7 +192,7 @@ console.log("view");
       
       el.append("<h1>Skills</h1>");
       this.collection.each(function(skill) {
-        el.append(new SkillView({model: skill}).render().el);
+        el.append(new SkillView({model: levl.skill}).render().el);
       });
 
       // add the view to the content-area
@@ -206,17 +206,17 @@ console.log("view");
     console.log("hi ")
     // skills.fetch({
     //   success: function(){
-      console.log(user)
+      console.log(levl.user)
     constantView = new UserView({
-      model: user,
+      model: levl.user,
       // id: user_id
     }) 
     currentView = new SkillsView({
-        collection: skills,
+        collection: levl.skills,
         // id: user_id
     })
     eventView = new EventsView({
-      collection: userEvents,
+      collection: levl.userEvents,
       // id: user_id
     })
   }

@@ -1,3 +1,4 @@
+var levl = {};
 function initBackbone(){
   console.log("starting model");
 var User = Backbone.Model.extend({
@@ -15,14 +16,14 @@ var User = Backbone.Model.extend({
 
   var Skill = Backbone.Model.extend({
   initialize: function(){
-   console.log("skill hi")
+   console.log("skill Initialized")
   }
   });
 
 
-  user = new User();
-  event = new Event();
-  skill = new Skill();
+  levl.user = new User();
+  levl.event = new Event();
+  levl.skill = new Skill();
    $(document).ready(function() {
     startCollection();
   });

@@ -6,12 +6,12 @@ console.log("collections");
   //   urlRoot: '/user'
   // });
   var EventCollection = Backbone.Collection.extend({
-  	model: event,
+  	model: levl.event,
     url: '/users/'+userParam+'/events.json'
   });
 
   var SkillCollection = Backbone.Collection.extend({
-  	model: skill,
+  	model: levl.skill,
     url: '/users/'+userParam+'/skills.json'
     // initialize: function(models, args){
     //   this.url = function() { return args.user_url() + '/skills.json'; };
@@ -19,9 +19,8 @@ console.log("collections");
   });
 // initialize a collection of Users
 // var users = new UserCollection();
-var userEvents = new EventCollection();
-var skills = new SkillCollection();
-  $(document).ready(function() {
-    skillShow();
-  });
+levl.userEvents = new EventCollection();
+levl.skills = new SkillCollection();
+  
+  skillShow();
 }

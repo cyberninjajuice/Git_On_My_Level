@@ -16,7 +16,7 @@
 //= require backbone-min
 //= require app
 //= require_tree ./js
-//= require init
+// require init
 //= require model
 //= require collection
 //= require view

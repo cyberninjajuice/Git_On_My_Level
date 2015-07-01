@@ -10,7 +10,8 @@
           <h5 class="header col s12 light">
           Outlevel your friends in any skill!</h5>
         </div>
-        <div class="row center GitHub">
+        <div class="card-panel Github">
+        <div class="row center">
           <% if logged_in? %>
           <span class="email">
             <% if current_user.email %>
@@ -18,7 +19,7 @@
             <% else %>
             <%= link_to "Add your email!", edit_user_path(current_user), class: "btn waves-effect waves-light blue lighten-2" %>
             <% end %>
-          </span> | <span class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</small>
+          </span> | <span class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</span>
           <div class="row center GitHub">
           <div class="row"><br/></div>
             <% if current_user.has_linked_github? %>
@@ -33,6 +34,7 @@
             <a class="btn-large waves-effect waves-light teal lighten-1" href="/oauth/github">Login with GitHub</a>
             <% end %>
             </div>
+      </div>
       </div>
       <br /><br />
     </div>
@@ -111,3 +113,13 @@
   </div><!-- /row -->
   </div>
 </div><!-- /container -->
+<script>
+(function($){
+  $(function(){
+
+    $('.button-collapse').sideNav();
+    $('.parallax').parallax();
+
+  }); // end of document ready
+})(jQuery); 
+</script>
