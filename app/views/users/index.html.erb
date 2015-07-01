@@ -5,6 +5,9 @@
   <div class="flexxed-wrapper">
     <% @users.each do |user| %>
       <div class="card-panel flexxed">
+        <%if user.email %>
+        <span class="right"><%= gravatar_for(user, size: 50) %></span>
+        <% end %>
         <ul>
         <li><h4 class="truncate"><%= link_to user.email, user %></h4><small>- User since: <%= time_ago_in_words(user.created_at) %></small></li>
         <hr class="blue-border">

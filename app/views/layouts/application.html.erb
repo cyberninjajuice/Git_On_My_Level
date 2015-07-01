@@ -17,13 +17,13 @@
 var userParam = <%= @user_param %>;
 console.log("This is userParam: "+userParam);
 </script>
-<%end %>
-<% if @user && current_user %>
+  <% if @user && current_user %>
 <script>
 var signedInUserId = <%= session[:user_id] %>
 console.log("This is signed in user "+signedInUserId)
 </script>
-<%end%>
+  <%end%>
+<% end %>
 <%= render 'layouts/header' %>
 <% if flash.any? %>
 <% flash.each do |message_color, message| %>

@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require underscore-min
 //= require backbone-min
+//= require app.js
+//= require_tree ./js
 //= require model
 //= require collection
 //= require view
 //Note: Turbolinks is unrequired here as it causes isues with parallax JS, Backbone probably other JS libraries if you are using them.
 // require turbolinks
-//= require_tree .

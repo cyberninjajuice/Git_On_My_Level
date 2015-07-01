@@ -1,5 +1,3 @@
-// var UsersView;
-
 console.log("view");
   //Single View for a User Only one that Backbone should deal with.
 
@@ -221,6 +219,3 @@ console.log("view");
       // id: user_id
     })
   }
-$(document).ready(function(){
-  skillShow();
-})

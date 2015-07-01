@@ -1,4 +1,5 @@
-
+console.log("collections");
+if(typeof userParam !== "undefined"){
 // Basic Backbone Collection
 console.log("collections");
   // var UserCollection = Backbone.Collection.extend({
@@ -21,3 +22,4 @@ console.log("collections");
 // var users = new UserCollection();
 var userEvents = new EventCollection();
 var skills = new SkillCollection();
+}
