@@ -1,0 +1,129 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+li {
+  h4 {
+    margin: 5px 5px 0 5px;  
+  }
+  small {
+    line-height: .2rem;
+  }
+}
+nav ul a,
+nav .brand-logo {
+  color: #444;
+  padding: 0 2rem;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+  
+   .section {
+    width: 100%;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.button-center {
+  line-height: 240%;
+}
+.flexxed-wrapper {
+  display:   -webkit-box;
+  display:   -moz-box;
+  display:   -ms-flexbox;
+  display:   -moz-flex;
+  display:   -webkit-flex;
+  display:   flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  min-width: 100%;
+  width:     100%;
+}
+
+.flexxed {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    padding: 1%;
+}
+
+
+@media only screen and (max-width : 980px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .container {
+    padding: 0;
+    margin:  0 auto;
+  }
+}
+
+@media only screen and (max-width : 500px) {
+    .container {
+    min-width: 95%;
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 880px){
+    .flexxed {
+    max-width:  calc(95%/2);
+    min-height: 180px;
+    min-width:  calc(95%/2);
+    width:      calc(95%/2);
+
+    &:nth-child(even){
+      margin-left: 5%;
+    }
+  }
+}
+@media only screen and (min-width : 1480px) {
+  
+  .flexxed {
+    max-width: calc(96%/3);
+    min-width: calc(96%/3);
+    width: calc(96%/3);
+    margin-right: 1%;
+    
+    &:nth-child(even) {
+      margin-left: 0;
+    }
+    
+    &:nth-child(3n+3) {
+     margin-right: 0;
+    }
+  }
+}

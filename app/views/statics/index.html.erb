@@ -1,0 +1,109 @@
+<!--In Each View Page you may place a special title-->
+
+<% @title = 'Git on My Levl: Home' %>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">MyLevl</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">
+          Outlevel your friends in any skill!</h5>
+        </div>
+        <div class="row center GitHub">
+          <% if logged_in? %>
+          <span class="email">
+            <% if current_user.email %>
+            <%= current_user.email %>
+            <% else %>
+            <%= link_to "Add your email!", edit_user_path(current_user) %>
+            <% end %>
+          </span> | <small class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</small>
+            <% if current_user.has_linked_github? %>
+            <%= link_to "Delete your Account", delete_oauth_path("GitHub"), class: "link_button delete", method: :delete %>
+            <% else %>
+            <%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "link_button" %>
+            <% end %> | 
+            <%= link_to "Logout", logout_path, class: "link_button logout" %> | 
+            <%= link_to "All Users", users_path, class: "link_button users_path" %>
+            <% else %>
+            <a class="btn-large waves-effect waves-light teal lighten-1" href="/oauth/github">Login with GitHub</a>
+            <% end %>
+      </div>
+      <br /><br />
+    </div>
+  </div>
+  <div class="parallax"><img src="<%= asset_path('Main.jpg') %>" alt="Main Picture Plenty of Tools One MyLevl"></div>
+</div> <!--End Parallax 1-->
+
+<div class="container">
+  <div class="section">
+
+  <!--   Icon Section   -->
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+        <h5 class="center">Many Devices and one you</h5>
+        <p class="center">Track your diverese skill set among all your favorite programming languages and grow your level to become the Grand Code Wizard</p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="mdi-social-group"></i></h2>
+        <h5 class="center">To start setup your rescueTime!</h5>
+
+        <p class="light">Rescue Time is an app for measuring your productivity on your computer. Configure it to match <a href="#">our subcategories </a> and start gaining levels in all of your favorite programming languages!</p>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+        <h5 class="center">Quick Setup!</h5>
+
+        <p class="light">We did most of the heavy lifting for you to aggregating your experience points from various sources of information that you use daily.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Rule the open seas of your field!</h5>
+        </div>
+      </div>
+    <div class="parallax"><img src="<%= asset_path('background2.jpg') %>" alt="Unsplashed background img 2"></div>
+  </div>
+</div>
+<div class="container">
+<div class="row card-panel center light-blue">
+    <p class="light">Want to find out about how much work a potential business partner typically does in a specific language? Why ask them when you can find out their current level. Extracting from Github, Stack-Overflow, and Rescue Time we build a Skill level indicator for each of the most popular languages.</p>
+</div>
+</div>
+<div class="container">
+  <div class="card-panel">
+  <div class="row">
+      <h3 class="center">Built with <i class="fa fa-heart"></i> from your friends</h3>
+      <h4 class="center">Our Awesome Team</h4>
+  </div>
+  <div class="row">
+    <div class="col s5 cyan-text center-align">
+      <img src="<%= asset_path('meir.jpg') %>" width="140" alt="Meir Photo">
+      <h4>Meir Snyder</h4>
+      <p>Startup Enthusiast // Web Developer</p>
+      <p><a href="mailto:meirsnyder@gmail.com?subject=feedback" "email me"><i class="small mdi-content-send"></i></a></p>
+    </div>
+    <div class="col s5 light-blue-text text-darken-3 offset-s2 center-align">
+      <a href="http://linkedin.com/in/razgoldin">
+      <img class="center" src="<%= asset_path('raz.jpg') %>" width="140" alt="Raz Photo">
+      <h4>Raz Goldin</h4>
+      <p>Full Stack Developer // learn best practices for each technology and build amazing apps.</p> 
+      </a>
+      <p><a href="mailto:razgoldin@gmail.com?subject=feedback" "email me"><i class="small mdi-content-send"></i></a></p>
+    </div><!--/col-lg-4 -->
+  </div><!-- /row -->
+  </div>
+</div><!-- /container -->

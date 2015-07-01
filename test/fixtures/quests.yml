@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  bounty: 1
+  link: MyString
+  quantity: 1
+  language_id: 1
+  source_id: 1
+  admin_id: 1
+
+two:
+  name: MyString
+  bounty: 1
+  link: MyString
+  quantity: 1
+  language_id: 1
+  source_id: 1
+  admin_id: 1

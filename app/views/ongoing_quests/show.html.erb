@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quest:</strong>
+  <%= @ongoing_quest.quest_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ongoing_quest.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_ongoing_quest_path(@ongoing_quest) %> |
+<%= link_to 'Back', ongoing_quests_path %>

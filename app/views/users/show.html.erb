@@ -1,0 +1,132 @@
+1<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<div id="user-area">
+</div>
+
+<div id="content-area">
+</div>
+
+<!-- Events Card -->
+<div class="container">
+  <div class="col s12 m6">
+   <div class="card">
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
+      <h3>Events</h3>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i></span>
+      <div id="events-area">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- individual User -->
+<script type="text/template" id="userTemp">
+<div class="container">
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-content">
+        <div class="container">
+          <div class="user_main">
+      <small class="user_info">
+        {{ if(!user.email.isNull ) { }}
+        {{= user.email }} 
+        {{ } else { }}
+        <a class="editing_user"> add email </a>
+        {{ } }}
+
+        | login count: {{= user.logins }} </small>
+        <p>You have been a member with us since: {{= DateHelper.time_ago_in_words_with_parsing(user.created_at) }} last login: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}</p>
+      </div>
+      <div class="rescue_info">
+        {{ if(!user.next_level) { }}
+        <p class="error_explanation"> You haven't set up your RescueTime API Key yet. You'll need that to track your experience points and level up into a High-Wizard of the Keyboard! <a href="https://www.rescuetime.com/anapi/manage">Rescue Time</a> </p>
+        {{ } else { }}
+        <div class="top_level">
+          Level {{= user.next_level-1}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
+          <div class="experience">
+            <span class="main_experience">
+              You must gain: {{= user.exp_left}} experience left before {{= user.next_level}}
+            </span>
+          </div>
+        </div>
+        {{ } }}
+      </div>
+    </div>
+
+    <% if current_user == @user %>
+    <button class="waves-effect waves-light btn editing_user"><i class="mdi-communication-email"></i>
+      {{ if(!user.email) { }}
+      Add my Email
+      {{ }else { }} 
+      Update My Info!
+      {{ } }}
+    </button>
+    <div class="edit_form" style="display: none">
+      <form class="pure-form pure-form-aligned" id="user-account">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="email"> Email
+              <input type="text" id="email" value="{{= user.email }}">
+            </label>
+          </div>
+          <div class="pure-control-group">
+            <label for="API"> Rescue-Time API
+              <input type="text" id="rescue-key">
+            </label>
+          </div>
+          <div class="pure-controls">
+            <button class="waves-effect waves-light btn pure-button update_user"> Update!
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+</div>
+  </script>
+
+
+<!-- Skills Card -->
+<script type="text/template" id="skill-template">
+    <div class="container">
+      <div class="col s12 m6">
+        <div class="card cyan lighten-4">
+          <div class="card-content white-text">
+            <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
+            <div class="each_skill">
+              <h3>
+                <span class="language" > <i class="{{- skill.language.badge }}"></i>: {{- skill.language.name }} Lv{{- skill.level_info.level }}</span>
+              </h3>
+            </div>
+          </div>
+          <div class="card-action">
+           <progress class="{{- skill.level_info.name}}" max="{{- skill.level_info.next_requires }}" value="{{- skill.level_info.exp }}">
+           </progress>
+
+         </div>
+         <div class="card-reveal" style="opacity: 0.5;">
+          <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i></span>
+        <span class="next_level"><h4 style="position: absolute; bottom: 0; left: 70%;">Next level: {{- skill.level_info.exp_left }}</h4></span>
+         <span class="experience"><h4 style="position: absolute; bottom: 0; left: 33%;">Experience: {{- skill.exp }}</h4></span>
+         <span class="date"><h4>Added: {{- skill.added_at }}</h4></span>
+         </div>
+       </div>
+     </div>
+   </div>
+</script>
+<!-- Events Template -->
+<script type="text/template" id="event-template">
+  <div class="each_experience">
+    <span class="experience">Experience: {{= event.uncut_exp }}</span>
+    <span class="date"> Added: {{- event.added_at }}</span>
+    <span class="language" style="background: {{- event.language.color }}"> {{- event.language.name }} </span>
+  </div>
+</script> 

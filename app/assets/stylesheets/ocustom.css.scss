@@ -1,0 +1,285 @@
+.widget {
+  display: inline-block;
+  border: 1px solid #AAA;
+  background: white;
+}
+
+#chart {
+  height: 400px;
+  width: 500px;
+}
+
+svg {
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: #A18FDB;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 300;
+  fill: #333;
+}
+
+.label {
+  font-size: 18px;
+  fill: #333;
+}
+
+.axis {
+  font-size: 12px;
+  path {
+    fill: none;
+  }
+}
+section {
+  overflow: auto;
+}
+textarea {
+  resize: vertical;
+}
+.center{
+  text-align: center;
+  
+  h1 {
+    margin-bottom: 60px;
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+}
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -2px;
+}
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+footer {
+  margin-top: 45px;
+  border-top: 1px solid rgba(150, 150, 150, .5);
+
+  small{
+    float: left;
+  }
+
+  ul{
+    
+    li{
+      float: left;
+      margin-left: 20px;
+    }
+  }
+}
+.debug_dump {
+  clear:both;
+  float:left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+/* sidebar */
+aside {
+
+  section.user_info {
+    margin-top: 20px;
+  }
+
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+[type=text] {
+    cursor: text;
+}
+progress, progress[role] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-size: auto;
+  height: 70px;
+  width: 100%;
+}
+.Ruby::-webkit-progress-value {
+  background: red;
+}
+.Ruby::-moz-progress-value {
+  background: red;
+}
+.Software::-moz-progress-bar {
+  background: #4ecdc4;
+}
+
+.Software::-webkit-progress-value {
+  background: #4ecdc4;
+}
+
+
+.Javascript::-moz-progress-bar {
+  background: $d-green-cyan;
+}
+
+.Javascript::-webkit-progress-value {
+  background: $d-green-cyan;
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+.gravatar_edit {
+  margin-top: 15px;
+}
+.main_container {
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    width: 70%;
+
+    li {
+      max-width: 100%;
+      min-width: 100%;
+      overflow: none;
+      padding: 10px 0;
+      border-bottom: gray;
+      width: 100%;
+
+      span {
+        padding-right: 0px;
+        margin: 0 0;
+      }
+    }
+  }
+}
+div.hide_me {
+  display:none;
+}
+div.pagination {
+  width:100%;
+}
+form {
+  min-width: 70%;
+  width: 70%;
+  max-width: 70%;
+
+  input {
+    width: 100%;
+  }
+  .checkbox {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    span {
+      margin-left: 20px;
+      font-weight: normal;
+    }
+  }
+}
+li.full-width {
+  max-width: 100%;
+  min-width: 100%;
+  text-align: left;
+  width: 100%;
+
+  div {
+    max-width: 100%;
+    min-width: 100%;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+span.name {
+  min-width: 400px;
+  max-width: 400px;
+  width: 400px;
+}
+span.numbers {
+  min-width: 180px;
+  max-width: 180px;
+  width: 180px;
+}
+span.image {
+  min-width: 150px;
+  max-width: 150px;
+  width: 150px;
+}
+span.timestamp {
+  min-width: 250px;
+  max-width: 250px;
+  width: 250px;
+  font-size: .8em;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}

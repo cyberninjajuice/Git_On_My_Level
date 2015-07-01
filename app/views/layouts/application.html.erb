@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--Here put your default website's name -->
+  <title><%= @title || "Website" %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= render 'layouts/shim' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if @user_param %>
+<script>
+var userParam = <%= @user_param %>;
+console.log("This is userParam: "+userParam);
+</script>
+<%end %>
+<% if @user && current_user %>
+<script>
+var signedInUserId = <%= session[:user_id] %>
+console.log("This is signed in user "+signedInUserId)
+</script>
+<%end%>
+<%= render 'layouts/header' %>
+<% if flash.any? %>
+<% flash.each do |message_color, message| %>
+<div class="row card-panel <%= message_color %>-text"> <%= message %>
+</div>
+<%end%>
+<%end%>
+<% if !flash.any? && notice %>
+<div class="row card-panel">
+<p id="notice"><%= notice %></p>
+</div>
+<% end %>
+<%= yield %>
+
+<%= render 'layouts/footer' %>
+</body>
+</html>
