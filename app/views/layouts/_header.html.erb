@@ -11,8 +11,9 @@
 
 <nav>
   <div class="nav-wrapper">
-    <%= link_to "My Website", root_path, class:"brand-logo" %>
-    <ul class="right">
+      <a href="/" class="brand-logo"><img width="45" style="margin-left: 1em;"
+      alt="" src="<%= asset_path('mylevlLOGO.png') %>" >MyLevl</a>
+    <ul class="right hide-on-small-and-down">
       <li><%= link_to "Home", root_path %></li>
       <li> <%= link_to "Users", users_path %></li>
       <!-- Dropdown Trigger -->
