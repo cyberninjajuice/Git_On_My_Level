@@ -2,7 +2,7 @@
 console.log("view");
   //Single View for a User Only one that Backbone should deal with.
 
-	UserView = Backbone.View.extend({
+	levl.UserView = Backbone.View.extend({
     tagName: 'div',
     initialize: function(){
       this.listenTo(this.model, "sync, add, remove, destroy, update", this.fetchingSkills);
@@ -88,7 +88,7 @@ console.log("view");
     }
   });
 
-  EventView = Backbone.View.extend({
+  levl.EventView = Backbone.View.extend({
 		tagName: 'li',
 		initialize: function(){
       this.template = _.template($('#event-template').html())
@@ -99,7 +99,7 @@ console.log("view");
 		}
 	});
 
-	EventsView = Backbone.View.extend({
+	levl.EventsView = Backbone.View.extend({
 		tagName: 'ul',
 		initialize: function() {
       console.log("passed this "+this.id)
@@ -142,7 +142,7 @@ console.log("view");
 
 	});
 
-  SkillView = Backbone.View.extend({
+  levl.SkillView = Backbone.View.extend({
     tagName: 'li',
     initialize: function(){
       this.template = _.template($('#skill-template').html())
@@ -153,23 +153,24 @@ console.log("view");
     }
   });
 
-  SkillsView = Backbone.View.extend({
+  levl.SkillsView = Backbone.View.extend({
     tagName: 'ul',
+    
     initialize: function() {
       console.log("initiated")
-      // console.log("passed this "+this.id)
+      console.log(this);
       this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingSkills);
       this.fetchingSkills();
     },
+
     fetchingSkills: function(){
-      //console.log(this)
       var thisView = this;
+      console.log(thisView);
       levl.skills.fetch({
         success: function(model, response){
           console.log(model)
-          this.template = _.template($('#skill-template').html());
-          //console.log(this.template)
-          console.log(thisView.render());
+          thisView.template = _.template($('#skill-template').html());
+          
           thisView.render();
         },
         error: function(errors){
@@ -183,23 +184,18 @@ console.log("view");
       console.log("rendering!")
       var el = this.$el;
       el.empty();
-      // clear the content-area.
-      //$('div#content-area').empty();
-
-
       console.log(this.collection)
       //render a SkillView for each skill
       
       el.append("<h1>Skills</h1>");
       this.collection.each(function(skill) {
-        el.append(new SkillView({model: levl.skill}).render().el);
+        el.append(new levl.SkillView({model: levl.skill}).render().el);
       });
 
       // add the view to the content-area
       $('#content-area').html(el);
       //console.log(d3)
     }
-
   });
 
  skillShow = function() {
@@ -207,15 +203,15 @@ console.log("view");
     // skills.fetch({
     //   success: function(){
       console.log(levl.user)
-    constantView = new UserView({
+    levl.constantView = new levl.UserView({
       model: levl.user,
       // id: user_id
     }) 
-    currentView = new SkillsView({
+    levl.currentView = new levl.SkillsView({
         collection: levl.skills,
         // id: user_id
     })
-    eventView = new EventsView({
+    levl.eventView = new levl.EventsView({
       collection: levl.userEvents,
       // id: user_id
     })
