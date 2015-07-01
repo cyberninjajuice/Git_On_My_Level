@@ -1,12 +1,12 @@
-console.log("models");
-if(typeof userParam !== "undefined"){
-  var User = Backbone.Model.extend({
+function initBackbone(){
+  console.log("starting model");
+var User = Backbone.Model.extend({
   url: '/users/'+userParam+".json",
  initialize: function() {
   console.log("user hi")
   }
  });
- user = new User();
+
  var Event = Backbone.Model.extend({
   initialize: function(){
     console.log("event hi");
@@ -19,8 +19,11 @@ if(typeof userParam !== "undefined"){
   }
   });
 
-  console.log("Models: Backbone Works")
-$(document).ready(function(){
-  skillShow();
-});
+
+  user = new User();
+  event = new Event();
+  skill = new Skill();
+   $(document).ready(function() {
+    startCollection();
+  });
 }

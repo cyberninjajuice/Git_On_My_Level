@@ -8,7 +8,6 @@
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
       //Modified Source to still work with Rails!
-      console.log("starting function");
       $(input_selector).each(function(index, element) {
         Materialize.indicateErrors(element);
         if ($(element).val().length > 0 || $(this).attr('placeholder') !== undefined) {

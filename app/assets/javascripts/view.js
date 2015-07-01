@@ -1,3 +1,4 @@
+
 console.log("view");
   //Single View for a User Only one that Backbone should deal with.
 
@@ -201,7 +202,7 @@ console.log("view");
 
   });
 
- skillShow= function() {
+ skillShow = function() {
     console.log("hi ")
     // skills.fetch({
     //   success: function(){

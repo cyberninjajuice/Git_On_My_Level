@@ -15,12 +15,13 @@
 <% if @user_param %>
 <script>
 var userParam = <%= @user_param %>;
-console.log("This is userParam: "+userParam);
+//console.log("This is userParam: "+userParam);
 </script>
   <% if @user && current_user %>
 <script>
 var signedInUserId = <%= session[:user_id] %>
-console.log("This is signed in user "+signedInUserId)
+$(document).ready(function() {initBackbone();
+});
 </script>
   <%end%>
 <% end %>

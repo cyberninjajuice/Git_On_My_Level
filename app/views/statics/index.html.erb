@@ -16,19 +16,23 @@
             <% if current_user.email %>
             <%= current_user.email %>
             <% else %>
-            <%= link_to "Add your email!", edit_user_path(current_user) %>
+            <%= link_to "Add your email!", edit_user_path(current_user), class: "btn waves-effect waves-light blue lighten-2" %>
             <% end %>
-          </span> | <small class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</small>
+          </span> | <span class="time"> last update: <%= time_ago_in_words(current_user.updated_at) %> | <%= current_user.logins %> Logins |</small>
+          <div class="row center GitHub">
+          <div class="row"><br/></div>
             <% if current_user.has_linked_github? %>
-            <%= link_to "Delete your Account", delete_oauth_path("GitHub"), class: "link_button delete", method: :delete %>
+
+            <%= link_to "Delete your Account", delete_oauth_path("GitHub"), class: "btn waves-effect waves-light red lighten-2", method: :delete %>
             <% else %>
-            <%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "link_button" %>
+            <%= link_to "Sign up through GitHub", auth_at_provider_path(provider: :github), class: "btn waves-effect waves-light purple lighten-1" %>
             <% end %> | 
-            <%= link_to "Logout", logout_path, class: "link_button logout" %> | 
-            <%= link_to "All Users", users_path, class: "link_button users_path" %>
+            <%= link_to "Logout", logout_path, class: "btn waves-effect waves-light grey lighten-1" %> | 
+            <%= link_to "All Users", users_path, class: "btn waves-effect waves-light teal lighten-1 users_path" %>
             <% else %>
             <a class="btn-large waves-effect waves-light teal lighten-1" href="/oauth/github">Login with GitHub</a>
             <% end %>
+            </div>
       </div>
       <br /><br />
     </div>
