@@ -53,3 +53,4 @@ bower.json
 .powenv
 secrets.json
 rescueSecrets.json
+rescueSecret.json
