@@ -1,5 +1,6 @@
-(function ($) {
 
+(function ($) {
+console.log("parallaxing");
     $.fn.parallax = function () {
       var window_width = $(window).width();
       // Parallax Scripts
@@ -55,4 +56,4 @@
       });
 
     };
-}( jQuery ));
+}( $ ));

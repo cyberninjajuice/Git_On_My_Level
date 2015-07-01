@@ -14,8 +14,9 @@
 //= require jquery_ujs
 //= require underscore-min
 //= require backbone-min
-//= require app.js
+//= require app
 //= require_tree ./js
+//= require init
 //= require model
 //= require collection
 //= require view
