@@ -30,7 +30,8 @@ console.log("view");
           thisView.fetchingUser();
           $("div.edit_form").hide();
           $("button.editing_user").show();
-        }, error: function(errors){ console.log(errors);}
+        },
+         error: function(errors){ console.log(errors);}
         },
         { patch: true }
         )
@@ -158,7 +159,6 @@ console.log("view");
     
     initialize: function() {
       console.log("initiated")
-      console.log(this);
       this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingSkills);
       this.fetchingSkills();
     },
@@ -182,6 +182,7 @@ console.log("view");
 
     render: function() {
       console.log("rendering!")
+      console.log(this);
       var el = this.$el;
       el.empty();
       console.log(this.collection)
@@ -189,7 +190,7 @@ console.log("view");
       
       el.append("<h1>Skills</h1>");
       this.collection.each(function(skill) {
-        el.append(new levl.SkillView({model: levl.skill}).render().el);
+        el.append(new levl.SkillView({model: skill}).render().el);
       });
 
       // add the view to the content-area

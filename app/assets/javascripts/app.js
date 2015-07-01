@@ -3,6 +3,7 @@ _.templateSettings = {
      interpolate : /\{\{=([\s\S]+?)\}\}/g,
      escape      : /\{\{-([\s\S]+?)\}\}/g
   };
+  var levl = {};
   //From deadkarma Time_Ago_gist!
   var DateHelper = {
   // Takes the format of "Jan 15, 2007 15:45:00 GMT" and converts it to a relative time

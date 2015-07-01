@@ -16,12 +16,13 @@
 <script>
 var userParam = <%= @user_param %>;
 //console.log("This is userParam: "+userParam);
+$(document).ready(function() {
+  initBackbone();
+});
 </script>
   <% if @user && current_user %>
 <script>
 var signedInUserId = <%= session[:user_id] %>
-$(document).ready(function() {initBackbone();
-});
 </script>
   <%end%>
 <% end %>
