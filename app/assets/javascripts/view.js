@@ -133,7 +133,7 @@ console.log("view");
       //console.log(this.collection)
       // render a EventView for each event
       this.collection.each(function(event) {
-        el.append(new EventView({model: event}).render().el);
+        el.append(new levl.EventView({model: event}).render().el);
       });
 
       // add the view to the content-area
