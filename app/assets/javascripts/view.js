@@ -98,7 +98,6 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
       this.template = _.template($('#event-template').html())
     },
 		render: function(){
-      this.$el.addClass("collection-item");
 			this.$el.html(this.template({event: this.model.toJSON()}));
 			return this;	
 		}
@@ -107,7 +106,8 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
 	levl.EventsView = Backbone.View.extend({
 		tagName: 'ul',
 		initialize: function() {
-      console.log("passed this "+this.id)
+      console.log("passed this "+this.id);
+      this.$el.addClass("collection");
       this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingEvents);
       this.fetchingEvents();
 		},
