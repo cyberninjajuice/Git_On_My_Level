@@ -4,15 +4,9 @@
  * Made By MaterializeCSS.com
  */
 $primary-color: color("grey", "darken-2") !default;
-$primary-color-light: false !default;
-$primary-color-dark: false !default;
-@if not $primary-color-light {
-  $primary-color-light: lighten($primary-color, 15%);
-}
-@if not $primary-color-dark {
-  $primary-color-dark: darken($primary-color, 15%);
-}
-$secondary-color: color("teal", "lighten-1") !default;
+$primary-color-light: color("grey", "base") !default;
+$primary-color-dark: color("grey", "darken-4") !default;
+$secondary-color: color("cyan", "darken-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 
