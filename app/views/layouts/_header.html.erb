@@ -25,8 +25,8 @@
       <% end %>
     </ul>  
     <ul class="side-nav" id="mobilize">
-      <li><%= link_to "Home", root_path %></li>
-      <li> <%= link_to "Users", users_path %></li>
+      <li><%= link_to "Home", root_path, class:"cyan-text" %></li>
+      <li> <%= link_to "Users", users_path, class:"lime-text" %></li>
       <% if logged_in? %>
         <li><a class="dropdown-button" href="#" data-activates="dropdown1">
         Profile 
