@@ -9,7 +9,7 @@
         <span class="right"><%= gravatar_for(user, size: 50) %></span>
         <% end %>
         <ul>
-        <li><h6 class="truncate"><%= link_to user.email, user %></h6><small>- User since: <%= time_ago_in_words(user.created_at) %></small></li>
+        <li><h5 class="truncate"><%= link_to user.email, user %></h5><small>- User since: <%= time_ago_in_words(user.created_at) %></small></li>
         <hr class="blue-border">
         <li><%= link_to 'Show', user %> 
         <% if (current_user && user == current_user) %>
