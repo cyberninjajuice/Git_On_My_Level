@@ -14,9 +14,6 @@
 <div class="container">
 <div class="col s12 m6">
   <div class="card large">
-    <div class="card-content">
-    <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
-    </div>
       <div id="events-area">
 
       </div>
@@ -53,7 +50,7 @@
         <p class="error_explanation"> {{= user.email }} hasn't set up their RescueTime API Key yet. We need that to track experience points and Levl up to High-Wizard of the Keyboard! <a href="https://www.rescuetime.com/anapi/manage">Rescue Time</a> </p>
         {{ } else { }}
         <div class="top_level">
-          Level {{= user.next_level-1}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
+          Level: {{= user.next_level-1}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
           <div class="experience">
             <span class="main_experience">
               must gain: {{= user.exp_left}} experience left before {{= user.next_level}}
@@ -109,7 +106,7 @@
             <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
             <div class="each_skill">
               <h3>
-                <span class="language" > <i class="{{- skill.language.badge }}"></i>: {{- skill.language.name }} Lv{{- skill.level_info.level }}</span>
+                <span class="language" > <i class="{{- skill.language.badge }}"></i>: {{- skill.language.name }} Levl {{- skill.level_info.level }}</span>
               </h3>
             </div>
           </div>
@@ -131,13 +128,14 @@
 <!-- Events Template -->
 <script type="text/template" id="event-template">
   
-
+        <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><h3> Events </h3><i class="mdi-navigation-more-vert right"></i></span>
+        </div>
         <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"> Gained Experience By: <i class="mdi-navigation-close right"></i></span>
         <div class="each_experience">
         <span class="experience">Experience: {{= event.uncut_exp }}</span>
-        <span class="date"> Added: {{- event.added_at }}</span>
-        <span class="language {{- event.language.color }}"> {{- event.language.name }} </span>
+        <span class="date"> Added: {{= event.added_at }}</span>
+        <span class="language {{- event.language.color }}"> {{= event.language.name }} </span>
         </div>
-
+        </div>
 </script> 
