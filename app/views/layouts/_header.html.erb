@@ -1,5 +1,8 @@
 <!-- Dropdown Structure -->
 <ul id="profile" class="dropdown-content">
+  <script>
+  console.log("dropdown");
+  </script>
   <% if logged_in? %>
   <li><%= link_to "Profile", current_user %></li>
   <li><%= link_to "Configure", edit_user_path(current_user) %></li>
