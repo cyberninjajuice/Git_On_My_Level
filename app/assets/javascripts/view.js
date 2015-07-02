@@ -108,7 +108,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
 		tagName: 'ul',
 		initialize: function() {
       console.log("passed this "+this.id);
-      this.$el.addClass("collection");
+      this.$el.addClass("collection overflowing");
       this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingEvents);
       this.fetchingEvents();
 		},
