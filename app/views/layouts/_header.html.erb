@@ -22,7 +22,7 @@
         Profile 
         <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
       <% else %>
-      <li><%= auth_at_provider_path(provider: :github), class: "purple-text lighten-1"%></li>
+      <li><%= link_to "GitHub Login", auth_at_provider_path(provider: :github), class: "purple-text lighten-1"%></li>
       <% end %>
     </ul>
   </div>
