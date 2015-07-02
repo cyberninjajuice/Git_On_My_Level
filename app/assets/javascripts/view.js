@@ -95,6 +95,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
   levl.EventView = Backbone.View.extend({
 		tagName: 'li',
 		initialize: function(){
+      this.$el.addClass("collection-item");
       this.template = _.template($('#event-template').html())
     },
 		render: function(){
