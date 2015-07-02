@@ -29,12 +29,13 @@
     <div class="card-content">
       <span class="card-title activator deep-purple-text"><h3> Events </h3><i class="mdi-navigation-more-vert right"></i></span>
     </div>
+    <div class="card-reveal">
       <div id="events-area">
 
       </div>
     </div>
   </div>
-  </div>
+</div>
 </div>
 
 <!-- individual User -->
@@ -136,11 +137,10 @@
 </script>
 <!-- Events Template -->
 <script type="text/template" id="event-template">
-        <div class="card-reveal">
+        
         <div class="each_experience">
         <span class="experience">Experience: {{= event.uncut_exp }}</span>
         <span class="date"> Added: {{= event.added_at }}</span>
         <span class="language {{- event.language.color }}"> {{= event.language.name }} </span>
-        </div>
         </div>
 </script> 
