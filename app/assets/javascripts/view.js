@@ -98,6 +98,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
       this.template = _.template($('#event-template').html())
     },
 		render: function(){
+      this.$el.addClass("collection-item");
 			this.$el.html(this.template({event: this.model.toJSON()}));
 			return this;	
 		}
