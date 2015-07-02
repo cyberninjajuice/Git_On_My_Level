@@ -191,6 +191,7 @@ console.log("view");
 
     handleNone: function() {
       var el = this.$el;
+      console.log(el);
       el.append("<div class='red lighten-3'>There are no Skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time has not been set up yet.</a></div>");
     },
     render: function() {
