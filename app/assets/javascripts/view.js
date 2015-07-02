@@ -133,7 +133,6 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
     },
 
     handleNone: function() {
-      console.log(this.$el);
       $('#events-area').append($('<div class="field_with_errors">There are no Experience-Gaining events because <a class="white-text" href="http://rescuetime.com"> Rescue Time has not been set up yet.</a></div>'));
     },
 		render: function() {
@@ -191,8 +190,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
     },
 
     handleNone: function() {
-      var el = this.$el;
-      console.log(el);
+      console.log("handling nothing!");
       $('#content-area').append($("<div class='red lighten-3'><p>There are no Skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time </a> has not been set up yet.</p></div>"));
     },
     render: function() {
