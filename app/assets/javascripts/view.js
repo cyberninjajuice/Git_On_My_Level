@@ -133,13 +133,13 @@ console.log("view");
 
     handleNone: function() {
       var el = this.$el;
-      el.append("<div class='red lighten-3'>There are no Experience-Gaining events because <a class='white-text' href='http://rescuetime.com'> Rescue Time has not been set up yet.</a></div>");
+      el.append($("<div class='red lighten-3'>There are no Experience-Gaining events because <a class='white-text' href='http://rescuetime.com'> Rescue Time has not been set up yet.</a></div>"));
     },
 		render: function() {
       var el = this.$el;
       console.log("rendering events")
       el.empty();
-      //console.log(this.collection)
+      el.append($('<span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i></span>'));
       // render a EventView for each event
       this.collection.each(function(event) {
         el.append(new levl.EventView({model: event}).render().el);
@@ -192,7 +192,7 @@ console.log("view");
     handleNone: function() {
       var el = this.$el;
       console.log(el);
-      el.append("<div class='red lighten-3'>There are no Skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time has not been set up yet.</a></div>");
+      el.append($("<div class='red lighten-3'>There are no Skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time has not been set up yet.</a></div>"));
     },
     render: function() {
       console.log("rendering!")
