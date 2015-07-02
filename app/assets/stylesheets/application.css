@@ -11,9 +11,10 @@
  * file per style scope.
  *
  *= require Materialize
- *= require ocustom
+ 
  *= require custom
-
+ *= require project
+ 
  * require_tree .
  *= require_self
  */

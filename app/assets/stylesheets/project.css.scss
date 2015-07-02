@@ -128,7 +128,7 @@ progress, progress[role] {
 
 .field_with_errors {
   .form-control {
-    color: red;
+    color: $error-color;
   }
 }
 .gravatar {
@@ -239,13 +239,13 @@ span.timestamp {
 }
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: $error-color;
   display: table;
 }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid $error-color;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -257,7 +257,7 @@ span.timestamp {
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
+    background-color: $error-color;
     color: #fff;
   }
   ul li {
