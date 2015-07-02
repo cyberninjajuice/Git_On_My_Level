@@ -11,8 +11,18 @@
 
 <!-- Events Card -->
 
+<div class="container">
+<div class="col s12 m6">
+  <div class="card large">
+    <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
+    </div>
+      <div id="events-area">
 
-<div id="events-area">
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 
 <!-- individual User -->
@@ -23,25 +33,29 @@
       <div class="card-content">
         <div class="container">
           <div class="user_main">
-      <small class="user_info">
-        {{ if( !user.email.isNull ) { }}
-          <span class="green-text">{{= user.email }} </span>
-        {{ } else { }}
-          <a class="waves-effect waves-light btn editing_user"> Add email </a>
-        {{ } }}
+          <small class="user_info">
+          {{ if( !user.email.isNull ) { }}
+            <span class="green-text">{{= user.email }} </span>
+          <% if current_user == @user %>
+          {{ } else { }}
+            <a class="waves-effect waves-light btn editing_user"> Add email </a>
+          {{ } }}
 
         | login count: {{= user.logins }} </small>
         <p>You have been a member with us since: {{= DateHelper.time_ago_in_words_with_parsing(user.created_at) }} last login: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}</p>
       </div>
+      <% else %>
+        <p> User last updated their info: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}. </p>
+      <% end %>
       <div class="rescue_info">
-        {{ if(!user.next_level) { }}
-        <p class="error_explanation"> You haven't set up your RescueTime API Key yet. You'll need that to track your experience points and level up into a High-Wizard of the Keyboard! <a href="https://www.rescuetime.com/anapi/manage">Rescue Time</a> </p>
+        {{ if(user.next_level.isNull) { }}
+        <p class="error_explanation"> {{= user.email }} hasn't set up their RescueTime API Key yet. We need that to track experience points and Levl up to High-Wizard of the Keyboard! <a href="https://www.rescuetime.com/anapi/manage">Rescue Time</a> </p>
         {{ } else { }}
         <div class="top_level">
           Level {{= user.next_level-1}} {{- user.name }} ({{- user.exp}}/{{- user.next_requires}})
           <div class="experience">
             <span class="main_experience">
-              You must gain: {{= user.exp_left}} experience left before {{= user.next_level}}
+              must gain: {{= user.exp_left}} experience left before {{= user.next_level}}
             </span>
           </div>
         </div>
@@ -50,7 +64,7 @@
     </div>
 
     <% if current_user == @user %>
-    <button class="waves-effect waves-light btn editing_user"><i class="mdi-communication-email"></i>
+    <button class="waves-effect waves-light btn editing_user"><i class="mdi-social-person"></i>
       {{ if(!user.email) { }}
       Add my Email
       {{ }else { }} 
@@ -115,23 +129,14 @@
 </script>
 <!-- Events Template -->
 <script type="text/template" id="event-template">
-  {{ if ( event.length > 0) { }}
-  <div class="container">
-    <div class="col s12 m6">
-      <div class="card large">
-        <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
-        </div>
+  
+
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"> Gained Experience By: <i class="mdi-navigation-close right"></i></span>
         <div class="each_experience">
         <span class="experience">Experience: {{= event.uncut_exp }}</span>
         <span class="date"> Added: {{- event.added_at }}</span>
-        <span class="language" style="background: {{- event.language.color }}"> {{- event.language.name }} </span>
+        <span class="language {{- event.language.color }}"> {{- event.language.name }} </span>
         </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  {{ } }}
+
 </script> 
