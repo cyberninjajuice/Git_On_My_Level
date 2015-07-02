@@ -8,17 +8,6 @@
    </li>
   <% end %>
 </ul>
-<ul class="side-nav" id="mobilize">
-  <li><%= link_to "Home", root_path, class:"cyan-text" %></li>
-  <li> <%= link_to "Users", users_path, class:"lime-text" %></li>
-  <% if logged_in? %>
-    <li><a href="#" class="dropdown-button" data-activates="profile">
-    Profile 
-    <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
-  <% else %>
-  <li><%= link_to "GitHub Login", auth_at_provider_path(provider: :github), class: "purple-text lighten-1"%></li>
-  <% end %>
-</ul>
 
 <nav>
   <div class="nav-wrapper yellow lighten-2">
@@ -32,8 +21,22 @@
         Profile 
         <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
       <% else %>
-      <li><%= link_to "GitHub Login", auth_at_provider_path(provider: :github), class: "purple-text lighten-1"%></li>
+      <li><%= link_to "GitHub Login", auth_at_provider_path(provider: :github), class: "purple-text"%></li>
       <% end %>
-    </ul> 
+    </ul>
+    <ul class="side-nav" id="mobilize">
+    <script>
+    console.log("hi");
+    </script>
+      <li><%= link_to "Home", root_path, class:"cyan-text" %></li>
+      <li> <%= link_to "Users", users_path, class:"lime-text" %></li>
+      <% if logged_in? %>
+        <li><a href="#" class="dropdown-button" data-activates="profile">
+        Profile 
+        <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      <% else %>
+      <li><%= link_to "GitHub Login", auth_at_provider_path(provider: :github), class:"purple-text" %></li>
+      <% end %>
+    </ul>
   </div>
 </nav>
