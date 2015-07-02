@@ -56,7 +56,7 @@
         <p> User last updated their info: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}. </p>
       <% end %>
       <div class="rescue_info">
-        {{ if(user.next_level.isNull) { }}
+        {{ if(null == user.next_level) { }}
         <p class="error_explanation"> {{= user.email }} hasn't set up their RescueTime API Key yet. We need that to track experience points and Levl up to High-Wizard of the Keyboard! <a href="https://www.rescuetime.com/anapi/manage">Rescue Time</a> </p>
         {{ } else { }}
         <div class="top_level">
