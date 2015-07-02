@@ -179,8 +179,11 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
         success: function(model, response){
           console.log(model)
           thisView.template = _.template($('#skill-template').html());
-          
-          thisView.render();
+          if(model && model.length){
+            thisView.render();
+          } else {
+            thisView.handleNone();
+          }
         },
         error: function(errors){
           console.log(errors)
@@ -190,7 +193,6 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
     },
 
     handleNone: function() {
-      console.log("handling nothing!");
       $('#content-area').append($("<div class='red lighten-3'><p>There are no Skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time </a> has not been set up yet.</p></div>"));
     },
     render: function() {
