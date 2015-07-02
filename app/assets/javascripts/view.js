@@ -193,7 +193,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
     },
 
     handleNone: function() {
-      $('#content-area').append($("<div class='field_with_errors card'><span>There are no skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time </a> has not been set up yet.</span></div>"));
+      $('#content-area').append($("<div class='field_with_errors card-panel'><span>There are no skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time </a> has not been set up yet.</span></div>"));
     },
     render: function() {
       console.log("rendering!")
