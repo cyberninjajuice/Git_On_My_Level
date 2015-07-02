@@ -4,7 +4,7 @@
   <li><%= link_to "Profile", current_user %></li>
   <li><%= link_to "Configure", edit_user_path(current_user) %></li>
   <li>
-  <%= link_to "Log out", logout_path, method:"delete", class:"orange darken-1" %>
+  <%= link_to "Log out", logout_path, method:"delete", class:"field_with_errors" %>
    </li>
   <% end %>
 </ul>
