@@ -34,7 +34,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
          error: function(errors){ console.log(errors);}
         },
         { patch: true }
-        )
+        );
       } else {
         this.model.save(
         {email: email.val()},
@@ -47,8 +47,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
         }
         },
         { patch: true }
-        
-        )
+        );
       }
     },
 
@@ -114,7 +113,7 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
 
     fetchingEvents: function(){
       //console.log(this)
-      thisView = this;
+      var thisView = this;
       levl.userEvents.fetch({
         success: function(model, response){
           this.template = _.template($('#event-template').html());
