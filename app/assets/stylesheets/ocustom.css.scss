@@ -284,8 +284,10 @@ span.timestamp {
     list-style: square;
   }
 }
-#events-area {
+.events_card {
   display: none;
+}
+#events-area {
   height: 4em;
   min-height: 4em;
   max-height: 4em;

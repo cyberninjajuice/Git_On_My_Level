@@ -113,7 +113,8 @@ console.log("view");
       thisView = this;
       levl.userEvents.fetch({
         success: function(model, response){
-          //console.log(model)
+          console.log(model);
+          console.log(response);
           this.template = _.template($('#event-template').html());
           thisView.render(thisView.id)
         },
@@ -125,8 +126,6 @@ console.log("view");
     },
 		render: function() {
       var el = this.$el;
-      //clear the content-area.
-      //$('div#content-area').empty();
       console.log("rendering events")
       el.empty();
       //console.log(this.collection)
@@ -134,8 +133,8 @@ console.log("view");
       this.collection.each(function(event) {
         el.append(new levl.EventView({model: event}).render().el);
       });
-      $('#events-area').show();
       // add the view to the content-area
+      $('.events_card').show();
       $('#events-area').html(el);
       return this;
     }

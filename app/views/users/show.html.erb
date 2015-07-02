@@ -11,9 +11,12 @@
 
 <!-- Events Card -->
 
-<div class="container">
+<div class="container events_card">
 <div class="col s12 m6">
   <div class="card large">
+    <div class="card-content">
+      <span class="card-title activator deep-purple-text"><h3> Events </h3><i class="mdi-navigation-more-vert right"></i></span>
+    </div>
       <div id="events-area">
 
       </div>
@@ -127,10 +130,6 @@
 </script>
 <!-- Events Template -->
 <script type="text/template" id="event-template">
-  
-        <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"><h3> Events </h3><i class="mdi-navigation-more-vert right"></i></span>
-        </div>
         <div class="card-reveal">
         <div class="each_experience">
         <span class="experience">Experience: {{= event.uncut_exp }}</span>
