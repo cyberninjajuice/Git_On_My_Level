@@ -48,8 +48,7 @@
           {{ if(user.email.isNull) { }}
             <a class="waves-effect waves-light btn editing_user"> Add email </a>
           {{ } }}
-</script>
-<script type="text/template">
+
         | login count: {{= user.logins }} </small>
         <p>You have been a member with us since: {{= DateHelper.time_ago_in_words_with_parsing(user.created_at) }} last login: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}</p>
       </div>
