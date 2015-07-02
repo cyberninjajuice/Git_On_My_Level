@@ -6,12 +6,17 @@
  * Made By MaterializeCSS.com
  */
 li {
+  line-height: 1rem;
+
   h4 {
     margin: 5px 5px 0 5px;  
   }
   small {
     line-height: .2rem;
   }
+}
+br {
+  line-height: 1rem;
 }
 nav ul a,
 nav .brand-logo {

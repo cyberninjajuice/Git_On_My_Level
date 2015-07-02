@@ -10,21 +10,10 @@
 </div>
 
 <!-- Events Card -->
-<div class="container">
-  <div class="col s12 m6">
-   <div class="card">
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
-    </div>
-    <div class="card-reveal large-card">
-      <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i></span>
 
-      <div id="events-area">
-      </div>
-    </div>
-  </div>
+
+<div id="events-area">
 </div>
-
 
 <!-- individual User -->
 <script type="text/template" id="userTemp">
@@ -35,10 +24,10 @@
         <div class="container">
           <div class="user_main">
       <small class="user_info">
-        {{ if(!user.email.isNull ) { }}
-        {{= user.email }} 
+        {{ if( !user.email.isNull ) { }}
+          <span class="green-text">{{= user.email }} </span>
         {{ } else { }}
-        <a class="editing_user"> add email </a>
+          <a class="waves-effect waves-light btn editing_user"> Add email </a>
         {{ } }}
 
         | login count: {{= user.logins }} </small>
@@ -126,9 +115,23 @@
 </script>
 <!-- Events Template -->
 <script type="text/template" id="event-template">
-  <div class="each_experience">
-    <span class="experience">Experience: {{= event.uncut_exp }}</span>
-    <span class="date"> Added: {{- event.added_at }}</span>
-    <span class="language" style="background: {{- event.language.color }}"> {{- event.language.name }} </span>
+  {{ if ( event.length > 0) { }}
+  <div class="container">
+    <div class="col s12 m6">
+      <div class="card large">
+        <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><i class="mdi-navigation-more-vert right"></i></span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"> Gained Experience By: <i class="mdi-navigation-close right"></i></span>
+        <div class="each_experience">
+        <span class="experience">Experience: {{= event.uncut_exp }}</span>
+        <span class="date"> Added: {{- event.added_at }}</span>
+        <span class="language" style="background: {{- event.language.color }}"> {{- event.language.name }} </span>
+        </div>
+      </div>
+    </div>
   </div>
+  </div>
+  {{ } }}
 </script> 
