@@ -62,9 +62,13 @@ console.log("view");
       levl.user.fetch({
         success: function(model, response){
           //console.log(model)
-          this.model= model;
-
-          thisView.render(thisView.id, model);
+          if(model){
+            thisView.model = model.toJSON();
+            console.log(thisView.model);
+            if (thisView.model.email)
+              thisView.render(thisView.id);
+            } 
+          }
         }, 
         error: function(){
           console.log("people error")
@@ -81,7 +85,7 @@ console.log("view");
       var el = this.$el;
       el.empty();
       
-      el.html(temp({user: this.model.toJSON()}) )
+      el.html(temp({user: this.model}) )
       $('#user-area').html(el);
       this.delegateEvents();
       return this;
