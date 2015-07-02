@@ -3,7 +3,19 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<div id="user-area">
+
+<div class="container">
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-content">
+        <div class="container">
+          <div class="user_main">
+          <div id="user-area">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="content-area">
@@ -27,15 +39,9 @@
 
 <!-- individual User -->
 <script type="text/template" id="userTemp">
-<div class="container">
-  <div class="col s12 m6">
-    <div class="card">
-      <div class="card-content">
-        <div class="container">
-          <div class="user_main">
           <small class="user_info">
           {{ if(!user.email.isNull ) { }}
-            <span class="green-text">{{= user.email }} </span>
+            <span class="green-text">{{= user.email }}</span> 
           {{ } }}
           <% if current_user == @user %>
           {{ else { }}

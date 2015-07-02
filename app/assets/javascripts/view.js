@@ -62,12 +62,12 @@ console.log("view");
       levl.user.fetch({
         success: function(model, response){
           //console.log(model)
-          if(model){
+          if ( model ) {
             thisView.model = model.toJSON();
             console.log(thisView.model);
-            if (thisView.model.email)
+            if ( thisView.model.email ) {
               thisView.render(thisView.id);
-            } 
+            }
           }
         }, 
         error: function(){
