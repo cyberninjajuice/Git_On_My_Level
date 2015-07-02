@@ -223,11 +223,10 @@ span.timestamp {
   font-size: .8em;
 }
 
-.events_card {
-  display: none;
+.events_each {
+  overflow-y: auto; 
 }
 #events-area {
-  overflow: scroll;
 }
 
 #notice {
