@@ -113,16 +113,23 @@ console.log("view");
       thisView = this;
       levl.userEvents.fetch({
         success: function(model, response){
-          console.log(model);
-          console.log(response);
           this.template = _.template($('#event-template').html());
-          thisView.render(thisView.id)
+          if( model && model.length>0) {
+            thisView.render(thisView.id)
+          } else {
+            thisView.handleNone();
+          }
         },
         error: function(errors){
           console.log(errors)
         } 
 
-      })
+      });
+    },
+
+    handleNone: function() {
+      var el = this.$el;
+      el.append("<div class='red lighten-3'>There are no Experience-Gaining events because <a class='white-text' href='http://rescuetime.com'> Rescue Time has not been set up yet.</a></div>");
     },
 		render: function() {
       var el = this.$el;
@@ -178,6 +185,10 @@ console.log("view");
       })
     },
 
+    handleNone: function() {
+      var el = this.$el;
+      el.append("<div class='red lighten-3'>There are no Skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time has not been set up yet.</a></div>");
+    },
     render: function() {
       console.log("rendering!")
       console.log(this);
