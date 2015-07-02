@@ -34,10 +34,11 @@
         <div class="container">
           <div class="user_main">
           <small class="user_info">
-          {{ if( !user.email.isNull ) { }}
+          {{ if(!user.email.isNull ) { }}
             <span class="green-text">{{= user.email }} </span>
+          {{ } }}
           <% if current_user == @user %>
-          {{ } else { }}
+          {{ else { }}
             <a class="waves-effect waves-light btn editing_user"> Add email </a>
           {{ } }}
 
