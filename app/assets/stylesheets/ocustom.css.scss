@@ -1,38 +1,9 @@
-.widget {
-  display: inline-block;
-  border: 1px solid #AAA;
-  background: white;
-}
-
-#chart {
-  height: 400px;
-  width: 500px;
-}
-
-svg {
-  shape-rendering: crispEdges;
-}
-
-.bar {
-  fill: #A18FDB;
-}
-
-.value {
-  font-size: 16px;
-  font-weight: 300;
-  fill: #333;
-}
-
-.label {
-  font-size: 18px;
-  fill: #333;
-}
-
-.axis {
-  font-size: 12px;
-  path {
-    fill: none;
-  }
+nav {
+  display: flex;
+  flex-flow: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 section {
   overflow: auto;
@@ -249,9 +220,17 @@ span.timestamp {
   font-size: .8em;
 }
 
+.events_card {
+  display: none;
+}
+#events-area {
+  overflow: scroll;
+}
+
 #notice {
   color: green;
 }
+
 
 .Github {
   background: rgba(20, 20, 20, .6 );
@@ -284,9 +263,40 @@ span.timestamp {
     list-style: square;
   }
 }
-.events_card {
-  display: none;
+
+.widget {
+  display: inline-block;
+  border: 1px solid #AAA;
+  background: white;
 }
-#events-area {
-  overflow: scroll;
+
+#chart {
+  height: 400px;
+  width: 500px;
+}
+
+svg {
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: #A18FDB;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 300;
+  fill: #333;
+}
+
+.label {
+  font-size: 18px;
+  fill: #333;
+}
+
+.axis {
+  font-size: 12px;
+  path {
+    fill: none;
+  }
 }
