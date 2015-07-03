@@ -29,22 +29,21 @@ class User < ActiveRecord::Base
   end
 
   def initial_api
-    rescueing=Time.now.to_s.split(" ")[0]
+    rescueing = Time.now.to_s.split(" ")[0]
     if (self.last_rescued.nil?)
       formatted_date = "2015-04-01"
     else
-      formatted_date = self.last_rescued.strftime('%Y-%m-%d')
+      formatted_date = self.last_rescued.strftime("%Y-%m-%d")
     end    
 
     api_url = "https://www.rescuetime.com/anapi/data?key=#{self.rescue_key}&perspective=rank&restrict_kind=overview&restrict_thing=software%20development&restrict_begin=#{formatted_date}&restrict_end=#{rescueing}&format=json"
     
-    
-
     if (rescueing != formatted_date || !self.events.any? )
-    
       response = HTTParty.get(api_url)
-      self.rescue_pusher(response)
-      self.update(last_rescued: rescueing)
+      if(response && response.length> 0)
+        self.rescue_pusher(response)
+        self.update(last_rescued: rescueing)
+      end
     end
   end   
 
@@ -53,9 +52,9 @@ class User < ActiveRecord::Base
     if(!respo.nil? && respo.any?)
       respo.each do |act|
         #Get time in Minutes as uncut_EXP
-        exp= act[1]/60
-        site= act[3]
-        lang= Language.where("name LIKE '#{act[4]}'")
+        exp = act[1]/60
+        site = act[3]
+        lang = Language.where("name LIKE '#{act[4]}'")
 
         if (!lang.nil? && lang.any?)
           self.events.create!(
@@ -102,7 +101,6 @@ class User < ActiveRecord::Base
         if(update_these.any?)
           update_replicates(update_these)
         end
-
       end
     end
   end
@@ -124,13 +122,13 @@ class User < ActiveRecord::Base
       self.languages.each do |lan|
         langs << lan.id
       end
-    langs.uniq
+      langs.uniq
     end
   end
   def grand_total_exp
-    grand_total=0
+    grand_total = 0
     if (self.skills.any?)
-      self.skills.each{
+      self.skills.each {
         |skill| grand_total += skill.experience.to_i
       }
     end
@@ -152,30 +150,30 @@ class User < ActiveRecord::Base
   end
 
   def get_guild_rank(lvl)
-    if(lvl<5)
-      rank= "Beginner"
-    elsif(lvl<10)
-      rank= "Novice"
-    elsif(lvl<15)
-      rank= "Apprentice"
-    elsif(lvl<20)
-      rank= "Journeymen"
-    elsif(lvl<25)
-      rank= "Master"
-    elsif(lvl<30)
-      rank= "Grand-Master"
+    if(lvl < 5)
+      rank = "Beginner"
+    elsif(lvl < 10)
+      rank = "Novice"
+    elsif(lvl < 15)
+      rank = "Apprentice"
+    elsif(lvl < 20)
+      rank = "Journeymen"
+    elsif(lvl < 25)
+      rank = "Master"
+    elsif(lvl < 30)
+      rank = "Grand-Master"
     else
-      rank= "Arcane Grand-Master of the Keyboard"
+      rank = "Arcane Grand-Master of the Keyboard"
     end
     rank
   end
 
   def final_total(lang_id)
-    total_exp=0
+    total_exp = 0
     if(self.events.any?)
 
       self.events.each do |eve|
-        if(eve.language_id==lang_id)
+        if(eve.language_id ==lang_id)
           total_exp += eve.tot_exp
         end
       end

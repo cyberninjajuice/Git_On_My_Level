@@ -10,15 +10,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-      @user_param = params[:id]
-      @user.initial_api
-      @user.skill_adding
-      if @user.skills.any?
-        top_skill = @user.skills.order(experience: :asc).first
-        @level_info = @user.get_grand_level
-      else
-        @level_info = {}
-      end
+    @user_param = params[:id]
+    @user.initial_api
+    @user.skill_adding
+    if @user.skills.any?
+      top_skill = @user.skills.order(experience: :asc).first
+      @level_info = @user.get_grand_level
+    else
+      @level_info = {}
+    end
   end
 
   # GET /users/new
