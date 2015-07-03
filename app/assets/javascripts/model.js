@@ -1,13 +1,11 @@
 function initBackbone(){
   console.log("starting model");
-levl.User = Backbone.Model.extend({
-  url: '/users/'+userParam+".json",
- initialize: function() {
-  console.log("user hi")
-  levl.user = new levl.User();
-  initiateUser();
-  }
- });
+  levl.User = Backbone.Model.extend({
+    url: '/users/'+userParam+".json",
+    initialize: function() {
+      console.log("user hi")
+    }
+  });
 
  levl.Event = Backbone.Model.extend({
   initialize: function(){
@@ -20,8 +18,10 @@ levl.User = Backbone.Model.extend({
    console.log("skill Initialized")
   }
   });
+  
+  levl.user = new levl.User();
 
-   $(document).ready(function() {
+  $(document).ready(function() {
     startCollection();
   });
 }

@@ -4,11 +4,13 @@ var closer = $('<span class="card-title grey-text text-darken-4"><i class="mdi-n
 
 levl.UserView = Backbone.View.extend({
   tagName: 'div',
+
   initialize: function(){
     console.log(this.model);
     this.listenTo(this.model, "sync, add, remove, destroy, update", this.fetchingSkills);
     this.fetchingUser()
   },
+
   events: {
     "click .editing_user": "editForm",
     "click button#update-user": "updateIt"
@@ -213,15 +215,12 @@ levl.SkillsView = Backbone.View.extend({
     $('#content-area').html(el);
   }
 });
-
-initiateUser = function() {
+  
+skillShow = function() {
+  console.log("hi ");
   levl.constantView = new levl.UserView({
     model: levl.user
   }); 
-}
-  
-skillShow = function() {
-  console.log("hi ")
   levl.currentView = new levl.SkillsView({
     collection: levl.skills
   });
