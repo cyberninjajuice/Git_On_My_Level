@@ -85,10 +85,10 @@ levl.UserView = Backbone.View.extend({
     return this;
   },
   renderSetup: function(){
-    var temp = $("#must-rescue-temp");
+    var temp =  _.template($('#must-rescue-temp').html());
     var el = this.$el;
     el.empty();
-    el.html( _.template(temp({user: this.model})) );
+    el.html( temp({user: this.model}) );
     $('#user-area').html(el);
     this.delegateEvents();
     return this;
