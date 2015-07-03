@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
-  
+  has_secure_password
   has_many :skills
 	has_many :languages, through: :events
   has_many :events
@@ -24,12 +24,17 @@ class User < ActiveRecord::Base
   def events_getter
 
   end
+
+  def has_rescue
+    (self.rescue_key? && self.rescue_key.length == 40)
+  end
+
   def default_values
     self.logins = 0 if self.logins.nil?
   end
 
   def initial_api
-    if (self.rescue_key? && self.rescue_key.length==40)
+    if (self.has_rescue)
     rescueing = Time.now.to_s.split(" ")[0]
     if (self.last_rescued.nil?)
       formatted_date = "2015-04-01"
@@ -38,7 +43,6 @@ class User < ActiveRecord::Base
     end    
 
     api_url = "https://www.rescuetime.com/anapi/data?key=#{self.rescue_key}&perspective=rank&restrict_kind=overview&restrict_thing=software%20development&restrict_begin=#{formatted_date}&restrict_end=#{rescueing}&format=json"
-    binding.pry
     if (rescueing != formatted_date || !self.events.any? )
       response = HTTParty.get(api_url)
       if(!response.nil? && response && response.length> 0)

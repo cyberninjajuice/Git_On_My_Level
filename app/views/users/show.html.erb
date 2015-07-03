@@ -17,14 +17,12 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container">
+<div class="container" id="must-rescue">
   <div id="content-area">
   </div>
-</div>
+
 <!-- Events Card -->
 
-<div class="container">
   <div class="col s12 m6">
     <div class="card medium">
       <div class="card-content">
@@ -37,7 +35,6 @@
     </div>
   </div>
 </div>
-
 <!-- individual User -->
 <script type="text/template" id="userTemp">
   <small class="user_info">
@@ -68,9 +65,9 @@
 <% if current_user == @user %>
 <button class="waves-effect waves-light btn editing_user"><i class="mdi-social-person"></i>
   {{ if(!user.email) { }}
-  Add my Email
+  Add My Email
   {{ }else { }} 
-  Update My Info!
+  Update My Info
   {{ } }}
 </button>
 <div class="edit_form" style="display: none">
@@ -94,8 +91,53 @@
   </form>
 </div>
 <% end %>
-  </script>
-
+</script>
+<script type="text/template" id="must-rescue-temp">
+<ul>
+  {{ if(null !== user.name) { }}
+    <li> {{= user.name }} </li>
+  {{ } else if(null !== user.email) { }} 
+    <li> {{= user.email }} </li>
+  {{ } else { }}
+    <li> This user </li>
+  {{ } }}
+  {{ if(null !== user.logins ) { }}
+    <li>has logged in: {{= user.logins }}</li>
+  {{ } }}
+    <li> first joined us: {{= DateHelper.time_ago_in_words_with_parsing(user.updated_at) }}</li>
+</ul>
+<% if current_user == @user %>
+<p>You must configure your Rescue Time API key before Leveling up. See also <a href="/"> Guide to configuring Rescue Time </a>.
+</p>
+<button class="waves-effect waves-light btn editing_user"><i class="mdi-social-person"></i>
+  Add RescueTime Key
+</button>
+<div class="edit_form" style="display: none">
+  <form class="pure-form pure-form-aligned" id="user-account">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="email"> Email
+          <input type="text" id="email" value="{{= user.email }}">
+        </label>
+      </div>
+      <div class="pure-control-group">
+        <label for="API"> Rescue-Time API
+          <input type="text" id="rescue-key">
+        </label>
+      </div>
+      <div class="pure-controls">
+        <button class="waves-effect waves-light btn" id="update-user"> Update!
+        </button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<% else %>
+<p>User hasn't configure Rescue Time API. See also the <a href="/"> Guide to configuring Rescue Time </a>.
+</p>
+<% end %>
+  
+</script>
 
 <!-- Skills Card -->
 <script type="text/template" id="skill-template">

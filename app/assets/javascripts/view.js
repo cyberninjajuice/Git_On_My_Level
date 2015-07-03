@@ -57,7 +57,7 @@ levl.UserView = Backbone.View.extend({
 
   fetchingUser: function() {
     //console.log("Fetching user");
-    var thisView= this;
+    var thisView = this;
     //console.log(thisView)
 
     var specifyTemp = $('#userTemp').html();
@@ -68,8 +68,13 @@ levl.UserView = Backbone.View.extend({
         if ( model ) {
           thisView.model = model.toJSON();
           console.log(thisView.model);
-          if ( thisView.model.email ) {
+          if ( user.has_rescue ) {
+            $("#must-rescue").show();
+            initiateViews();
             thisView.render(thisView.id);
+          } else {
+            $("#must-rescue").hide();
+            thisView.renderSetup();
           }
         }
       }, 
@@ -79,7 +84,16 @@ levl.UserView = Backbone.View.extend({
     });
     return this;
   },
-  
+  renderSetup: function(){
+    var temp = $("#must-rescue-temp");
+    var el = this.$el;
+    el.empty();
+    el.html( temp({user: this.model}) );
+    $('#user-area').html(el);
+    this.delegateEvents();
+    return this;
+  },
+
   render: function(uid){
     console.log("showing" + this.model);
     var temp = this.template;
@@ -88,7 +102,7 @@ levl.UserView = Backbone.View.extend({
     var el = this.$el;
     el.empty();
     
-    el.html(temp({user: this.model}) )
+    el.html(temp({user: this.model}) );
     $('#user-area').html(el);
     this.delegateEvents();
     return this;
@@ -136,7 +150,7 @@ levl.EventsView = Backbone.View.extend({
   },
 
   handleNone: function() {
-    $('#events-area').append($('<div class="field_with_errors">There are no Experience-Gaining events because <a class="white-text" href="http://rescuetime.com"> Rescue Time has not been set up yet.</a></div>'));
+    $('#events-area').append($('<div class="field_with_errors">No events have been logged by this user. Check out <a href="/"> Home </a> Where we explain how to configure <a class="white-text" href="http://rescuetime.com"> Rescue Time for your profession.</a></div>'));
   },
 	render: function() {
     var el = this.$el;
@@ -196,7 +210,7 @@ levl.SkillsView = Backbone.View.extend({
   },
 
   handleNone: function() {
-    $('#content-area').append($("<div class='field_with_errors card-panel'><span>There are no skills because <a class='white-text' href='http://rescuetime.com'> Rescue Time </a> has not been set up yet.</span></div>"));
+    $('#content-area').append($("<div class='field_with_errors card-panel'><span>There are no skills yet, gain skills by setting up your profile at <a class='white-text' href='http://rescuetime.com'> Rescue Time </a> has not been set up yet.</span></div>"));
   },
   render: function() {
     console.log("rendering!")
@@ -216,11 +230,13 @@ levl.SkillsView = Backbone.View.extend({
   }
 });
   
-skillShow = function() {
+function skillShow()  {
   console.log("hi ");
   levl.constantView = new levl.UserView({
     model: levl.user
   }); 
+}
+function initiateViews() {
   levl.currentView = new levl.SkillsView({
     collection: levl.skills
   });
