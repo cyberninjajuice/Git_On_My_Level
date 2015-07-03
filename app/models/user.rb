@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 	before_save :default_values
   attr_accessor :remember_token
-  before_save {self.email = email.downcase}
+  before_save {
+    if self.email? 
+      self.email = email.downcase}
   has_many :authentications, :dependent => :destroy
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
