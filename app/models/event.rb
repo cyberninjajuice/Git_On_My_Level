@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :language
   belongs_to :source
-
+  default_scope { order('created_at DESC') }
   def github_hitter
     user = HTTParty.get "https://api.github.com/user", 
     :headers => { 
