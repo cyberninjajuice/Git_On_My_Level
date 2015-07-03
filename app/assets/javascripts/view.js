@@ -23,13 +23,12 @@ levl.UserView = Backbone.View.extend({
 
   updateIt: function(event){
     event.preventDefault();
-    console.log(this.model)
     var email = $("#email")
     var rescueKey = $("#rescue-key")
-    var thisView = this;
+    var thisView = levl.constantView;
 
     if(rescueKey.val().length === 40){
-      this.model.save(
+      levl.user.save(
       {email: email.val(), rescue_key: rescueKey.val()},
       { success: function(model, response) { 
         thisView.fetchingUser();
@@ -41,7 +40,7 @@ levl.UserView = Backbone.View.extend({
       { patch: true }
       );
     } else {
-      this.model.save(
+      levl.user.save(
       {email: email.val()},
       { success: function(model, response) { 
         thisView.fetchingUser();
