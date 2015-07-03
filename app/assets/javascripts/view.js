@@ -214,11 +214,14 @@ levl.SkillsView = Backbone.View.extend({
   }
 });
 
-skillShow = function() {
-  console.log("hi ")
+initiateUser = function() {
   levl.constantView = new levl.UserView({
     model: levl.user
   }); 
+}
+  
+skillShow = function() {
+  console.log("hi ")
   levl.currentView = new levl.SkillsView({
     collection: levl.skills
   });
