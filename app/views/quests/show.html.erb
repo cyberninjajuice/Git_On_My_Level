@@ -5,7 +5,7 @@
   <p id="notice"><%= notice %></p>
 </div>
 <% end %>
-  <div class="card">
+  <div class="card brown lighten-3">
     <div class="card-content">
       <p>
         <strong>Name:</strong>
@@ -43,9 +43,10 @@
         <strong>Admin:</strong>
         <%= @quest.admin.email %>
       </p>
-
-      <%= link_to 'Edit', edit_quest_path(@quest) %> |
-      <%= link_to 'Back', quests_path %>
+      <%= link_to 'Back', quests_path, class:"waves-effect waves-light btn orange" %><% if current_user && current_user == @quest.user %> 
+       | 
+      <%= link_to 'Edit', edit_quest_path(@quest), class:"waves-effect waves-light btn" %> | 
+      <%= link_to 'Erase', quest, class:"waves-effect waves-light btn deep-purple", method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   </div>
 </div>
