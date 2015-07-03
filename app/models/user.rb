@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     end    
 
     api_url = "https://www.rescuetime.com/anapi/data?key=#{self.rescue_key}&perspective=rank&restrict_kind=overview&restrict_thing=software%20development&restrict_begin=#{formatted_date}&restrict_end=#{rescueing}&format=json"
-    
+    binding.pry
     if (rescueing != formatted_date || !self.events.any? )
       response = HTTParty.get(api_url)
       if(!response.nil? && response && response.length> 0)
