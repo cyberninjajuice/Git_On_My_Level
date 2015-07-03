@@ -14,8 +14,25 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :authentications
 
-  validates :email,
-   uniqueness: true
+
+attr_accessor :remember_token
+  #converts to downcase email... to prevent duplication in db
+  before_save {self.email = email.downcase}
+  #regex for vaild email A-z at least 1 char then @ symbol then at least 1 letter then a dot then at least 1 letter..
+  VALIDEMAIL = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
+  #username must be at least 5 chars and up to 50...
+  validates :username, length: { minimum: 5, maximum: 50 }
+  #email... uses regex, minlength 5 max 200, casesensitive false
+  validates :email, 
+  length: { minimum: 5, maximum: 200},
+  format: { with: VALIDEMAIL },
+  #allows user to login with any capitalization of their email but must be unique still...
+  uniqueness: { case_sensitive: false}
+  #min 5 -max 200  for password
+  #ensure that updating allows for no password insertion.
+  validates :password, length: {
+    minimum: 5, maximum: 200 }, 
+    allow_blank: true
 
   def has_linked_github?
     authentications.where(provider: 'github').present?
