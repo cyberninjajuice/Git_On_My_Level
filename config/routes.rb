@@ -21,5 +21,4 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
   delete "oauth/:provider" => "oauths#destroy", as: :delete_oauth
   root "statics#index"
-
 end

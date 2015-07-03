@@ -1,5 +1,6 @@
-file= File.read("secrets.json")
-  data= JSON.parse(file) 
+
+file = File.read("secrets.json")
+data = JSON.parse(file) 
 
 Rails.application.config.sorcery.submodules = [:external]
 
@@ -49,3 +50,4 @@ Rails.application.config.sorcery.configure do |config|
   # Define which model authenticates with sorcery.
   config.user_class = "User"
 end
+

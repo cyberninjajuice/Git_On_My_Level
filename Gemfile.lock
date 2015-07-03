@@ -57,41 +57,10 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     debug_inspector (0.0.2)
-    erubis (2.7.0)
-    excon (0.45.3)
-    execjs (2.5.2)
-    faker (1.4.3)
-      i18n (~> 0.5)
-    faraday (0.9.1)
-      multipart-post (>= 1.2, < 3)
-    fission (0.5.0)
-      CFPropertyList (~> 2.2)
-    fog (1.31.0)
-      fog-atmos
-      fog-aws (~> 0.0)
-      fog-brightbox (~> 0.4)
-      fog-core (~> 1.30)
-      fog-ecloud
-      fog-google (>= 0.0.2)
-      fog-json
-      fog-local
-      fog-powerdns (>= 0.1.1)
-      fog-profitbricks
-      fog-radosgw (>= 0.0.2)
-      fog-riakcs
-      fog-sakuracloud (>= 0.0.4)
-      fog-serverlove
-      fog-softlayer
-      fog-storm_on_demand
-      fog-terremark
-      fog-vmfusion
-      fog-voxel
-      fog-xml (~> 0.1.1)
-      ipaddress (~> 0.5)
-      nokogiri (~> 1.5, >= 1.5.11)
-    fog-atmos (0.1.0)
-      fog-core
-      fog-xml
+    colorize (0.7.7)
+    debug_inspector (0.0.2)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     fog-aws (0.6.0)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
@@ -299,10 +268,10 @@ PLATFORMS
 DEPENDENCIES
   CFPropertyList
   bcrypt
-  carrierwave
-  coffee-rails
-  faker
-  fog
+  bootstrap-sass
+  bootstrap-will_paginate
+  capistrano
+  capistrano-rails
   httparty
   jbuilder
   jquery-rails

@@ -10,8 +10,6 @@
       hover: true, // Activate on hover
       gutter: 0, // Spacing from edge
       belowOrigin: true// Displays dropdown below the button
-    }
-  );
-
+    });
   }); // end of document ready
 })(jQuery); // end of jQuery name space
