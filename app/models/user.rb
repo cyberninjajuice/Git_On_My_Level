@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def initial_api
+    if (self.rescue_key? && self.rescue_key.length==40)
     rescueing = Time.now.to_s.split(" ")[0]
     if (self.last_rescued.nil?)
       formatted_date = "2015-04-01"
@@ -43,6 +44,7 @@ class User < ActiveRecord::Base
       if(!response.nil? && response && response.length> 0)
         self.rescue_pusher(response)
         self.update(last_rescued: rescueing)
+      end
       end
     end
   end   
