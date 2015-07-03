@@ -17,7 +17,7 @@
 //= require_tree ./js
 //= require app
 
-// require init
+//= require init
 //= require model
 //= require collection
 //= require view
