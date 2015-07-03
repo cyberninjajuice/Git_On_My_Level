@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
-  has_secure_password
+  has_secure_password, validations: false
   has_many :skills
 	has_many :languages, through: :events
   has_many :events
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   uniqueness: { case_sensitive: false}
   #min 5 -max 200  for password
   #ensure that updating allows for no password insertion.
-  validates :password, presence: false, allow_blank: true
+  validates :password, presence: false
 
   def has_linked_github?
     authentications.where(provider: 'github').present?
