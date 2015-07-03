@@ -21,7 +21,8 @@ levl.UserView = Backbone.View.extend({
     $("button.editing_user").hide();
   },
 
-  updateIt: function(){
+  updateIt: function(event){
+    event.preventDefault();
     console.log(this.model)
     var email = $("#email")
     var rescueKey = $("#rescue-key")
