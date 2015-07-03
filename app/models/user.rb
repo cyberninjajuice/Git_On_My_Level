@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
-  has_secure_password, validations: false
+  has_secure_password validations: false
   has_many :skills
 	has_many :languages, through: :events
   has_many :events
