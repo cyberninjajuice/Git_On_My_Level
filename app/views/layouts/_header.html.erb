@@ -25,7 +25,7 @@
   <% if logged_in? %>
     <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates="profile2">
     Profile 
-    <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+    <i class="mdi-navigation-arrow-drop-down right small"></i></a></li>
   <% else %>
   <li><%= link_to "GitHub Login", auth_at_provider_path(provider: :github), class:"purple-text" %></li>
   <% end %>
@@ -40,7 +40,7 @@
       <% if logged_in? %>
       <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates="profile">
         Profile 
-        <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+        <i class="mdi-navigation-arrow-drop-down right tiny"></i></a></li>
       <% else %>
       <li><%= link_to "GitHub Login", auth_at_provider_path(provider: :github), class:"purple-text" %></li>
       <% end %>
