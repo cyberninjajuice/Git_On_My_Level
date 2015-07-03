@@ -68,7 +68,7 @@ levl.UserView = Backbone.View.extend({
         if ( model ) {
           thisView.model = model.toJSON();
           console.log(thisView.model);
-          if ( user.has_rescue ) {
+          if ( thisView.model.has_rescue ) {
             $("#must-rescue").show();
             initiateViews();
             thisView.render(thisView.id);
