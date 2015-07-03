@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609132627) do
+ActiveRecord::Schema.define(version: 20150703135840) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email"
@@ -91,8 +91,12 @@ ActiveRecord::Schema.define(version: 20150609132627) do
     t.string   "rescue_key"
     t.integer  "logins"
     t.datetime "last_rescued"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.string   "name"
+    t.boolean  "admin",           default: false
   end
 
 end
