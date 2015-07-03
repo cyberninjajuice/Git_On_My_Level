@@ -11,7 +11,7 @@ levl.UserView = Backbone.View.extend({
   },
   events: {
     "click .editing_user": "editForm",
-    "click button.update_user": "updateIt"
+    "click button#update-user": "updateIt"
   },
   
   editForm: function() {
@@ -20,10 +20,11 @@ levl.UserView = Backbone.View.extend({
   },
 
   updateIt: function(){
+    console.log(this.model)
     var email = $("#email")
     var rescueKey = $("#rescue-key")
     var thisView = this;
-    console.log(this.model)
+
     if(rescueKey.val().length === 40){
       this.model.save(
       {email: email.val(), rescue_key: rescueKey.val()},
@@ -108,7 +109,6 @@ levl.EventView = Backbone.View.extend({
 levl.EventsView = Backbone.View.extend({
 	tagName: 'ul',
 	initialize: function() {
-    console.log("passed this "+this.id);
     this.$el.addClass("collection overflowing");
     this.listenTo(this.model, "sync, add, remove, destroy", this.fetchingEvents);
     this.fetchingEvents();
@@ -211,25 +211,18 @@ levl.SkillsView = Backbone.View.extend({
 
     // add the view to the content-area
     $('#content-area').html(el);
-    //console.log(d3)
   }
 });
 
 skillShow = function() {
   console.log("hi ")
-  // skills.fetch({
-  //   success: function(){
-    console.log(levl.user)
   levl.constantView = new levl.UserView({
-    model: levl.user,
-    // id: user_id
-  }) 
+    model: levl.user
+  }); 
   levl.currentView = new levl.SkillsView({
-      collection: levl.skills,
-      // id: user_id
-  })
+    collection: levl.skills
+  });
   levl.eventView = new levl.EventsView({
-    collection: levl.userEvents,
-    // id: user_id
-  })
+    collection: levl.userEvents
+  });
 }
