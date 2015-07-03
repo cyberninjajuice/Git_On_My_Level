@@ -88,7 +88,7 @@ levl.UserView = Backbone.View.extend({
     var temp = $("#must-rescue-temp");
     var el = this.$el;
     el.empty();
-    el.html( temp({user: this.model}) );
+    el.html( _.template(temp({user: this.model})) );
     $('#user-area').html(el);
     this.delegateEvents();
     return this;
