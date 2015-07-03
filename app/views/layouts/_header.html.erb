@@ -9,11 +9,21 @@
   <% end %>
 </ul>
 
+<ul id="profile2" class="dropdown-content right">
+  <% if logged_in? %>
+  <li><%= link_to "Profile", current_user %></li>
+  <li><%= link_to "Configure", edit_user_path(current_user) %></li>
+  <li>
+  <%= link_to "Log out", logout_path, method:"delete", class:"field_with_errors" %>
+   </li>
+  <% end %>
+</ul>
+
 <ul class="side-nav" id="mobilize">
   <li><%= link_to "Home", root_path, class:"cyan-text" %></li>
   <li> <%= link_to "Users", users_path, class:"lime-text" %></li>
   <% if logged_in? %>
-    <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates="profile">
+    <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates="profile2">
     Profile 
     <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
   <% else %>
