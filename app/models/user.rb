@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
   #regex for vaild email A-z at least 1 char then @ symbol then at least 1 letter then a dot then at least 1 letter..
   VALIDEMAIL = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
   #name must be at least 3 chars and up to 50...
-  validates :name, length: { minimum: 5, maximum: 50 }, presence: false
+  validates :name, length: { minimum: 5, maximum: 50 }, allow_blank: true
   #email... uses regex, minlength 5 max 200, casesensitive false
-  validates :email, presence: false, 
+  validates :email, presence: false, allow_blank: true,
   length: { minimum: 5, maximum: 200},
   format: { with: VALIDEMAIL },
   uniqueness: { case_sensitive: false}
