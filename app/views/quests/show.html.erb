@@ -7,46 +7,53 @@
 <% end %>
   <div class="card brown lighten-3">
     <div class="card-content">
-      <p>
-        <strong>Name:</strong>
-        <%= @quest.name %>
-      </p>
+      <ul class="collection">
+        <li class="collection-item">
+          <strong>Name:</strong>
+          <%= @quest.name %>
+        </li>
 
-      <p>
-        <strong>Bounty:</strong>
-        <%= @quest.bounty %>
-      </p>
+        <li class="collection-item">
+          <strong>Bounty:</strong>
+          <%= @quest.bounty %>
+        </li>
 
-      <p>
-        <strong>Link:</strong>
-        <%= @quest.link %>
-      </p>
+        <li class="collection-item">
+          <strong>Link:</strong>
+          <%= @quest.link %>
+        </li>
+      </ul>
     </div>
     <div class="card-action">
-        
-      <p>
+      <ul class="collection">
+        <li class="collection-item">
         <strong>Quantity:</strong>
         <%= @quest.quantity %>
-      </p>
+        </li>
 
-      <p>
+        <li class="collection-item">
         <strong>Language:</strong>
         <%= @quest.language.name %>
-      </p>
-
-      <p>
+        </li>
+        <li class="collection-item">
         <strong>Source:</strong>
         <%= @quest.source.name %>
-      </p>
+        </li>
 
-      <p>
+        <li class="collection-item">
         <strong>Admin:</strong>
         <%= @quest.admin.email %>
-      </p>
-      <%= link_to 'Back', quests_path, class:"waves-effect waves-light btn orange" %><% if current_user && current_user == @quest.admin %> 
+        </li>
+
+        <li class="collection-item">
+      <%= link_to 'Back', quests_path, class:"waves-effect waves-light btn orange grey-text" %><% if current_user && current_user == @quest.admin %> 
        | 
       <%= link_to 'Edit', edit_quest_path(@quest), class:"waves-effect waves-light btn" %> | 
-      <%= link_to 'Erase', quest, class:"waves-effect waves-light btn deep-purple", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Erase', quest, class:"waves-effect waves-light btn deep-purple", method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+      <% else %>
+      </li>
+      </ul>
       <% end %>
     </div>
   </div>
